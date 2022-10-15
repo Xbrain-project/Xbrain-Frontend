@@ -8,7 +8,7 @@ export default function Navbar() {
     };
     return(
         <nav
-            class="bg-primary-80 px-2 sm:px-4 py-2.5 fixed w-full z-20 top-0 left-0">
+            class="bg-primary-80 px-2 sm:px-4 py-2.5 w-full z-20 top-0 left-0 sticky">
            <div 
                 class="w-full bg-primary-100 flex flex-row">
             {/* Logo */}
