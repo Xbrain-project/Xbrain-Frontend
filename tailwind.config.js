@@ -3,6 +3,7 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
+    extend: {
       colors: {
         primary: {
           50: '#F2BCFB',
@@ -20,11 +21,12 @@ module.exports = {
           100: '#000000',
         }
       },
-      extend: {
+      
         fontFamily: {
           body: ["sans-serif", "Noto Sans Thai"],
         },
     },
   },
+
   plugins: [],
 }
