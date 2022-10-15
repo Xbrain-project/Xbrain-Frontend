@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useEffect } from "react";
+
 import tutorpic from "../../assets/pics/login1.jpg";
 
 export default function Login() {
