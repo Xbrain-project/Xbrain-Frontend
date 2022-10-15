@@ -18,7 +18,7 @@ export default function Login() {
                     class=" w-9/12 p-10">
                     {/* <!-- Form --> */}
                     <form>
-                    <div class="font-body text-center font-bold text-6xl text-primary-100 py-5">
+                    <div class="font-body text-center font-bold text-6xl text-primary-80 py-5">
                         Login
                     </div>
                     {/* <!-- Email input --> */}
