@@ -3,6 +3,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import NavbarStudent from "./components/navbar/NavbarStudent";
 // import NavbarTutor from "./components/navbar/NavbarTutor";
+import Login from "./pages/Login";
 
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
     <BrowserRouter>
     <div>
       <Routes>
+        <Route path="/" element={<Login/>}/>
         {/* <Route path="/" element={<NavbarStudent/>} />
         <Route path="/1" element={<NavbarTutor/>} /> */}
       </Routes>
