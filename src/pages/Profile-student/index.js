@@ -38,28 +38,28 @@ function ProfileStudent() {
      }
     return (
 
-        <div className="font-sans my-20 mx-24 text-black ">
+        <div className="font-body my-20 mx-24 text-black ">
             <div className=" font-bold text-6xl ">
             Profile
             </div>
             <form className="mx-20 " onSubmit={handleSubmit}>
-                <img className="absolute top-24 right-24  h-56 w-50"                               // รูปภาพ
+               
+                <img
+                className="absolute h-56 w-56 top-24 right-24"
                 img
-                
                 src={values.img === null ? Profile : values.img}
                 alt="profile"
-                
+                // รูปภาพ
                 />
-                <div className="absolute top-80 right-20 w-64 ">
-                    <MyFileBase64                                                           //ช่อง input รูป
-                           
+                <div className=" flex absolute top-80 right-20 w-64">
+                    <MyFileBase64           
                         name = {it}
                         disabled={values.editable === false}
                         mutiple = {false} 
                         onDone = {({base64})=>setValues ({...values,
                         img:base64})} 
-                    />
-        </div>
+                        />
+                    </div>
 
        
 
