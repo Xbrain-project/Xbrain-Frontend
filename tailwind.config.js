@@ -22,7 +22,7 @@ module.exports = {
       },
       extend: {
         fontFamily: {
-          body: ['Noto Sans Thai'],
+          body: ["sans-serif", "Noto Sans Thai"],
         },
     },
   },
