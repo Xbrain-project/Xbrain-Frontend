@@ -12,13 +12,13 @@ export default function ChooseRole() {
                 Who are you?
             </div>
             <div class="flex flex-row items-center justify-center mt-4">
-                <div class="h-72 w-72 bg-white-100 border-2 shadow-sm rounded-lg text-center text-3xl p-2 cursor-pointer hover:bg-primary-80 hover:text-white-100 hover:shadow-md">
+                <div class="h-72 w-72 bg-white-100 border-2 shadow-sm rounded-lg text-center text-3xl p-2 cursor-pointer hover:bg-primary-80 hover:text-white-100 hover:shadow-md duration-150">
                     <img class="ml-10 mt-2 pt-2"
                     src={student}>
                     </img>
                     Student
                 </div>
-                <div class="h-72 w-72 bg-white-100 border-2 shadow-sm rounded-lg text-center text-3xl p-2 ml-6 cursor-pointer hover:bg-primary-80 hover:text-white-100 hover:shadow-md">
+                <div class="h-72 w-72 bg-white-100 border-2 shadow-sm rounded-lg text-center text-3xl p-2 ml-6 cursor-pointer hover:bg-primary-80 hover:text-white-100 hover:shadow-md duration-150">
                     <img class="ml-10 mt-2 pt-2"
                     src={tutor}>
                     </img>
