@@ -4,7 +4,7 @@ import React from 'react'
 export default function Signup() {
     return(    
         <div 
-            class="container px-80 py-12 h-screen bg-primary-50 w-full font-body">
+            class="container px-80 py-12 h-screen bg-purple-200 w-full font-body">
                 <div class="containr justify-center items-center mt-3 bg-white-100 rounded-lg shadow-lg border border-gray-50">
                 <div 
                     class="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
