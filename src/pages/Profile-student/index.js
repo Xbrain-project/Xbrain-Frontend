@@ -16,45 +16,49 @@ function ProfileStudent() {
         phone: "",              //เบอร์ติดต่อ
         address: "",            //ที่อยู่
         line: "",               //id line
-        img: null,
+        img: null,              //รูปภาพ
 
       });
-      const handleChange = (e) => {   //การเปลี่ยนแปรงค่าเมื่อกรอก
+      const handleChange = (e) => {                             //การเปลี่ยนแปรงค่าเมื่อกรอก
          setValues({ ...values, 
            [e.target.name]: e.target.value });
        };
-       const handleSubmit = (e) => {
-    //     console.log("proIm isL",values.img)
-    //     if (values.img === null || values.img === '' ){
-    //         alert('please upload profile image')
-    //     }
-    //     else{
-    //     alert("Saved");
-    //     e.preventDefault();
-    //     setValues({
-    //       img:values.img,
+       const handleSubmit = (e) => {                            //ฟังชั่นจากการกด submit
+            //console.log("proIm isL",values.img)
+            if (values.img === null || values.img === '' ){
+                alert('please upload profile image')
+                e.preventDefault();
+                setValues({
+                img:values.img,
+                });
+            }
+            else{
+                alert("Saved");
+                e.preventDefault();
+                setValues({
+                img:values.img,
 
-    //     });
-     }
-    return (
+                });
+            }
+        }
+    return (                                                        // code uxui
 
         <div className="font-body my-20 mx-24 text-black ">
             <div className=" font-bold text-6xl ">
             Profile
             </div>
-            <form className="mx-20 " onSubmit={handleSubmit}>
+            <form className="mx-20 " onSubmit={handleSubmit}>       
                
                 <img
                 className="absolute h-56 w-56 top-24 right-24"
                 img
                 src={values.img === null ? Profile : values.img}
                 alt="profile"
-                // รูปภาพ
+                                                                                        // รูปภาพ
                 />
                 <div className=" flex absolute top-80 right-20 w-64">
                     <MyFileBase64           
                         name = {it}
-                        disabled={values.editable === false}
                         mutiple = {false} 
                         onDone = {({base64})=>setValues ({...values,
                         img:base64})} 
@@ -70,7 +74,7 @@ function ProfileStudent() {
                         >       
                             ชื่อ-นามสกุล *
                         </label> 
-                        <input className="shadow appearance-none border rounded w-96 h-12 py-2 px-3  text-gray-700 leading-tight focus:outline-none focus:border-purple-500 focus:shadow-outline"    
+                        <input className="shadow appearance-none border rounded w-96 h-12 py-2 px-3  text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline"    
                         id="name"
                         type="name"
                         onChange={handleChange}
@@ -85,7 +89,7 @@ function ProfileStudent() {
                         >       
                             ชื่อเล่น *
                         </label> 
-                        <input className="shadow appearance-none border rounded w-64 h-12  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-purple-500 focus:shadow-outline"    
+                        <input className="shadow appearance-none border rounded w-64 h-12  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline"    
                         id="nickname"
                         onChange={handleChange}
                         name="nickname"
@@ -103,7 +107,7 @@ function ProfileStudent() {
                         >       
                             โรงเรียน/มหาลัยที่กำลังศึกษา *
                         </label> 
-                        <input className="shadow appearance-none border rounded w-96 h-12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-purple-500 focus:shadow-outline"    
+                        <input className="shadow appearance-none border rounded w-96 h-12 py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline"    
                         id="school"
                         onChange={handleChange}
                         name="school"
@@ -117,7 +121,7 @@ function ProfileStudent() {
                         >       
                             ชั้นปีที่ศึกษา *
                         </label> 
-                        <input className="shadow appearance-none border rounded w-64 h-12  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-purple-500 focus:shadow-outline"    
+                        <input className="shadow appearance-none border rounded w-64 h-12  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline"    
                         id="grade"
                         onChange={handleChange}
                         name="grade"
@@ -134,7 +138,7 @@ function ProfileStudent() {
                         >       
                             E-mail *
                         </label> 
-                        <input className="shadow appearance-none border rounded w-96 h-12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-purple-500 focus:shadow-outline"    
+                        <input className="shadow appearance-none border rounded w-96 h-12 py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline"    
                         id="email"
                         type="email"
                         onChange={handleChange}
@@ -149,7 +153,7 @@ function ProfileStudent() {
                         >       
                             เบอร์ติดต่อ *
                         </label> 
-                        <input className="shadow appearance-none border rounded w-96 h-12  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-purple-500 focus:shadow-outline"    
+                        <input className="shadow appearance-none border rounded w-96 h-12  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline"    
                         id="phone"
                         type="phone"
                         pattern="[0-9]*"
@@ -168,7 +172,7 @@ function ProfileStudent() {
                         >       
                             ที่อยู่ปัจจุบัน (หรือสถานที่ที่สะดวกเรียน) *
                         </label> 
-                        <input className="shadow appearance-none border rounded w-96 h-12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-purple-500 focus:shadow-outline"    
+                        <input className="shadow appearance-none border rounded w-96 h-12 py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline"    
                         id="address"
                         onChange={handleChange}
                         name="address"
@@ -182,7 +186,7 @@ function ProfileStudent() {
                         >       
                             ID line *
                         </label> 
-                        <input className="shadow appearance-none border rounded w-96 h-12  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:border-purple-500 focus:shadow-outline"    
+                        <input className="shadow appearance-none border rounded w-96 h-12  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline"    
                         id="line"
                         onChange={handleChange}
                         name="line"
@@ -193,8 +197,8 @@ function ProfileStudent() {
                     </div>              
                 </div>
                 <div className="text-center">
-                    <button
-                        className=" flex-center inline-block px-24 py-3 bg-[#855CF8] text-white text-md font-bold leading-tight rounded-2xl shadow-md  hover:shadow-lg  focus:shadow-lg focus:outline-none  hover:bg-[#503795] hover:ring-2 hover:ring-white active:shadow-lg transition duration-150 ease-in-out"
+                    <button                                                         //ปุ่ม submit
+                        className=" flex-center inline-block px-24 py-3 bg-primary-80 text-white-100 text-md font-bold leading-tight rounded-2xl shadow-md  hover:shadow-lg  focus:shadow-lg focus:outline-none  hover:bg-primary-100 hover:ring-2 hover:ring-white active:shadow-lg transition duration-150 ease-in-out"
                         id="submit" 
                     >
                         Confirm

@@ -69,7 +69,7 @@ export default function Navbar() {
                     <div 
                         class="font-body font-semibold text-white-100 text-xl ">
                     <svg 
-                        class="h-8 w-8 text-white fill-white-100 border border-4 rounded-md"  
+                        class="h-8 w-8 text-white fill-white-100 border-4 rounded-md"  
                         viewBox="0 0 24 24" 
                         stroke="currentColor">
                         <path 
