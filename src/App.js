@@ -9,8 +9,9 @@ import ChooseRole from "./pages/ChooseRole";
 import SignUpStudent from "./pages/SignUpStudent";
 import SignUpTutor from "./pages/SignUpTutor";
 
-import LayoutStudent from "./pages/Layout/LayoutStudent";
+import Payment from "./pages/Payment";
 
+import LayoutStudent from "./pages/Layout/LayoutStudent";
 import RoutesStudent from "./pages/Layout/RoutesStudent";
 
 
@@ -24,8 +25,9 @@ function App() {
         <Route path="/" element={<Login/>}/>
         <Route path="/forgotpass" element={<ForgotPassword/>}/>
         <Route path="/chooserole" element={<ChooseRole/>}/>
-        <Route path="/SignUpStudent" element={<SignUpStudent/>}/>
-        <Route path="/SignUpTutor" element={<SignUpTutor/>}/>
+        <Route path="/signupstudent" element={<SignUpStudent/>}/>
+        <Route path="/signuptutor" element={<SignUpTutor/>}/>
+        <Route path="/payment" element={<Payment/>}/>
         
         {/* Layout Navbar ยังทำไม่ได้คร่า*/}
         {/* <Route element={<LayoutStudent/>}>
