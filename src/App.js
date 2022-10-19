@@ -1,9 +1,10 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ProfileStudent from "./pages/Profile-student";
-import ProfileTutor from "./pages/Profile-tutor";
+import ProfileStudent from "./pages/ProfileStudent";
+import ProfileTutor from "./pages/ProfileTutor";
 import NavbarStudent from "./components/navbar/NavbarStudent"
+import PostTeach from "./pages/PostTeach";
 
 
 
@@ -15,6 +16,7 @@ function App() {
         <Route path="/ProfileStudent" element={<ProfileStudent/>} />
         <Route path="/" element={<ProfileTutor/>} />
         <Route path="/b" element={<NavbarStudent/>} />
+        <Route path="/PostTeach" element={<PostTeach/>}/>
       </Routes>
     </div>
   );
