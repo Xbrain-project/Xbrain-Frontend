@@ -1,11 +1,12 @@
 import React from 'react'
 
 
-export default function Signup() {
+export default function SignUpTutor() {
     return(    
+        <div class="bg-purple-200 w-full h-full">
         <div 
-            class="container px-80 py-12 h-screen bg-purple-200 w-full font-body">
-                <div class="containr justify-center items-center mt-3 bg-white-100 rounded-lg shadow-lg border border-gray-50">
+            class="flex justify-center items-center px-80 py-12 h-screen font-body">
+                <div class=" container justify-center items-center mx-40 bg-white-100 rounded-lg shadow-lg border border-gray-50">
                 <div 
                     class="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
                     <div 
@@ -89,6 +90,7 @@ export default function Signup() {
                     </div>
                     </div>
                 </div>
+            </div>
             </div>
     );
 }
