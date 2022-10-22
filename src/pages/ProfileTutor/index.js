@@ -137,29 +137,30 @@ function ProfileTutor() {
                 
                 <div className="px-20 my-10 flex flex-row ml-auto space-x-20">
                        
-                    <div>        
+                    <fieldset required value={values.status}>     
+
                         <label className="block text-gray-700 text-m font-bold mb-6" // สถานะทางการศึกษา 
                         >       
                             สถานะทางการศึกษา *
                         </label> 
-                        <div className="mt-2 px-2" value={values.status} required>                
-                            <label  className="inline-flex items-center"             //highSchool university graduated ตรงนี้ยังหาวิธีไม่ได้ ขอข้ามไปทำอันอื่นก่อนนะ
+                        <div className="mt-2 px-2"  >                
+                            <label  className="inline-flex items-center"             //highSchool university graduated ยังไม่แน่ใจเรื่องเก็บค่าของ radio
+                                                                                    // แต่รู้ว่า name จะต้องชื่อเดียวกันหมด
                             >
-                                <input type="radio" className="form-radio" name="accountType" value="highSchool" ></input> 
+                                <input type="radio" className="form-radio" name="status" value="highSchool" defaultChecked></input> 
                                 <span className="ml-2">มัธยมศึกษา</span>
                             </label>
                             <label className="inline-flex items-center ml-6">
-                                <input type="radio" className="form-radio" name="accountType" value="university"></input>
+                                <input type="radio" className="form-radio" name="status" value="university"></input>
                                 <span className="ml-2">มหาวิทยาลัย</span>
                             </label>
                             <label className="inline-flex items-center ml-6">
-                                <input type="radio" className="form-radio" name="accountType" value="graduated"></input>
+                                <input type="radio" className="form-radio" name="status" value="graduated"></input>
                                 <span className="ml-2">สำเร็จการศึกษา</span>
-                            </label>
-                            
-                            
+                            </label>          
                         </div>
-                    </div>
+
+                    </fieldset>
                     <div className="">
                         <label className="block text-gray-700 text-m font-bold mb-2" // โรงเรียน/มหาลัย
                         >       
@@ -248,6 +249,7 @@ function ProfileTutor() {
                         Confirm
                     </button>
                 </div>
+                
 
 
             </form>
