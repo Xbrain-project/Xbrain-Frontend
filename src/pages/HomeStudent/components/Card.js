@@ -1,5 +1,5 @@
 import React from "react";
-import { FeatureCard } from "../../../components/utility/FeatureCard";
+import { HomeCard } from "../../../components/utility/HomeCard";
 import knowledge from "../../../assets/icons/knowledge.png";
 import consult from "../../../assets/icons/consult.png";
 import community from "../../../assets/icons/community.png";
@@ -14,18 +14,18 @@ const Card = () => {
       </div>
 
       <div className="container mx-auto mt-20 px-16 flex flex-col gap-14 md:flex-row md:justify-center md:gap-16 ">
-        {/* Feature Cards */}
-        <FeatureCard
+        {/* Home Cards */}
+        <HomeCard
           icon={knowledge}
           title="Knowledge"
           description="ประสบความสำเร็จทางด้านการเรียนกับติวเตอร์ที่ใช่ พร้อมรับคำเเนะนำจากผู้มีประสบการณ์"
         />
-        <FeatureCard
+        <HomeCard
           icon={consult}
           title="Easy to find"
           description="หาติวเตอร์ง่าย เเถมยังไม่มีค่าใช้จ่ายในการเเนะนำค่าติวเตอร์"
         />
-        <FeatureCard
+        <HomeCard
           icon={community}
           title="Community"
           description="คลังความรู้ที่ทุกคนจะมาเเบ่งปันเเละถามตอบปัญหา

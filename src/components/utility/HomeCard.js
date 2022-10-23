@@ -1,6 +1,6 @@
 import React from "react";
 
-export const FeatureCard = ({ icon, title, description }) => {
+export const HomeCard = ({ icon, title, description }) => {
   return (
     <div className="group px-8 py-12 shadow-lg rounded-2xl md:w-[370px] md:min-h-[400px] transition duration-200 bg-[#F7C9FF] hover:-translate-y-4">
       <img
