@@ -5,6 +5,7 @@ import NavbarStudent from "./components/navbar/NavbarStudent";
 import NavbarTutor from "./components/navbar/NavbarTutor";
 import HomeStudent from "./pages/HomeStudent";
 import HomeTutor from "./pages/HomeTutor";
+import HistoryStudent from "./pages/HistoryStudent";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         {/* <Route path="/1" element={<NavbarTutor />} /> */}
         <Route path="/homestudent" element={<HomeStudent />} />
         <Route path="/hometutor" element={<HomeTutor />} />
+        <Route path="/historystudent" element={<HistoryStudent />} />
       </Routes>
     </div>
   );

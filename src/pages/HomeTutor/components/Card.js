@@ -1,12 +1,38 @@
 import React from "react";
-import lightbulb from "../../../assets/icons/lightbulb.png";
+import { FeatureCard } from "../../../components/utility/FeatureCard";
+import build from "../../../assets/icons/build.png";
+import teach from "../../../assets/icons/teach.png";
+import service from "../../../assets/icons/community.png";
 
 const Card = () => {
   return (
-    // card
-    <div className="container mx-auto h-screen flex flex-col-reverse relative md:flex-row md:justify-center md:gap-8 md:items-center xl:gap-24">
-      <div className="group px-8 py-14 shadow-lg rounded-2xl md:w-[370px] md:min-h-[420px] transition duration-200 hover:-translate-y-4 hover:bg-primary hover:text-white">
-        tedtttgyuefi
+    <div className="mt-8 md:mt-32 md:mb-32">
+      <div className="text-center md:text-center xl:text-center">
+        <h1 className="font-bold text-primary-80 text-2xl leading-8 md:text-4xl">
+          Why join with <br /> X-brain ?
+        </h1>
+      </div>
+
+      <div className="container mx-auto mt-20 px-16 flex flex-col gap-14 md:flex-row md:justify-center md:gap-16 ">
+        {/* Feature Cards */}
+        <FeatureCard
+          icon={build}
+          title="
+          Build your network"
+          description="สร้างเครือข่ายของคุณ เข้าร่วมกับออนไลน์คอมมูนิติ้
+          เเลกเปลี่ยนความคิดเห็นกันเเละกัน"
+        />
+        <FeatureCard
+          icon={teach}
+          title="Change a kid’s life 
+          for the better"
+          description="เปลี่ยนชีวิตเด็กให้ดีขึ้น สร้างประการณ์ ความรู้เเละความท้าทายให้เเก่เด็กๆ"
+        />
+        <FeatureCard
+          icon={service}
+          title="It’s more than service"
+          description="เลือกสอนได้ทั้งออนไลน์เเละออนไซต์ เเถมยังช่วยพัฒนาทักษาด้านความเป็นผู้นำเเละสร้างอาชีพในการช่วยเหลือผู้อื่น"
+        />
       </div>
     </div>
   );
