@@ -4,6 +4,8 @@ import "./App.css";
 import NavbarStudent from "./components/navbar/NavbarStudent";
 import NavbarTutor from "./components/navbar/NavbarTutor";
 import FindTutor from "./pages/FindTutor"; 
+import DetailTutor from "./pages/FindTutor/DetailTutor"; 
+
 
 function App() {
   return (
@@ -11,6 +13,8 @@ function App() {
       <div>
         <Routes>
         <Route path="/findtutor" element={<FindTutor />} />
+        <Route path="/findtutor/detailTutor" element={<DetailTutor />} />
+
           <Route path="/" element={<NavbarStudent />} />
           <Route path="/1" element={<NavbarTutor />} />
         </Routes>

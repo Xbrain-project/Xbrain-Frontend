@@ -13,7 +13,7 @@ const Card = () => (
               <img
                 class="max-w-xs ml-10 shadow-lg rounded-lg group-hover:opacity-75"
                 src={avatarTutor}
-                alt="Featured Photo"
+                alt="Avatar of Tutor"
               />
             </div>
           </a>
