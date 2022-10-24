@@ -6,14 +6,14 @@ import community from "../../../assets/icons/community.png";
 
 const Card = () => {
   return (
-    <div className="mt-8 md:mt-32 md:mb-32">
+    <div className="mt-8 md:mt-32 md:mb-32 font-body">
       <div className="text-center md:text-center xl:text-center">
         <h1 className="font-bold text-primary-80 text-2xl leading-8 md:text-4xl">
           Why learn with <br /> X-brain ?
         </h1>
       </div>
 
-      <div className="container mx-auto mt-20 px-16 flex flex-col gap-14 md:flex-row md:justify-center md:gap-16 ">
+      <div className="container mx-auto mt-20 px-16 flex flex-col gap-14 md:flex-row md:justify-center md:gap-16 font-body">
         {/* Home Cards */}
         <HomeCard
           icon={knowledge}

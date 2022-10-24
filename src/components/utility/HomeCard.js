@@ -9,10 +9,10 @@ export const HomeCard = ({ icon, title, description }) => {
         className="w-32 h-32 mx-auto mb-10 md:mb-14 group-hover:invert"
       />
 
-      <h1 className="pb-4 text-primary-80 font-semibold text-xl text-center">
+      <h1 className="pb-4 text-primary-80 font-semibold text-xl text-center font-body">
         {title}
       </h1>
-      <p className="text-center">{description}</p>
+      <p className="text-center font-body">{description}</p>
     </div>
   );
 };

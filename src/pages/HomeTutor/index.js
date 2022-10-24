@@ -5,7 +5,7 @@ import Card from "./components/Card";
 const HomeTutor = () => {
   return (
     <div>
-      <div className="h-16 w-screen bg-white-100 shadow-lg mb-20 absolute z-20 top-0 flex items-center text-3xl font-bold pl-10 ">
+      <div className="h-16 w-screen font-body bg-white-100 shadow-lg mb-20 absolute z-20 top-0 flex items-center text-3xl font-bold pl-10 ">
         Navbar
       </div>
 

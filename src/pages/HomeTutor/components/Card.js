@@ -13,7 +13,7 @@ const Card = () => {
         </h1>
       </div>
 
-      <div className="container mx-auto mt-20 px-16 flex flex-col gap-14 md:flex-row md:justify-center md:gap-16 ">
+      <div className="container mx-auto mt-20 px-16 flex flex-col gap-14 md:flex-row md:justify-center md:gap-16 font-body">
         {/* Home Cards */}
         <HomeCard
           icon={build}

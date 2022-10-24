@@ -6,6 +6,7 @@ import NavbarTutor from "./components/navbar/NavbarTutor";
 import HomeStudent from "./pages/HomeStudent";
 import HomeTutor from "./pages/HomeTutor";
 import HistoryStudent from "./pages/HistoryStudent";
+import ApplyTutor from "./pages/ApplyTutor";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/homestudent" element={<HomeStudent />} />
         <Route path="/hometutor" element={<HomeTutor />} />
         <Route path="/historystudent" element={<HistoryStudent />} />
+        <Route path="/applytutor" element={<ApplyTutor />} />
       </Routes>
     </div>
   );
