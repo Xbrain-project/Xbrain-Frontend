@@ -14,9 +14,16 @@ import Payment from "./pages/Payment";
 import LayoutStudent from "./pages/Layout/LayoutStudent";
 import RoutesStudent from "./pages/Layout/RoutesStudent";
 
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 
 function App() {
   return (
+    <PayPalScriptProvider
+      options={{ 
+        "client-id": "AdS3Mz9uK1KTWcLAynhFS5Cm-S1xdkf6JCeLy8S_WNXwUwdJkXG-Ter1OcXreOsHTYHP7biV-WYbGwn-",
+        currency: "THB"
+      }}
+    >
     <BrowserRouter>
     <div>
       <Routes>
@@ -38,6 +45,7 @@ function App() {
       </Routes>
       </div>
       </BrowserRouter>
+      </PayPalScriptProvider>
   );
 }
 
