@@ -3,7 +3,7 @@ import avatarTutor from "../../../assets/pics/avatar.jpg";
 import "../components/CardStyle.css";
 
 const Card = () => (
-  <div className="  top-12 bottom-12  mx-auto h-screen flex flex-col relative  md:justify-center md:gap-8 md:items-center xl:gap-4  ">
+  <div className="   bottom-12  mx-auto h-screen flex flex-col relative  md:justify-center md:gap-8 md:items-center xl:gap-4  ">
     <div className="  absolute inset-x-0 p-1 border-4 bg-[#855CF8]">
       <div className="  mx-auto  flex flex-col relative  md:justify-center md:gap-8 xl:gap-1  bg-[#CFD8DC] ">
         {/* card1 */}
@@ -67,11 +67,7 @@ const Card = () => (
           </a>
 
           <div class="sm:col-span-1">
-            {/* <div class="flex items-center space-x-3">
-              <div class="flex items-center space-x-2">
-            
-              </div>
-            </div> */}
+          
 
             <div class="mt-2 flex flex-rows-3">
               <a href="" class="group">

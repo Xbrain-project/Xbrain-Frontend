@@ -5,13 +5,16 @@ import NavbarStudent from "./components/navbar/NavbarStudent";
 import NavbarTutor from "./components/navbar/NavbarTutor";
 import FindTutor from "./pages/FindTutor"; 
 import DetailTutor from "./pages/FindTutor/DetailTutor"; 
+import Login from "./pages/Login"; 
+
 
 
 function App() {
   return (
     <BrowserRouter>
       <div>
-        <Routes>
+        <Routes> 
+        <Route path="/login" element={<Login />} />
         <Route path="/findtutor" element={<FindTutor />} />
         <Route path="/findtutor/detailTutor" element={<DetailTutor />} />
 
