@@ -5,6 +5,7 @@ import ProfileStudent from "./pages/ProfileStudent";
 import ProfileTutor from "./pages/ProfileTutor";
 import NavbarStudent from "./components/navbar/NavbarStudent"
 import PostTeach from "./pages/PostTeach";
+import Search from "./pages/Search"
 
 
 
@@ -14,9 +15,11 @@ function App() {
     <div>
       <Routes>
         <Route path="/ProfileStudent" element={<ProfileStudent/>} />
-        <Route path="/" element={<ProfileTutor/>} />
-        <Route path="/b" element={<NavbarStudent/>} />
+        <Route path="/ProfileTutor" element={<ProfileTutor/>} />
+        <Route path="/NavbarStudent" element={<NavbarStudent/>} />
         <Route path="/PostTeach" element={<PostTeach/>}/>
+        <Route path="/Search" element={<Search/>}/>
+
       </Routes>
     </div>
   );

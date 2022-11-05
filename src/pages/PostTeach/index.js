@@ -10,18 +10,60 @@ function PostTeach() {
         type: "",                    //ประเภทที่สอน
         price: "",                   //ราคา
         place: "",                   //สถานที่สอน
-        experience: "",              //รายละเอียดเพิ่มเติม (คะแนนสอบต่างๆ ประสบการณ์)
-        day: "",                     //สะดวกสอนวัน/เวลาไหนบ้าง
+        experience: ""             //รายละเอียดเพิ่มเติม (คะแนนสอบต่างๆ ประสบการณ์)
 
 
       });
-      const handleChange = (e) => {                             //การเปลี่ยนแปรงค่าเมื่อกรอก
-         setValues({ ...values, 
+
+    const [checked, setChecked] = useState({            // เก็บค่า checkbox ของวันต่างๆ
+        monday: false,
+        tuesday:false,
+        wednesday:false,
+        thursday:false,
+        friday:false,
+        saturday:false,
+        sunday:false
+
+    });
+    const [day, setDay] = useState({                // เก็บค่า text ของวันต่างๆ
+        monday:"",
+        tuesday:"",
+        wednesday:"",
+        thursday:"",
+        friday:"",
+        saturday:"",
+        sunday:""
+    });
+
+
+    const handleChange = (e) => {                             //การเปลี่ยนแปรงค่าเมื่อกรอก (ทั่วไป)
+        setValues({ ...values, 
            [e.target.name]: e.target.value });
-       };
-       const handleSubmit = (e) => {                            //ฟังชั่นจากการกด submit
-                alert("Saved");
-        };
+         
+    };
+
+    const handleChangeDayText = (e)=> {                      //การเปลี่ยนแปรงค่าเมื่อกรอกของวันต่างๆ ยากจัง
+        setDay({ ...day, 
+            [e.target.name]: e.target.value });
+    
+    };
+
+    const handleChangeDayCheckbox = (e) => {            //การเปลี่ยนแปรงค่าเมื่อ checkbox วันต่างๆ  ยากจัง
+        if({ ...checked,[e.target.name]:true}){
+          setDay({ ...day, [e.target.name]: ('')});
+          setChecked({ ...checked,[e.target.name]:true})
+        }
+
+        setChecked({ ...checked,[e.target.name]: !checked[e.target.name]})
+      
+    };
+
+
+    const handleSubmit = (e) => {                            //ฟังชั่นจากการกด submit
+        alert("Saved");
+    };
+
+
 
     return (   
         <div className="font-body  my-20 mx-24 text-black ">
@@ -40,77 +82,77 @@ function PostTeach() {
                                 <div className="mr-16">
                                     
                                     <div className="flex items-center mb-4">
-                                        <input id="default-checkbox" type="checkbox" value="english" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                                        <input id="english" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">ภาษาอังกฤษ</label>
                                     </div>
                                     <div className="flex items-center mb-4">
-                                        <input  id="checked-checkbox" type="checkbox" value="maths" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                                        <input  id="maths" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">คณิตศาสตร์</label>
                                     </div>
                                     <div className="flex items-center mb-4">
-                                        <input id="default-checkbox" type="checkbox" value="bio" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                                        <input id="bio" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">ชีวะ</label>
                                     </div>
                                     <div className="flex items-center mb-4">
-                                        <input  id="checked-checkbox" type="checkbox" value="physics" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                                        <input  id="physics" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">ฟิสิกส์</label>
                                     </div>
                                     <div className="flex items-center mb-4">
-                                        <input id="default-checkbox" type="checkbox" value="english" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                                        <input id="chemistry" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">เคมี</label>
                                     </div>
                                     <div className="flex items-center mb-4">
-                                        <input  id="checked-checkbox" type="checkbox" value="maths" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                                        <input  id="thai" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">ภาษาไทย</label>
                                     </div>
                                     <div className="flex items-center mb-4">
-                                        <input id="default-checkbox" type="checkbox" value="bio" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                                        <input id="social" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">สังคม</label>
                                     </div>
                                     <div className="flex items-center mb-4">
-                                        <input  id="checked-checkbox" type="checkbox" value="physics" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                                        <input  id="gat" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">GAT เชื่อมโยง</label>
                                     </div>
                                     <div className="flex items-center mb-4">
-                                        <input  id="checked-checkbox" type="checkbox" value="physics" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                                        <input  id="astronomy" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">ดาราศาสตร์</label>
                                     </div>
                                 </div>
                                 <div>
                                     <div className="flex items-center mb-4">
-                                        <input id="default-checkbox" type="checkbox" value="science" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                                        <input id="science" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">วิทยาศาสตร์</label>
                                     </div>
                                     <div className="flex items-center mb-4">
-                                        <input  id="checked-checkbox" type="checkbox" value="french" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                                        <input  id="french" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">ภาษาฝรั่งเศส</label>
                                     </div>
                                     <div className="flex items-center mb-4">
-                                        <input id="default-checkbox" type="checkbox" value="german" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                                        <input id="german" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">ภาษาเยอรมัน</label>
                                     </div>
                                     <div className="flex items-center mb-4">
-                                        <input  id="checked-checkbox" type="checkbox" value="japanese" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                                        <input  id="japanese" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">ภาษาญี่ปุ่น</label>
                                     </div>
                                     <div className="flex items-center mb-4">
-                                        <input id="default-checkbox" type="checkbox" value="arabic" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                                        <input id="arabic" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">ภาษาอาหรับ</label>
                                     </div>
                                     <div className="flex items-center mb-4">
-                                        <input  id="checked-checkbox" type="checkbox" value="korean" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                                        <input  id="korean" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">ภาษาเกาหลี</label>
                                     </div>
                                     <div className="flex items-center mb-4">
-                                        <input id="default-checkbox" type="checkbox" value="russian" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                                        <input id="russian" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">ภาษารัสเซีย</label>
                                     </div>
                                     <div className="flex items-center mb-4">
-                                        <input  id="checked-checkbox" type="checkbox" value="chinese" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                                        <input  id="chinese" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">ภาษาจีน</label>
                                     </div>
                                     <div className="flex items-center mb-4">
-                                        <input  id="checked-checkbox" type="checkbox" value="programming" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                                        <input  id="programming" type="checkbox" value="" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">เขียนโปรแกรม</label>
                                     </div>
 
@@ -275,22 +317,24 @@ function PostTeach() {
                     >       
                         สะดวกสอนวัน/เวลาไหนบ้าง *
                     </label> 
-                    <div value = {values.day}                                   //ยังไม่แน่ใจเรื่องเก็บค่าของ checkbox
+                    <div                                  //ยังไม่แน่ใจเรื่องเก็บค่าของ checkbox
                             >
                                 <div className="flex flex-row space-x-36 px-24 ml-20"> 
                                     <div >
                                         
                                         <div className="flex items-center mb-2">
-                                            <input id="day" type="checkbox" value={values.day} onChange={handleChange}  className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                                            <input id="monday" type="checkbox" name="monday" checked={checked.monday}  onChange={handleChangeDayCheckbox}
+                                                className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                             <label className="block text-gray-700 text-m mx-4">วันจันทร์</label>
                                             
                                         </div>
                                         <div>
                                             <input className="shadow appearance-none border rounded w-32 h-10  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline mb-6"    
-                                            id="Tmonday"
-                                            onChange={handleChange}
-                                            name="Tmonday"
-                                            value={values.Tmonday}   // ยังไม่แน่ใจเรื่องเก็บค่าของ checkbox
+                                            id="monday"
+                                            onChange={handleChangeDayText}
+                                            name="monday"
+                                            value={day.monday}   
+                                            disabled={!(checked.monday)}
                                             required
                                             autoComplete="none"
                                             placeholder="18:00 - 20:00 "
@@ -300,16 +344,18 @@ function PostTeach() {
 
 
                                         <div className="flex items-center mb-2">
-                                            <input  id="checked-checkbox" type="checkbox" value="friday" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                                            <input  id="friday" type="checkbox" name="friday" checked={checked.friday}  onChange={handleChangeDayCheckbox}
+                                                className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                             <label className="block text-gray-700 text-m mx-4">วันศุกร์</label>
                                         </div>
 
                                         <div>
                                             <input className="shadow appearance-none border rounded w-32 h-10  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline mb-6"    
-                                            id="Tfriday"
-                                            onChange={handleChange}
-                                            name="Tfriday"
-                                            value={values.Tfriday}   // ยังไม่แน่ใจเรื่องเก็บค่าของ checkbox
+                                            id="friday"
+                                            onChange={handleChangeDayText}
+                                            name="friday"
+                                            value={day.friday}   
+                                            disabled={!(checked.friday)}
                                             required
                                             autoComplete="none"
                                             placeholder="18:00 - 20:00 "
@@ -320,15 +366,17 @@ function PostTeach() {
                                     </div>
                                     <div >
                                         <div className="flex items-center mb-2">
-                                            <input id="default-checkbox" type="checkbox" value="tuesday" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                                            <input id="tuesday" type="checkbox" name="tuesday" checked={checked.tuesday}  onChange={handleChangeDayCheckbox} 
+                                                className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                             <label className="block text-gray-700 text-m mx-4">วันอังคาร</label>
                                         </div>
                                         <div>
                                             <input className="shadow appearance-none border rounded w-32 h-10  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline mb-6"    
-                                            id="Ttuesday"
-                                            onChange={handleChange}
-                                            name="Ttuesday"
-                                            value={values.Ttuesday}   // ยังไม่แน่ใจเรื่องเก็บค่าของ checkbox
+                                            id="tuesday"
+                                            onChange={handleChangeDayText}
+                                            name="tuesday"
+                                            value={day.tuesday}   
+                                            disabled={!(checked.tuesday)}
                                             required
                                             autoComplete="none"
                                             placeholder="18:00 - 20:00 "
@@ -337,15 +385,17 @@ function PostTeach() {
 
                                         
                                         <div className="flex items-center mb-2">
-                                            <input  id="checked-checkbox" type="checkbox" value="saturday" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                                            <input  id="saturday" type="checkbox" name="saturday" checked={checked.saturday}  onChange={handleChangeDayCheckbox} 
+                                                className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                             <label className="block text-gray-700 text-m mx-4">วันเสาร์</label>
                                         </div>
                                         <div>
                                             <input className="shadow appearance-none border rounded w-32 h-10  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline mb-6"    
-                                            id="Tsaturday"
-                                            onChange={handleChange}
-                                            name="Tsaturday"
-                                            value={values.Tsaturday}   // ยังไม่แน่ใจเรื่องเก็บค่าของ checkbox
+                                            id="saturday"
+                                            onChange={handleChangeDayText}
+                                            name="saturday"
+                                            value={day.saturday}   
+                                            disabled={!(checked.saturday)}
                                             required
                                             autoComplete="none"
                                             placeholder="18:00 - 20:00 "
@@ -356,15 +406,17 @@ function PostTeach() {
                                     </div>
                                     <div>
                                         <div className="flex items-center mb-2">
-                                            <input id="default-checkbox" type="checkbox" value="wednesday" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                                            <input id="wednesday" type="checkbox" name="wednesday" checked={checked.wednesday}  onChange={handleChangeDayCheckbox} 
+                                                className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                             <label className="block text-gray-700 text-m mx-4">วันพุธ</label>
                                         </div>
                                         <div>
                                             <input className="shadow appearance-none border rounded w-32 h-10  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline mb-6"    
-                                            id="Twednesday"
-                                            onChange={handleChange}
-                                            name="Twednesday"
-                                            value={values.Twednesday}   // ยังไม่แน่ใจเรื่องเก็บค่าของ checkbox
+                                            id="wednesday"
+                                            onChange={handleChangeDayText}
+                                            name="wednesday"
+                                            value={day.wednesday}   
+                                            disabled={!(checked.wednesday)}
                                             required
                                             autoComplete="none"
                                             placeholder="18:00 - 20:00 "
@@ -373,15 +425,17 @@ function PostTeach() {
 
 
                                         <div className="flex items-center mb-2">
-                                            <input  id="checked-checkbox" type="checkbox" value="sunday" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                                            <input  id="sunday" type="checkbox" name="sunday" checked={checked.sunday}  onChange={handleChangeDayCheckbox} 
+                                                className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                             <label className="block text-gray-700 text-m mx-4">วันอาทิตย์</label>
                                         </div>
                                         <div>
                                             <input className="shadow appearance-none border rounded w-32 h-10  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline mb-6"    
-                                            id="Tsunday"
-                                            onChange={handleChange}
-                                            name="Tsunday"
-                                            value={values.Tsunday}   // ยังไม่แน่ใจเรื่องเก็บค่าของ checkbox
+                                            id="sunday"
+                                            onChange={handleChangeDayText}
+                                            name="sunday"
+                                            value={day.sunday}   
+                                            disabled={!(checked.sunday)}
                                             required
                                             autoComplete="none"
                                             placeholder="18:00 - 20:00 "
@@ -392,15 +446,17 @@ function PostTeach() {
                                     </div>
                                     <div>
                                         <div className="flex items-center mb-2">
-                                            <input id="default-checkbox" type="checkbox" value="thursday" className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
+                                            <input id="thursday" type="checkbox" name="thursday" checked={checked.thursday}  onChange={handleChangeDayCheckbox}  
+                                                className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                             <label className="block text-gray-700 text-m mx-4">วันพฤหัสบดี</label>
                                         </div>
                                         <div>
                                             <input className="shadow appearance-none border rounded w-32 h-10  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline mb-6"    
-                                            id="Tthursday"
-                                            onChange={handleChange}
-                                            name="Tthursday"
-                                            value={values.Tthursday}   // ยังไม่แน่ใจเรื่องเก็บค่าของ checkbox
+                                            id="thursday"
+                                            onChange={handleChangeDayText}
+                                            name="thursday"
+                                            value={day.thursday}   
+                                            disabled={!(checked.thursday)}
                                             required
                                             autoComplete="none"
                                             placeholder="18:00 - 20:00 "
@@ -412,13 +468,39 @@ function PostTeach() {
                                 </div>
                             </div>  
                             <div className="text-center">
-                    <button                                                         //ปุ่ม submit
-                        className="mt-5 flex-center inline-block px-24 py-3 bg-primary-80 text-white-100 text-md font-bold leading-tight rounded-2xl shadow-md  hover:shadow-lg  focus:shadow-lg focus:outline-none  hover:bg-primary-100 hover:ring-2 hover:ring-white active:shadow-lg transition duration-150 ease-in-out"
-                        id="submit" 
-                    >
-                        Confirm
-                    </button>
-                </div>
+                                <button                                                         //ปุ่ม submit
+                                    className="mt-5 flex-center inline-block px-24 py-3 bg-primary-80 text-white-100 text-md font-bold leading-tight rounded-2xl shadow-md  hover:shadow-lg  focus:shadow-lg focus:outline-none  hover:bg-primary-100 hover:ring-2 hover:ring-white active:shadow-lg transition duration-150 ease-in-out"
+                                    id="submit" 
+                                >
+                                    Confirm
+                                </button>
+                            </div>
+{/* 
+                            <label>
+        Checkbox:
+        <input
+          name="checkbox"
+          type="checkbox"
+          checked={checked}
+          onChange={() => {
+                if(checked){
+                  setText('')
+                }
+            setChecked(!checked)
+              }
+           }
+        />
+      </label>
+      <label>
+      Input:
+        <input
+          name="input"
+          type="text"
+          disabled={!checked}
+         value={text}
+         onChange={e => setText(e.target.value)}
+        />
+      </label> */}
 
             </form>
         </div>
