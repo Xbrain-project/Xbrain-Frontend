@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function PopUp({ children, visible, onClose }) {
+export default function PopUpSuccess({ children, visible, onClose }) {
   if (!visible) return null;
   //  มีไว้่ผื่ออยาก กด backDrop แล้วทำให้ popUp หายไป
   // const handleOnBackDropClick = (e) => {

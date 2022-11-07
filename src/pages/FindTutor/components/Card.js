@@ -3,13 +3,13 @@ import avatarTutor from "../../../assets/pics/avatar.jpg";
 import "../components/CardStyle.css";
 
 const Card = () => (
-  <div className="   bottom-12  mx-auto h-screen flex flex-col relative  md:justify-center md:gap-8 md:items-center xl:gap-4  ">
+  <div className="    pt-16 mx-auto h-screen flex flex-col relative  md:justify-center md:gap-8 md:items-center xl:gap-10  ">
     <div className="  absolute inset-x-0 p-1 border-4 bg-[#855CF8]">
       <div className="  mx-auto  flex flex-col relative  md:justify-center md:gap-8 xl:gap-1  bg-[#CFD8DC] ">
         {/* card1 */}
-        <div class="  space-y-4  lg:grid  grid grid-cols-4 lg:items-start lg:gap-1 lg:space-y-0 bg-[#FFF] ">
+        <div class="  space-y-4  lg:grid  grid grid-cols-4 lg:items-start lg:gap-10 lg:space-y-0 lg:space-x-10 bg-[#FFF] ">
           <a href="" class="group">
-            <div class="aspect-w-3 aspect-h-2">
+            <div class="aspect-w-3 aspect-h-2 ">
               <img
                 class="max-w-xs ml-10 shadow-lg rounded-lg group-hover:opacity-75"
                 src={avatarTutor}
@@ -18,12 +18,8 @@ const Card = () => (
             </div>
           </a>
 
-          <div class="sm:col-span-1">
-            {/* <div class="flex items-center space-x-3">
-              <div class="flex items-center space-x-2">
-            
-              </div>
-            </div> */}
+          <div class="sm:col-span-1 ">
+
 
             <div class="mt-2 flex flex-rows-3">
               <a href="" class="group">
@@ -55,7 +51,7 @@ const Card = () => (
         </div>
 
         {/* card2 */}
-        <div class="  space-y-4  lg:grid  grid grid-cols-4 lg:items-start lg:gap-1 lg:space-y-0 bg-[#FFF] ">
+        <div class="  space-y-4  lg:grid  grid grid-cols-4 lg:items-start lg:gap-10 lg:space-y-0 lg:space-x-10 bg-[#FFF] ">
           <a href="" class="group">
             <div class="aspect-w-3 aspect-h-2">
               <img

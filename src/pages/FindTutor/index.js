@@ -13,11 +13,14 @@ function FindTutor() {
       </div>
 
       
-      <div className=" bg-[#ACB9FF] pb-20 w-screen top-15 pt-14  mt-28 absolute z-20 flex text-5xl font-bold pl-10 ">
+      <div className=" bg-[#ACB9FF] pb-20 w-screen  pt-14  mt-28 absolute z-20 flex text-5xl font-bold pl-10 ">
       หาติวเตอร์ที่โดนใจ
       </div>
+      <div className="pt-28">
+
       <Card />
-      
+      </div>
+ 
   
 
 
