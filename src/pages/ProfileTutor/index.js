@@ -20,30 +20,46 @@ function ProfileTutor() {
         img: null,              //รูปภาพ
 
       });
-      const handleChange = (e) => {                             //การเปลี่ยนแปรงค่าเมื่อกรอก
-         setValues({ ...values, 
-           [e.target.name]: e.target.value });
-       };
-       const handleSubmit = (e) => {                            //ฟังชั่นจากการกด submit
-            //console.log("proIm isL",values.img)
-            if (values.img === null || values.img === '' ){
-                alert('please upload profile image')
-                e.preventDefault();
-                setValues({
-                img:values.img,
-                });
-            }
-            
-            else{
-                alert("Saved");
-                e.preventDefault();
-                setValues({
-                img:values.img,                
 
-                });
-            }
+    // const [status, setStatus] = useState({
+    //     highSchool: false,
+    //     university: false,
+    //     graduated: false
+    // })
 
+
+    const handleChange = (e) => {                             //การเปลี่ยนแปรงค่าเมื่อกรอก
+        setValues({ ...values, 
+        [e.target.name]: e.target.value });
+    };
+
+
+
+    const handleSubmit = (e) => {                            //ฟังชั่นจากการกด submit
+        //console.log("proIm isL",values.img)
+        if (values.img === null || values.img === '' ){
+            alert('please upload profile image')
+            e.preventDefault();
+            setValues({
+            img:values.img,
+            });
         }
+        
+        else{
+            alert("Saved");
+            e.preventDefault();
+            setValues({
+            img:values.img,                
+
+            });
+        }
+
+    }
+
+    const handletest = (e) => {   
+        console.log(values.status)                         //ฟังชั่นจากการกด test
+    };
+
     return (                                                        // code uxui
 
     
@@ -137,7 +153,7 @@ function ProfileTutor() {
                 
                 <div className="px-20 my-10 flex flex-row ml-auto space-x-20">
                        
-                    <fieldset required value={values.status}>     
+                    <fieldset >     
 
                         <label className="block text-gray-700 text-m font-bold mb-6" // สถานะทางการศึกษา 
                         >       
@@ -147,15 +163,15 @@ function ProfileTutor() {
                             <label  className="inline-flex items-center"             //highSchool university graduated ยังไม่แน่ใจเรื่องเก็บค่าของ radio
                                                                                     // แต่รู้ว่า name จะต้องชื่อเดียวกันหมด
                             >
-                                <input type="radio" className="form-radio" name="status" value="highSchool" defaultChecked></input> 
+                                <input type="radio" className="form-radio" name="status" checked={values.status === 'highSchool'} onChange={handleChange} value="highSchool" required={values.status === null | values.status === ''}></input> 
                                 <span className="ml-2">มัธยมศึกษา</span>
                             </label>
                             <label className="inline-flex items-center ml-6">
-                                <input type="radio" className="form-radio" name="status" value="university"></input>
+                                <input type="radio" className="form-radio" name="status" checked={values.status === 'university'} onChange={handleChange} value="university"></input>
                                 <span className="ml-2">มหาวิทยาลัย</span>
                             </label>
                             <label className="inline-flex items-center ml-6">
-                                <input type="radio" className="form-radio" name="status" value="graduated"></input>
+                                <input type="radio" className="form-radio" name="status" checked={values.status === 'graduated'} onChange={handleChange} value="graduated"></input>
                                 <span className="ml-2">สำเร็จการศึกษา</span>
                             </label>          
                         </div>
@@ -248,6 +264,14 @@ function ProfileTutor() {
                     >
                         Confirm
                     </button>
+
+                    {/* <button                                                         //ปุ่ม test ชั่วคราว
+                                    className="mt-5 flex-center inline-block px-24 py-3 bg-primary-80 text-white-100 text-md font-bold leading-tight rounded-2xl shadow-md  hover:shadow-lg  focus:shadow-lg focus:outline-none  hover:bg-primary-100 hover:ring-2 hover:ring-white active:shadow-lg transition duration-150 ease-in-out"
+                                    id="submit" 
+                                    onClick={handletest}
+                                >
+                                    test
+                                </button> */}
                 </div>
                 
 
