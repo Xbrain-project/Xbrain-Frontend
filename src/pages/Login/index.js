@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import PopUp from "../FindTutor/components/Popup";
+import React from "react";
 
-export default function Login() {
-    const [showModal, setShowModal] = useState(false);
-    return (
-     <>
-     
-      </>
-    );
-  }
+function Login() {
+  return (
+    <div>
+      <p1>Hello World !!!!</p1>
+    </div>
+  );
+}
+
+export default Login;
