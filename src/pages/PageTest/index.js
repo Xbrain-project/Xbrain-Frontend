@@ -3,7 +3,7 @@ import CardTutorTest from "../FindTutor/components/CardTutorTest";
 
 function PageTest() {
   return (
-    <div className="grid grid-flow-row auto-rows-max bg-scroll  w-screen   bg-[#CFD8DC] ">
+    <div className="grid grid-flow-row auto-rows-max   w-screen   bg-[#CFD8DC] ">
       <div className="h-28 w-screen bg-white-100 shadow-lg mb-20 absolute z-20 top-0 flex items-center text-3xl font-bold pl-10 ">
         Navbar
       </div>

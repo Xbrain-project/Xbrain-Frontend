@@ -17,6 +17,7 @@ function App() {
           <Route path="/findtutor" element={<FindTutor />} />
           <Route path="/findtutor/detailTutor" element={<DetailTutor />} />
           <Route path="/testPage" element={<PageTest />} />
+     
 
           <Route path="/" element={<NavbarStudent />} />
           <Route path="/1" element={<NavbarTutor />} />

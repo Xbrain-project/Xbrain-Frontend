@@ -2,9 +2,10 @@ import React, { Fragment, useState } from "react";
 import avatarTutor from "../../../assets/pics/avatar.jpg";
 import "../components/CardStyle.css";
 
-function CardTutorTest() {
-  /* InfoCard*/
 
+function Card() {
+  /* InfoCard*/
+ /* ดึงจากหลังบ้าน*/
   const cardInfo = [
     {
       id: "1",
@@ -69,10 +70,10 @@ function CardTutorTest() {
       {detail.map((detail) => {
         return (
           <Fragment>
-            {/* Card Start*/}
+            {/* Card 1 Start*/}
 
             <a
-              to="DetailTutor"
+              href="/findtutor/detailTutor"
               class="flex flex-col items-center ml-2 mr-5 rounded-lg border shadow-md md:flex-row  hover:bg-gray-100 dark:border-gray-400 bg-[white]  dark:hover:bg-gray-400 "
             >
               <img
@@ -116,4 +117,4 @@ function CardTutorTest() {
   );
 }
 
-export default CardTutorTest;
+export default Card;
