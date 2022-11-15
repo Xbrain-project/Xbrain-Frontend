@@ -2,13 +2,84 @@ import React, { useState, useEffect } from "react";
 
 
 function Search(){
+
     // const handleChange = (e) => {                             //การเปลี่ยนแปรงค่าเมื่อกรอก
     //     setValues({ ...values, 
     //       [e.target.name]: e.target.value });
     //   };
-      const handleSubmit = (e) => {                            //ฟังชั่นจากการกด submit
+
+    const [subject, setSubject] = useState({            // เก็บค่า checkbox ของวิชาต่างๆ
+        english: false,
+        maths:false,
+        bio:false,
+        physics:false,
+        chemistry:false,
+        thai:false,
+        social:false,
+        gat: false,
+        astronomy:false,
+        science:false,
+        french:false,
+        german:false,
+        japanese:false,
+        arabic:false,
+        korean:false,
+        russian:false,
+        chinese:false,
+        programming:false
+    });
+
+
+    const [classTeach, setClassTeach] = useState({            // เก็บค่า checkbox ของระดับชั้นต่างๆ
+        kindergarten: false,
+        high:false,
+        primary:false,
+        college:false,
+        middle:false,
+        graduated:false
+    });
+
+
+    const [type, setType] = useState({            // เก็บค่า checkbox ของประเภทการสอนต่างๆ
+        grade: false,
+        enHigh:false,
+        knowledge:false,
+        enPrimary:false,
+        entrance:false
+    });
+
+    const [place, setPlace] = useState({            // เก็บค่า checkbox ของสภานที่สอนต่างๆ
+        online: false,
+        onsite:false,
+ 
+    });
+
+
+    const handleChangeSubjectCheckbox = (e) => {                                    //การเปลี่ยนแปรงค่าเมื่อ checkbox วิชาต่างๆ
+        setSubject({ ...subject,[e.target.name]: !subject[e.target.name]})
+    };
+
+    const handleChangeClassCheckbox = (e) => {                                          //การเปลี่ยนแปรงค่าเมื่อ checkbox ระดับชั้นต่างๆ
+        setClassTeach({ ...classTeach,[e.target.name]: !classTeach[e.target.name]})
+    };
+
+    const handleChangeTypeCheckbox = (e) => {                                          //การเปลี่ยนแปรงค่าเมื่อ checkbox ประเภทสอนต่างๆ
+        setType({ ...type,[e.target.name]: !type[e.target.name]})
+    };
+          
+    const handleChangePlaceCheckbox = (e) => {                                          //การเปลี่ยนแปรงค่าเมื่อ checkbox ประเภทสอนต่างๆ
+        setPlace({ ...place,[e.target.name]: !place[e.target.name]})
+    };
+
+    const handleSubmit = (e) => {                            //ฟังชั่นจากการกด submit
                alert("Saved");
        };
+
+    const handletest = (e) => {   
+        console.log(classTeach.kindergarten)                         //ฟังชั่นจากการกด test
+    };
+
+
     return(
         <div className="font-body ">
             <div className="mx-24 text-black border-2 border-gray-200"      //ส่วนของการเลือกฟิลเตอร์
@@ -30,7 +101,7 @@ function Search(){
 
 
                     <div>
-                        <input type="checkbox" id="english" value="" className="hidden peer"            // checkbox อังกฤษ
+                        <input type="checkbox" id="english" name="english"  className="hidden peer" checked={subject.english}  onChange={handleChangeSubjectCheckbox}             // checkbox อังกฤษ
                         ></input>
                         <label for="english" className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg   text-center">อังกฤษ</div>
@@ -38,7 +109,7 @@ function Search(){
                     </div>
 
                     <div>
-                        <input type="checkbox" id="maths" value="" className="hidden peer"               // checkbox คณิตศาสตร์
+                        <input type="checkbox" id="maths" name="maths"  className="hidden peer"  checked={subject.maths}  onChange={handleChangeSubjectCheckbox}             // checkbox คณิตศาสตร์
                         ></input>
                         <label for="maths" className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg  text-center">คณิตศาสตร์</div>
@@ -46,7 +117,7 @@ function Search(){
                     </div>
 
                     <div>
-                        <input type="checkbox" id="bio" value="" className="hidden peer"                // checkbox ชีวะ
+                        <input type="checkbox" id="bio" name="bio"  className="hidden peer"   checked={subject.bio}  onChange={handleChangeSubjectCheckbox}             // checkbox ชีวะ
                         ></input>
                         <label for="bio" className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg  text-center">ชีวะ</div>
@@ -54,7 +125,7 @@ function Search(){
                     </div>
 
                     <div>
-                        <input type="checkbox" id="physics" value="" className="hidden peer"            // checkbox ฟิสิกส์
+                        <input type="checkbox" id="physics" name="physics"  className="hidden peer"  checked={subject.physics}  onChange={handleChangeSubjectCheckbox}          // checkbox ฟิสิกส์
                         ></input>
                         <label for="physics" className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg   text-center">ฟิสิกส์</div>
@@ -62,7 +133,7 @@ function Search(){
                     </div>
 
                     <div>
-                        <input type="checkbox" id="chemistry" value="" className="hidden peer"          // checkbox เคมี
+                        <input type="checkbox" id="chemistry" name="chemistry"  className="hidden peer"  checked={subject.chemistry}  onChange={handleChangeSubjectCheckbox}        // checkbox เคมี
                         ></input>
                         <label for="chemistry" className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg   text-center">เคมี</div>
@@ -70,7 +141,7 @@ function Search(){
                     </div>
 
                     <div>
-                        <input type="checkbox" id="thai" value="" className="hidden peer"               // checkbox ภาษาไทย
+                        <input type="checkbox" id="thai" name="thai"  className="hidden peer"  checked={subject.thai}  onChange={handleChangeSubjectCheckbox}             // checkbox ภาษาไทย
                         ></input>
                         <label for="thai" className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg  text-center">ภาษาไทย</div>
@@ -85,7 +156,7 @@ function Search(){
 
 
                     <div>
-                        <input type="checkbox" id="science" value="" className="hidden peer"            // checkbox อังกฤษ
+                        <input type="checkbox" id="science"  name="science" className="hidden peer"  checked={subject.science}  onChange={handleChangeSubjectCheckbox}          // checkbox อังกฤษ
                         ></input>
                         <label for="science" className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg   text-center">วิทยาศาสตร์</div>
@@ -93,7 +164,7 @@ function Search(){
                     </div>
 
                     <div>
-                        <input type="checkbox" id="social" value="" className="hidden peer"               // checkbox คณิตศาสตร์
+                        <input type="checkbox" id="social" name="social"  className="hidden peer"   checked={subject.social}  onChange={handleChangeSubjectCheckbox}            // checkbox คณิตศาสตร์
                         ></input>
                         <label for="social" className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg   text-center">สังคม</div>
@@ -101,7 +172,7 @@ function Search(){
                     </div>
 
                     <div>
-                        <input type="checkbox" id="gat" value="" className="hidden peer"                // checkbox ชีวะ
+                        <input type="checkbox" id="gat" name="gat"  className="hidden peer"  checked={subject.gat}  onChange={handleChangeSubjectCheckbox}              // checkbox ชีวะ
                         ></input>
                         <label for="gat" className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg  text-center">GAT เชื่อมโยง</div>
@@ -109,7 +180,7 @@ function Search(){
                     </div>
 
                     <div>
-                        <input type="checkbox" id="astronomy" value="" className="hidden peer"            // checkbox ฟิสิกส์
+                        <input type="checkbox" id="astronomy"  name="astronomy" className="hidden peer"  checked={subject.astronomy}  onChange={handleChangeSubjectCheckbox}          // checkbox ฟิสิกส์
                         ></input>
                         <label for="astronomy" className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg   text-center">ดาราศาสตร์</div>
@@ -117,7 +188,7 @@ function Search(){
                     </div>
 
                     <div>
-                        <input type="checkbox" id="french" value="" className="hidden peer"          // checkbox เคมี
+                        <input type="checkbox" id="french"  name="french" className="hidden peer"  checked={subject.astronomy}  onChange={handleChangeSubjectCheckbox}        // checkbox เคมี
                         ></input>
                         <label for="french" className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg   text-center">ภาษาฝรั่งเศส</div>
@@ -125,7 +196,7 @@ function Search(){
                     </div>
 
                     <div>
-                        <input type="checkbox" id="german" value="" className="hidden peer"               // checkbox ภาษาไทย
+                        <input type="checkbox" id="german" name="german"  className="hidden peer"  checked={subject.german}  onChange={handleChangeSubjectCheckbox}             // checkbox ภาษาไทย
                         ></input>
                         <label for="german" className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg  text-center">ภาษาเยอรมัน</div>
@@ -141,7 +212,7 @@ function Search(){
 
 
                     <div>
-                        <input type="checkbox" id="japanese" value="" className="hidden peer"            // checkbox อังกฤษ
+                        <input type="checkbox" id="japanese" name="japanese"  className="hidden peer" checked={subject.japanese}  onChange={handleChangeSubjectCheckbox}           // checkbox อังกฤษ
                         ></input>
                         <label for="japanese" className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg   text-center">ภาษาญี่ปุ่น</div>
@@ -149,7 +220,7 @@ function Search(){
                     </div>
 
                     <div>
-                        <input type="checkbox" id="arabic" value="" className="hidden peer"               // checkbox คณิตศาสตร์
+                        <input type="checkbox" id="arabic"  name="arabic" className="hidden peer"  checked={subject.arabic}  onChange={handleChangeSubjectCheckbox}             // checkbox คณิตศาสตร์
                         ></input>
                         <label for="arabic" className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg   text-center">ภาษาอาหรับ</div>
@@ -157,7 +228,7 @@ function Search(){
                     </div>
 
                     <div>
-                        <input type="checkbox" id="korean" value="" className="hidden peer"                // checkbox ชีวะ
+                        <input type="checkbox" id="korean" name="korean"  className="hidden peer"  checked={subject.korean}  onChange={handleChangeSubjectCheckbox}              // checkbox ชีวะ
                         ></input>
                         <label for="korean" className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg  text-center">ภาษาเกาหลี</div>
@@ -165,7 +236,7 @@ function Search(){
                     </div>
 
                     <div>
-                        <input type="checkbox" id="russian" value="" className="hidden peer"            // checkbox ฟิสิกส์
+                        <input type="checkbox" id="russian" name="russian"  className="hidden peer"  checked={subject.russian}  onChange={handleChangeSubjectCheckbox}          // checkbox ฟิสิกส์
                         ></input>
                         <label for="russian" className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg   text-center">ภาษารัสเซีย</div>
@@ -173,7 +244,7 @@ function Search(){
                     </div>
 
                     <div>
-                        <input type="checkbox" id="chinese" value="" className="hidden peer"          // checkbox เคมี
+                        <input type="checkbox" id="chinese"  name="chinese" className="hidden peer"  checked={subject.chinese}  onChange={handleChangeSubjectCheckbox}        // checkbox เคมี
                         ></input>
                         <label for="chinese" className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg   text-center">ภาษาจีน</div>
@@ -181,7 +252,7 @@ function Search(){
                     </div>
 
                     <div>
-                        <input type="checkbox" id="programming" value="" className="hidden peer"               // checkbox ภาษาไทย
+                        <input type="checkbox" id="programming" name="programming"  className="hidden peer"  checked={subject.programming}  onChange={handleChangeSubjectCheckbox}             // checkbox ภาษาไทย
                         ></input>
                         <label for="programming" className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg  text-center">เขียนโปรแกรม</div>
@@ -209,7 +280,7 @@ function Search(){
 
 
                     <div>
-                        <input type="checkbox" id="kindergarten" value="" className="hidden peer"            // checkbox อนุบาล
+                        <input type="checkbox" id="kindergarten" name="kindergarten"  className="hidden peer"  checked={classTeach.kindergarten}  onChange={handleChangeClassCheckbox}           // checkbox อนุบาล
                         ></input>
                         <label for="kindergarten" className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg   text-center">อนุบาล</div>
@@ -217,7 +288,7 @@ function Search(){
                     </div>
 
                     <div>
-                        <input type="checkbox" id="primary" value="" className="hidden peer"               // checkbox ประถม
+                        <input type="checkbox" id="primary" name="primary"  className="hidden peer"  checked={classTeach.primary}  onChange={handleChangeClassCheckbox}             // checkbox ประถม
                         ></input>
                         <label for="primary" className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg  text-center">ประถม</div>
@@ -225,7 +296,7 @@ function Search(){
                     </div>
 
                     <div>
-                        <input type="checkbox" id="middle" value="" className="hidden peer"                // checkbox มัธยมต้น
+                        <input type="checkbox" id="middle" name="middle"  className="hidden peer"  checked={classTeach.middle}  onChange={handleChangeClassCheckbox}              // checkbox มัธยมต้น
                         ></input>
                         <label for="middle" className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg  text-center">มัธยมต้น</div>
@@ -238,7 +309,7 @@ function Search(){
 
 
                     <div>
-                        <input type="checkbox" id="high" value="" className="hidden peer"            // checkbox มัธยมปลาย
+                        <input type="checkbox" id="high" name="high"  className="hidden peer"   checked={classTeach.high}  onChange={handleChangeClassCheckbox}         // checkbox มัธยมปลาย
                         ></input>
                         <label for="high" className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg   text-center">มัธยมปลาย</div>
@@ -246,7 +317,7 @@ function Search(){
                     </div>
 
                     <div>
-                        <input type="checkbox" id="college" value="" className="hidden peer"               // checkbox มหาลัย
+                        <input type="checkbox" id="college" name="college"  className="hidden peer"  checked={classTeach.college}  onChange={handleChangeClassCheckbox}             // checkbox มหาลัย
                         ></input>
                         <label for="college" className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg  text-center">มหาลัย</div>
@@ -254,7 +325,7 @@ function Search(){
                     </div>
 
                     <div>
-                        <input type="checkbox" id="graduated" value="" className="hidden peer"                // checkbox เรียนจบแล้ว
+                        <input type="checkbox" id="graduated" name="graduated"  className="hidden peer"  checked={classTeach.graduated}  onChange={handleChangeClassCheckbox}              // checkbox เรียนจบแล้ว
                         ></input>
                         <label for="graduated" className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg  text-center">เรียนจบแล้ว</div>
@@ -281,7 +352,7 @@ function Search(){
 
 
                     <div>
-                        <input type="checkbox" id="grade" value="" className="hidden peer"            // checkbox เพิ่มเกรดแต่ละชั้นปี
+                        <input type="checkbox" id="grade" name="grade"  className="hidden peer"  checked={type.grade} onChange={handleChangeTypeCheckbox}           // checkbox เพิ่มเกรดแต่ละชั้นปี
                         ></input>
                         <label for="grade" className="inline-flex justify-between items-center h-12 w-44 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg   text-center">เพิ่มเกรดแต่ละชั้นปี</div>
@@ -289,7 +360,7 @@ function Search(){
                     </div>
 
                     <div>
-                        <input type="checkbox" id="enPrimary" value="" className="hidden peer"               // checkbox สอบเข้ามัธยมต้น
+                        <input type="checkbox" id="enPrimary" name="enPrimary"  className="hidden peer"  checked={type.enPrimary} onChange={handleChangeTypeCheckbox}              // checkbox สอบเข้ามัธยมต้น
                         ></input>
                         <label for="enPrimary" className="inline-flex justify-between items-center h-12 w-44 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg  text-center">สอบเข้ามัธยมต้น</div>
@@ -297,7 +368,7 @@ function Search(){
                     </div>
 
                     <div>
-                        <input type="checkbox" id="enHigh" value="" className="hidden peer"                // checkbox สอบเข้ามัธยมปลาย
+                        <input type="checkbox" id="enHigh" name="enHigh"  className="hidden peer"   checked={type.enHigh} onChange={handleChangeTypeCheckbox}              // checkbox สอบเข้ามัธยมปลาย
                         ></input>
                         <label for="enHigh" className="inline-flex justify-between items-center h-12 w-44 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg  text-center">สอบเข้ามัธยมปลาย</div>
@@ -310,7 +381,7 @@ function Search(){
 
 
                     <div>
-                        <input type="checkbox" id="entrance" value="" className="hidden peer"            // checkbox สอบเข้ามหาลัย
+                        <input type="checkbox" id="entrance" name="entrance"  className="hidden peer"  checked={type.entrance} onChange={handleChangeTypeCheckbox}           // checkbox สอบเข้ามหาลัย
                         ></input>
                         <label for="entrance" className="inline-flex justify-between items-center h-12 w-44 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg   text-center">สอบเข้ามหาลัย</div>
@@ -318,7 +389,7 @@ function Search(){
                     </div>
 
                     <div>
-                        <input type="checkbox" id="knowledge" value="" className="hidden peer"               // checkbox เพิ่มความรู้
+                        <input type="checkbox" id="knowledge" name="knowledge"  className="hidden peer"  checked={type.knowledge} onChange={handleChangeTypeCheckbox}              // checkbox เพิ่มความรู้
                         ></input>
                         <label for="knowledge" className="inline-flex justify-between items-center h-12 w-44 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg  text-center">เพิ่มความรู้</div>
@@ -349,7 +420,7 @@ function Search(){
 
 
                     <div>
-                        <input type="checkbox" id="online" value="" className="hidden peer"            // checkbox ออนไลน์
+                        <input type="checkbox" id="online" name="online"  className="hidden peer"  checked={place.online} onChange={handleChangePlaceCheckbox}           // checkbox ออนไลน์
                         ></input>
                         <label for="online" className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg   text-center">ออนไลน์</div>
@@ -357,7 +428,7 @@ function Search(){
                     </div>
 
                     <div>
-                        <input type="checkbox" id="onsite" value="" className="hidden peer"               // checkbox ออนไซต์
+                        <input type="checkbox" id="onsite" name="onsite"  className="hidden peer"  checked={place.onsite} onChange={handleChangePlaceCheckbox}              // checkbox ออนไซต์
                         ></input>
                         <label for="onsite" className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 ">                           
                             <div className="w-full text-lg  text-center">ออนไซต์</div>
@@ -377,6 +448,13 @@ function Search(){
                     >
                         Search
                     </button>
+                    {/* <button                                                         //ปุ่ม test ชั่วคราว
+                                    className="mt-5 flex-center inline-block px-24 py-3 bg-primary-80 text-white-100 text-md font-bold leading-tight rounded-2xl shadow-md  hover:shadow-lg  focus:shadow-lg focus:outline-none  hover:bg-primary-100 hover:ring-2 hover:ring-white active:shadow-lg transition duration-150 ease-in-out"
+                                    id="submit" 
+                                    onClick={handletest}
+                                >
+                                    test
+                                </button> */}
                 </div>
                 
             </div>
