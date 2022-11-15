@@ -146,7 +146,7 @@ function PostTeach() {
             </div>
             <form  onSubmit={handleSubmit} >  
                 <div className="px-16 my-10 flex-row space-x-24  flex justify-center ml-16">
-                        <div                                       //ยังไม่แน่ใจเรื่องเก็บค่าของ checkbox
+                        <div                                       
                         >                                      
                             <label className="block text-gray-700 text-m font-bold mb-4" // วิชาที่สอน 
                             >       
