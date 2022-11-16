@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     // home bg
     <div className="bg-[#F9F871] ">
-      <div className=" container mx-auto h-screen flex flex-col-reverse relative md:flex-row md:justify-center md:gap-8 md:items-center xl:gap-24">
+      <div className=" container mx-auto py-24 flex flex-col-reverse relative md:flex-row md:justify-center md:gap-8 md:items-center xl:gap-24">
         {/* left side */}
         <div className="text-center font-body mb-16 md:pl-10 md:mt-20 md:text-left">
           <h1 className="text-4xl font-bold text-black md:text-4xl lg:text-[40px] xl:mt-10">
