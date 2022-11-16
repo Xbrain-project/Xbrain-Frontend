@@ -84,7 +84,7 @@ const DetailCard = () => {
             <div className="font-normal">{item.place}</div>
           </div>
 
-          <div className="flex flex-row flex-auto space-x-3">
+          <div className="flex flex-row flex-auto space-x-3 mb-6">
             <label className="font-semibold">คำขอการสมัคร</label>
             {/* <button className="-mt-1 px-3 py-1 font-normal rounded-2xl text-white-100 bg-primary-80 hover:bg-primary-100">
               ยอมรับคำขอ
