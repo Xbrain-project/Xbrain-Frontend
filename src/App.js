@@ -7,6 +7,7 @@ import HomeStudent from "./pages/HomeStudent";
 import HomeTutor from "./pages/HomeTutor";
 import HistoryStudent from "./pages/HistoryStudent";
 import ApplyTutor from "./pages/ApplyTutor";
+import Community from "./pages/Community";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/hometutor" element={<HomeTutor />} />
         <Route path="/historystudent" element={<HistoryStudent />} />
         <Route path="/applytutor" element={<ApplyTutor />} />
+        <Route path="/community" element={<Community />} />
       </Routes>
     </div>
   );
