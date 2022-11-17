@@ -1,5 +1,4 @@
 import React from "react";
-import useState from "react";
 
 import PaypalCheckoutButton from "../../components/paypalcheckoutbutton";
 
