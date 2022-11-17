@@ -19,6 +19,7 @@ const PaypalCheckoutButton = (props) => {
       if (paidFor) {
         // Display success message, modal or redirect user to success page
         alert("Thank you for your purchase!");
+        window.location = '/'
       }
       if (error) {
         // Display error message, modal or redirect user to error page

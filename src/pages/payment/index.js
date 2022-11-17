@@ -18,10 +18,13 @@ export default function Payment() {
                 <div 
                     class="flex justify-center flex-wrap h-full g-6 text-gray-800">
                     <form>
-                        <div class="font-extrabold items-start text-4xl">
+                        <div class="font-extrabold items-start text-6xl text-center">
                             ชำระเงิน
                         </div>
 
+                        <div class="font-extrabold items-start text-2xl text-center">
+                            ราคา 100 บาท
+                        </div>
                         
                             <div className="paypal-button-container">
                             <PaypalCheckoutButton product={product} />
