@@ -1,8 +1,14 @@
-import React from 'react'
-
+import React, {useState} from 'react'
+import { useForm } from "react-hook-form";
+import { json } from 'react-router-dom';
 import tutorpic from "../../assets/pics/login1.jpg";
 
 export default function Login() {
+
+    const {register, handleSubmit, formState: { errors }} = useForm();
+    console.log(errors);
+
+
     return(
         <div class="flex flex-row">
         <img 
@@ -17,7 +23,10 @@ export default function Login() {
                     <div 
                     class=" w-9/12 p-10">
                     {/* <!-- Form --> */}
-                    <form>
+                    {/* <pre>{JSON.stringify(userInfo, undefined, 2)}</pre> //check  */}
+                    <form onSubmit={handleSubmit((data) =>{
+                        console.log(data)
+                    })}>
                     <div class="font-body text-center font-bold text-6xl text-primary-80 py-5">
                         Login
                     </div>
@@ -28,9 +37,14 @@ export default function Login() {
                         Email
                         </label>
                         <input
-                        type="text"
+                        type="email"
+                        name="email"
                         class="form-control block w-full px-4 py-2 bg-white-100 bg-clip-padding border border-solid border-gray-50 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                        placeholder="you@gmail.com"
+                        style={{borderColor: errors.email ? "red" :"", }}
+                        {...register('email', {required: 'Email is required'})}
                         />
+                    {errors?.email && <p style={{color: "red"}}>{errors.email.message}</p>}
                     </div>
                     
 
@@ -42,10 +56,13 @@ export default function Login() {
                         </label>
                         <input
                         type="password"
+                        name="password"
                         class="form-control block w-full px-4 py-2 bg-white-100 bg-clip-padding border border-solid border-gray-50 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                         placeholder="******************"
+                        style={{borderColor: errors.password ? "red" :"", }}
+                        {...register('password', {required: 'Password is required'})}
                         />
-                        
+                    {errors?.password && <p style={{color: "red"}}>{errors.password.message}</p>} 
                     </div>
 
                     <div class="py-2 grid justify-items-end">
@@ -62,6 +79,7 @@ export default function Login() {
                         class="inline-block px-7 py-3 bg-primary-80 text-white-100 font-body font-semibold text-lg leading-snug rounded-2xl shadow-md hover:bg-primary-100 hover:shadow-lg focus:bg-primary-100 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-100 active:shadow-lg transition duration-150 ease-in-out w-full"
                         data-mdb-ripple="true"
                         data-mdb-ripple-color="light"
+                        
                     >
                         Login
                     </button>
