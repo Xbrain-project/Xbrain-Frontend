@@ -12,7 +12,7 @@ const DetailCard = () => {
   }, [TestData]);
 
   //ผลการสมัคร
-  const [value, setValue] = useState({
+  const [result, setResult] = useState({
     ClickYes: false,
     ClickNo: false,
     canClick: true,
@@ -21,7 +21,7 @@ const DetailCard = () => {
   const handleApprove = (e) => {
     alert("ยืนยันผลการสมัคร");
     e.preventDefault();
-    setValue({
+    setResult({
       canClick: false,
       ClickYes: true,
     });
@@ -31,7 +31,7 @@ const DetailCard = () => {
   const handleReject = (e) => {
     alert("ยืนยันผลการสมัคร");
     e.preventDefault();
-    setValue({
+    setResult({
       canClick: false,
       ClickNo: true,
     });
@@ -45,13 +45,18 @@ const DetailCard = () => {
           ใบสมัคร
         </h1>
       </div>
-      ;{/* Cards */}
-      {values.map((item) => (
-        <div className="container mx-auto px-10 py-4 gap-5 mt-6 flex flex-col rounded-xl drop-shadow-lg font-body md:w-2/4 bg-white-100">
+      {/* Cards */}
+
+      {values.map((item, index) => (
+        <div
+          key={item.id}
+          className="container mx-auto px-10 py-4 gap-5 mt-6 flex flex-col rounded-xl drop-shadow-lg font-body md:w-2/4 bg-white-100"
+        >
           <div className="mt-3 flex w-full items-center space-x-4">
+            {index + 1 + "."}
             <img
               src={community}
-              className="aspect-square w-12 shrink-0 rounded-full "
+              className="aspect-square w-12 mx-2 rounded-full "
               alt="ImageTutor"
             />
             <div className="flex w-full min-w-0 flex-col -space-y-1">
@@ -88,24 +93,24 @@ const DetailCard = () => {
             <label className="font-semibold">คำขอการสมัคร</label>
             <button
               className={` ${
-                item.status === "Approved"
+                result.ClickYes
                   ? "bg-[#E2E2E2] hover:bg-[#E2E2E2]"
                   : "bg-primary-80 hover:bg-primary-100 "
               } mt-1 px-3 py-1 font-normal rounded-2xl text-white-100  `}
               onClick={handleApprove}
-              disabled={value.canClick === false}
+              disabled={result.canClick === false}
             >
               ยอมรับคำขอ
             </button>
 
             <button
               className={` ${
-                item.status === "Rejected"
+                result.ClickNo
                   ? "bg-[#E2E2E2] hover:bg-[#E2E2E2]"
                   : "bg-[#FF3358] hover:bg-[#CE2D4A]"
               } mt-1 px-3 py-1 font-normal rounded-2xl text-white-100  `}
               onClick={handleReject}
-              disabled={value.canClick === false}
+              disabled={result.canClick === false}
             >
               ปฏิเสธคำขอ
             </button>
