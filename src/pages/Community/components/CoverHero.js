@@ -6,7 +6,7 @@ import community2 from "../../../assets/pics/community2.png";
 // หน้าปก
 const CoverHero = () => {
   return (
-    <div className="mx-auto h-[400px] md:w-3/5 mb-16 overflow-hidden rounded-xl shadow-md font-body">
+    <div className="mx-auto h-[400px] w-full md:w-3/5 mb-16 overflow-hidden rounded-xl shadow-md font-body">
       <div className="relative flex w-full items-end px-4 py-8 bg-[#503795]"></div>
       <div className="flex h-full w-full flex-col items-center space-y-6 bg-primary-80 ">
         <div className="mt-16 px-5 py-2 text-sm text-[#999999] bg-[#FFFE6B] rounded-2xl shadow-sm">

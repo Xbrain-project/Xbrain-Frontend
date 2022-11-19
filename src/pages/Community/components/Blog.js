@@ -21,7 +21,7 @@ const Blog = () => {
     //     <link to></link>
     //   </div>
     // </div>
-    <div className="md:w-3/5 mx-auto p-4 bg-pink-200">
+    <div className="md:w-3/5 mx-auto px-10 py-4 bg-pink-200">
       <div className="flex flex-col md:flex-row -mx-1.5 p-4">
         <div className="h-72 md:h-auto w-full md:w-7/12 mx-1.5 mb-6 md:mb-0 group">
           <div className="h-72 md:h-full relative">
