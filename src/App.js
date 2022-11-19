@@ -6,6 +6,7 @@ import ProfileTutor from "./pages/ProfileTutor";
 import NavbarStudent from "./components/navbar/NavbarStudent"
 import PostTeach from "./pages/PostTeach";
 import Search from "./pages/Search"
+import Contact from "./pages/Contact"
 
 
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/NavbarStudent" element={<NavbarStudent/>} />
         <Route path="/PostTeach" element={<PostTeach/>}/>
         <Route path="/Search" element={<Search/>}/>
+        <Route path="/Contact" element={<Contact/>}/>
 
       </Routes>
     </div>
