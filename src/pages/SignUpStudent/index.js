@@ -1,7 +1,40 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 
 export default function SignUpStudent() {
+    //เก็บค่า form sign up
+    const [form, setForm] = useState({ 
+        email: "",
+        password: "",
+        cfpassword: "",
+    })
+
+    // change
+    const handleChange = (e) => {  
+        setForm({ ...form, 
+           [e.target.name]: e.target.value });
+         
+    };
+
+    //submit
+    const handleSubmit = (e) => { 
+        e.preventDefault()
+        
+        //check blank required
+        if(form.email !== '' && form.password !== ''){
+            const user={form}
+            console.log(user)
+        } else if (form.email === '' && form.password !== ''){
+            alert('Email is required.');
+        } else if (form.email !== '' && form.password === ''){
+            alert('Password is required.');
+        } else {
+            alert('Email and a password are required.');
+        }
+        
+          
+    }
+
     return(    
         <div class="bg-purple-200 w-full h-full">
         <div 
@@ -33,8 +66,12 @@ export default function SignUpStudent() {
                         Email
                         </label>
                         <input
-                        type="text"
+                        type="email"
+                        name="email"
                         class="form-control block w-full px-4 py-2 bg-white-100 bg-clip-padding border border-solid border-gray-50 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                        placeholder='you@gmail.com'
+                        value={form.email}
+                        onChange={handleChange}
                         />
                     </div>
                     
@@ -47,8 +84,11 @@ export default function SignUpStudent() {
                         </label>
                         <input
                         type="password"
+                        name="password"
                         class="form-control block w-full px-4 py-2 bg-white-100 bg-clip-padding border border-solid border-gray-50 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                         placeholder="******************"
+                        value={form.password}
+                        onChange={handleChange}
                         />
                         
                     </div>
@@ -61,8 +101,11 @@ export default function SignUpStudent() {
                         </label>
                         <input
                         type="password"
+                        name="cfpassword"
                         class="form-control block w-full px-4 py-2 bg-white-100 bg-clip-padding border border-solid border-gray-50 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                         placeholder="******************"
+                        value={form.cfpassword}
+                        onChange={handleChange}
                         />
                         
                     </div>
