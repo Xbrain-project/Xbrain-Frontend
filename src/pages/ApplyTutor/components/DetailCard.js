@@ -53,7 +53,8 @@ const DetailCard = () => {
       {/* Map data */}
       {values.map((value, index) => (
         <CardApply
-          id={value.id}
+          key={values.id}
+          index={index}
           student={value.student}
           college={value.college}
           subject={value.subject}

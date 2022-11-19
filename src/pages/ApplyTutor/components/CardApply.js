@@ -34,10 +34,7 @@ const CardApply = ({ id, student, college, subject, type, wage, place }) => {
   return (
     <div className="flex items-center">
       {/* Cards */}
-      <div
-        key={id}
-        className="container mx-auto px-10 py-4 gap-5 mt-6 flex flex-col rounded-xl drop-shadow-lg font-body md:w-2/4 bg-white-100"
-      >
+      <div className="container mx-auto px-10 py-4 gap-5 mt-6 flex flex-col rounded-xl drop-shadow-lg font-body md:w-2/4 bg-white-100">
         <div className="mt-3 flex w-full values-center space-x-4">
           <img
             src={community}
