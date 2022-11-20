@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import community from "../../../assets/icons/community.png";
+
+import TestData from "./TestData"; //fake data เอามา test จร้า
+
 import CardApply from "./CardApply";
-import TestData from "./TestData"; //fake data เอามา test
 
 const DetailCard = () => {
   //รอเอาค่าจริงมาใส่ , [] ใส่มาเพื่อจะดู values. บลาๆ
@@ -13,6 +15,33 @@ const DetailCard = () => {
   }, [TestData]);
 
   //ผลการสมัคร
+
+  const [value, setValue] = useState({
+    ClickYes: false,
+    ClickNo: false,
+    canClick: true,
+  });
+
+  const handleApprove = (e) => {
+    alert("ยืนยันผลการสมัคร");
+    e.preventDefault();
+    setValue({
+      canClick: false,
+      ClickYes: true,
+    });
+    console.log("yes");
+  };
+
+  const handleReject = (e) => {
+    alert("ยืนยันผลการสมัคร");
+    e.preventDefault();
+    setValue({
+      canClick: false,
+      ClickNo: true,
+    });
+    console.log("no");
+  };
+
   // const [result, setResult] = useState({
   //   ClickYes: false,
   //   ClickNo: false,
@@ -50,6 +79,7 @@ const DetailCard = () => {
           ใบสมัคร
         </h1>
       </div>
+
       {/* Map data */}
       {values.map((value, index) => (
         <CardApply
