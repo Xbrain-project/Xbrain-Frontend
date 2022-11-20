@@ -22,19 +22,17 @@ const Blog = () => {
     //     <link to></link>
     //   </div>
     // </div>
-    <div className="flex items-center justify-center mx-auto w-full md:w-3/5 ">
-      <div className=" bg-pink-200 ">
-        <div className="flex flex-col md:flex-row gap-10">
-          <div className="md:h-auto w-full md:w-7/12 mx-1.5 md:mb-0 bg-green-400">
-            <CreatePost />
-          </div>
-          {/* right side */}
-          <div className="flex flex-col w-full md:w-10/12 mx-1.5 bg-green-400">
-            <CardBlog
-              title="It’s more than service"
-              content="เลือกสอนได้ทั้งออนไลน์เเละออนไซต์ เเถมยังช่วยพัฒนาทักษาด้านความเป็นผู้นำเเละสร้างอาชีพในการช่วยเหลือผู้อื่น"
-            />
-          </div>
+    <div className="flex items-center justify-center mx-auto w-full md:w-3/5 bg-slate-200">
+      <div className="flex flex-col md:flex-row gap-10">
+        <div className="md:h-auto w-full md:w-7/12 mx-1.5 md:mb-0">
+          <CreatePost />
+        </div>
+        {/* right side */}
+        <div className="flex flex-col w-full md:w-10/12 mx-1.5">
+          <CardBlog
+            title="It’s more than service"
+            content="เลือกสอนได้ทั้งออนไลน์เเละออนไซต์ เเถมยังช่วยพัฒนาทักษาด้านความเป็นผู้นำเเละสร้างอาชีพในการช่วยเหลือผู้อื่น"
+          />
         </div>
       </div>
     </div>
