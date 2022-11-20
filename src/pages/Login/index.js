@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { useForm } from 'react-hook-form';
 
 import tutorpic from "../../assets/pics/login1.jpg";
@@ -47,7 +47,22 @@ export default function Login() {
     // }
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => {
+
+        // //check match
+        // const userData = JSON.parse(localStorage.getItem(data.email));
+        //     if (userData) { // getItem can return actual value or null
+        //     if (userData.password === data.password) {
+        //         console.log(userData.name + " You Are Successfully Logged In");
+        //     } else {
+        //         console.log("Email or Password is not matching with our record");
+        //     }
+        //     } else {
+        //     console.log("Email or Password is not matching with our record");
+        //     }
+                console.log(data);
+    }
+
     // {alert(JSON.stringify(data))}
 
     console.log(watch("example"));
@@ -56,7 +71,8 @@ export default function Login() {
         <div className="flex flex-row">
         <img 
             className="h-screen object-contain opacity-1" 
-            src={tutorpic}>
+            src={tutorpic}
+            alt="">
             </img>
 
         <div
@@ -105,8 +121,8 @@ export default function Login() {
                         placeholder="******************"
                         {...register("password", {required : 'Password is required',
                             minLength:{
-                                value: 4,
-                                message: 'Password must be at least 4 characters.'
+                                value: 8,
+                                message: 'Password must be at least 8 characters.'
                             }
                             })}
                         />
