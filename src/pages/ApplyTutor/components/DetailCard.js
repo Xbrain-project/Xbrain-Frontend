@@ -4,7 +4,6 @@ import community from "../../../assets/icons/community.png";
 import TestData from "./TestData"; //fake data เอามา test จร้า
 
 import CardApply from "./CardApply";
-import TestData from "./TestData"; //fake data เอามา test
 
 const DetailCard = () => {
   //รอเอาค่าจริงมาใส่ , [] ใส่มาเพื่อจะดู values. บลาๆ
