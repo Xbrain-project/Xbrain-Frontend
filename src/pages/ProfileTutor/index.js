@@ -15,7 +15,7 @@ function ProfileTutor() {
         status:"",              //สถานะทางการศึกษา
         email: "",              //อีเมล
         phone: "",              //เบอร์ติดต่อ
-        detail: "",             //รายละเอียดเพิ่มเติม
+        intro: "",             //รายละเอียดเพิ่มเติม
         line: "",               //id line
         img: null,              //รูปภาพ
 
@@ -231,13 +231,13 @@ function ProfileTutor() {
                     <div>
                         <label className="block text-gray-700 text-m font-bold mb-2" // ที่อยู่ปัจจุบัน (หรือสถานที่ที่สะดวกเรียน)
                         >       
-                            รายละเอียดเพิ่มเติม *
+                            รายละเอียดเพิ่มเติม (แนะนำตัว) *
                         </label> 
                         <input className="shadow appearance-none border rounded w-96 h-12 py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline"    
-                        id="detail"
+                        id="intro"
                         onChange={handleChange}
-                        name="detail"
-                        value={values.detail}
+                        name="intro"
+                        value={values.intro}
                         required
                         autoComplete="none"
                         />
