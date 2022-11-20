@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import abouttutor from "../../../assets/pics/abouttutor.png";
 
 const About = () => {

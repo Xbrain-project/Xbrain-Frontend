@@ -43,14 +43,14 @@ const Blog = () => {
     //   </div>
     // </div>
 
-    <div className="flex items-center justify-center mx-auto w-full md:w-3/5 bg-slate-200">
+    <div className="container items-center justify-center mx-auto w-full md:w-3/5 bg-slate-200">
       <div className="flex flex-col md:flex-row gap-6">
-        <div className="md:h-auto w-full md:w-7/12 mx-1.5 md:mb-0">
+        <div className="md:h-auto w-full md:w-8/12 lg:w-[516px] mx-1.5 md:mb-0">
           <CreatePost />
         </div>
         {/* right side */}
 
-        <div className="container w-full h-full bg-white-100 rounded-xl drop-shadow-md px-10 py-10">
+        <div className="container w-full md:w-[816px] lg:w-[875px] h-full bg-white-100 rounded-xl drop-shadow-md px-10 py-10">
           {/* card ข่าวสารใหม่ๆ */}
           <div className="flex flex-col mx-1.5 gap-5">
             <h1 className="py-4 font-bold text-2xl leading-8 md:text-3xl text-primary-80 font-body">
