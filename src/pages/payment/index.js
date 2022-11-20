@@ -22,6 +22,7 @@ export default function Payment() {
                             ชำระเงิน
                         </div>
 
+
                         <div className="font-extrabold items-start text-2xl text-center mt-3">
                             ราคา 100 บาท
                         </div>
