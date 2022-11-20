@@ -22,11 +22,17 @@ module.exports = {
         },
       },
 
+
       fontFamily: {
         body: ["sans-serif", "Noto Sans Thai"],
 
         black: {
           100: "#000000",
+
+      
+        fontFamily: {
+          body: ["sans-serif", "Noto Sans Thai"],
+
         },
       },
 
