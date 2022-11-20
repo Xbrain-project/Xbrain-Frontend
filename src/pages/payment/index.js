@@ -8,17 +8,17 @@ export default function Payment() {
     price: 100
   };
     return(
-        <div class="bg-purple-200 w-full h-full">
+        <div className="bg-purple-200 w-full h-full">
             <div 
                 // px-80
-                class="flex justify-center items-center px-12 py-12 h-screen font-body">
+                className="flex justify-center items-center px-12 py-12 h-screen font-body">
                 <div
                     // mx-40
-                    class=" container justify-center items-center py-3 bg-white-100 rounded-lg shadow-lg border border-gray-50">
+                    className=" container justify-center items-center py-3 bg-white-100 rounded-lg shadow-lg border border-gray-50">
                 <div 
-                    class="flex justify-center flex-wrap h-full g-6 text-gray-800">
+                    className="flex justify-center flex-wrap h-full g-6 text-gray-800">
                     <form>
-                        <div class="font-extrabold items-start text-6xl text-center">
+                        <div className="font-extrabold items-start text-6xl text-center">
                             ชำระเงิน
                         </div>
 
