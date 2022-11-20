@@ -8,6 +8,8 @@ const TestData = [
     subject: "คณิตศาสตร์",
     type: "ติวเพิ่มเกรด",
     wage: 250,
+
+    place: "online",
   },
   {
     id: 2,
@@ -16,6 +18,8 @@ const TestData = [
     subject: "คณิตศาสตร์",
     type: "ติวเพิ่มเกรด",
     wage: 250,
+
+    place: "online",
   },
   {
     id: 3,
@@ -24,6 +28,8 @@ const TestData = [
     subject: "คณิตศาสตร์",
     type: "ติวเพิ่มเกรด",
     wage: 250,
+
+    place: "online",
   },
   {
     id: 4,
@@ -32,6 +38,8 @@ const TestData = [
     subject: "คณิตศาสตร์",
     type: "ติวเพิ่มเกรด",
     wage: 250,
+
+    place: "online",
   },
   {
     id: 5,
@@ -40,6 +48,8 @@ const TestData = [
     subject: "คณิตศาสตร์",
     type: "ติวเพิ่มเกรด",
     wage: 250,
+
+    place: "online",
   },
 ];
 
