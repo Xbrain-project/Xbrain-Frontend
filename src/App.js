@@ -7,6 +7,11 @@ import HomeStudent from "./pages/HomeStudent";
 import HomeTutor from "./pages/HomeTutor";
 import HistoryStudent from "./pages/HistoryStudent";
 import ApplyTutor from "./pages/ApplyTutor";
+<<<<<<< HEAD
+=======
+import Community from "./pages/Community";
+import Payment from "./pages/Payment";
+>>>>>>> nink
 
 import Community from "./pages/Community";
 
