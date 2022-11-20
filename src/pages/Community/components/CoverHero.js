@@ -20,7 +20,7 @@ const CoverHero = () => {
         <img
           src={community}
           alt="community-hero"
-          className="absolute bottom-[390px] left-5 h-[412px] w-[412px]  "
+          className="absolute bottom-[390px] left-[-20px] lg:h-[412px] lg:w-[412px]  "
         />
         <img
           src={community2}
