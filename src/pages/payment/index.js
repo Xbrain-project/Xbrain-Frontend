@@ -22,9 +22,14 @@ export default function Payment() {
                             ชำระเงิน
                         </div>
 
-                        <div class="font-extrabold items-start text-2xl text-center">
+                        <div className="font-extrabold items-start text-2xl text-center mt-3">
                             ราคา 100 บาท
                         </div>
+                        <img 
+                            className="m-5"
+                            src={`https://i.pinimg.com/originals/10/3e/e6/103ee6509e82d0a379405b8a3a27f5ce.gif`}
+                            alt="" 
+                            />
                         
                             <div className="paypal-button-container">
                             <PaypalCheckoutButton product={product} />

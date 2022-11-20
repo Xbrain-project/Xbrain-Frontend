@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { PayPalButtons } from "@paypal/react-paypal-js";
+import { useNavigate } from "react-router-dom";
 const PaypalCheckoutButton = (props) => {
+    const navigate = useNavigate()
     const { product } = props;
 
     const [paidFor, setPaidFor] = useState(false);
@@ -19,7 +21,7 @@ const PaypalCheckoutButton = (props) => {
       if (paidFor) {
         // Display success message, modal or redirect user to success page
         alert("Thank you for your purchase!");
-        window.location = '/'
+        navigate('/')
       }
       if (error) {
         // Display error message, modal or redirect user to error page
