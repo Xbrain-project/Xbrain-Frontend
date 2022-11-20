@@ -15,7 +15,6 @@ import HomeTutor from "./pages/HomeTutor";
 import HistoryStudent from "./pages/HistoryStudent";
 import ApplyTutor from "./pages/ApplyTutor";
 import Community from "./pages/Community";
-
 import Payment from "./pages/Payment";
 
 import LayoutStudent from "./pages/Layout/LayoutStudent";
