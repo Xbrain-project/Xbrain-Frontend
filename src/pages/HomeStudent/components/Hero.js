@@ -9,13 +9,13 @@ const Hero = () => {
       <div className="container mx-auto py-24 flex flex-col-reverse relative md:flex-row md:justify-center md:gap-8 md:items-center xl:gap-24">
         {/* left side */}
         <div className="text-center font-body mb-16 md:pl-10 md:mt-20 md:text-left">
-          <h1 className="text-4xl font-bold text-black md:text-4xl lg:text-[40px] xl:mt-10">
+          <h1 className="text-4xl font-bold text-black lg:text-[40px] xl:mt-10">
             หาติวเตอร์ที่โดนใจ
           </h1>
           <h1 className="text-5xl font-bold text-primary-80 md:text-7xl lg:text-[128px] xl:mt-2">
             X-Brain
           </h1>
-          <div className="flex flex-row space-x-2 mt-3 mb-4 md:mb-2 xl:mt-8 ">
+          <div className="flex flex-row justify-center space-x-2 mt-3 mb-4 md:mb-2 xl:mt-8 ">
             <img
               src={lightbulb}
               alt="lightbulb"
@@ -28,7 +28,7 @@ const Hero = () => {
           </div>
 
           {/* button click */}
-          <button className="mt-6 px-6 py-3.5 font-semibold text-3xl rounded-2xl bg-primary-80 text-white-100 hover:bg-primary-100">
+          <button className="mt-6 px-6 py-3.5 font-bold text-3xl rounded-2xl bg-primary-80 text-white-100 hover:bg-primary-100">
             สมัครเรียน
           </button>
         </div>

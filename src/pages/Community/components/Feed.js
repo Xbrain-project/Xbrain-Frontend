@@ -4,14 +4,15 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import community from "../../../assets/icons/community.png";
 import TestData from "./TestData";
 
+//comment
 const Feed = () => {
   //comment toggle
   const [isExpand, setExpand] = useState(false);
   const toggle = () => setExpand((e) => !e);
 
   return (
-    <div className="container mx-auto px-10 py-4 mt-6 md:w-3/5 rounded-xl drop-shadow-lg font-body">
-      <div className="container mx-auto px-10 py-4 mt-6 flex flex-col font-body w-full bg-white-100 rounded-t-xl">
+    <div className="container mx-auto  mt-6 md:w-3/5 rounded-xl drop-shadow-lg font-body">
+      <div className="px-10 py-4 mt-6 flex flex-col font-body w-full bg-white-100 rounded-t-xl">
         {/* Title */}
         <h1 className="py-2 text-primary-80 font-semibold text-xl text-left md:text-3xl font-body">
           Title : ตามหาหนังสือมือสอง

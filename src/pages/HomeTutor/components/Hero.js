@@ -15,7 +15,7 @@ const Hero = () => {
           <h1 className="text-5xl font-bold text-primary-80 md:text-7xl lg:text-[128px] xl:mt-2">
             X-Brain
           </h1>
-          <div className="flex flex-row space-x-2 mt-3 mb-4 md:mb-2 xl:mt-8 ">
+          <div className="flex flex-row justify-center space-x-2 mt-3 mb-4 md:mb-2 xl:mt-8 ">
             <img
               src={lightbulb}
               alt="herotutor"
@@ -28,7 +28,7 @@ const Hero = () => {
           </div>
 
           {/* button click */}
-          <button className="mt-6 px-6 py-3.5 font-semibold text-3xl rounded-2xl bg-primary-80 text-white-100 hover:bg-primary-100">
+          <button className="mt-6 px-6 py-3.5 font-bold text-3xl rounded-2xl bg-primary-80 text-white-100 hover:bg-primary-100">
             ลงสอนพิเศษ
           </button>
         </div>

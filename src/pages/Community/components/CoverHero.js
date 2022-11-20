@@ -12,7 +12,7 @@ const CoverHero = () => {
         <div className="mt-16 px-5 py-2 text-sm text-[#999999] bg-[#FFFE6B] rounded-2xl shadow-sm">
           X-BRAIN
         </div>
-        <div className="text-4xl lg:text-[40px] font-bold text-white-100">
+        <div className="text-4xl lg:text-5xl font-bold text-white-100">
           คอมมูนิตี้
         </div>
       </div>
