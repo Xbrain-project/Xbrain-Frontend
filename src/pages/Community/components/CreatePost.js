@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-
 import TestData from "./TestData";
 
 //Create Post
 const CreatePost = () => {
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+
   return (
     <div className="container mx-auto px-10 py-10 rounded-xl drop-shadow-md bg-white-100 font-body">
       <div className="flex flex-col">
@@ -45,7 +47,7 @@ const CreatePost = () => {
             />
           </label>
         </div>
-        {/* button click */}
+        {/* button submit */}
         <button className="mt-4 px-6 py-3.5 font-bold text-2xl md:text-3xl rounded-2xl bg-primary-80 text-white-100 hover:bg-primary-100">
           โพสต์
         </button>
