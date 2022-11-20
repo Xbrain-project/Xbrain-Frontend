@@ -14,7 +14,7 @@ function Card() {
       gradFrom: "KMITL",
       subject: "ไทย",
       classTeach: "ปริญญาตรี",
-      goal: "ติว",
+      category: "ติว",
       introduce:
         "ดีค่าา สำหรับใครที่อยากจะเพิ่มเติม ความรู้เกี่ยวกับการบริหารธุรกิจ สามารถมาคุยกันได้ก่อนได้นะคะ",
     },
@@ -25,7 +25,7 @@ function Card() {
       gradFrom: "KMITL",
       subject: "อังกฤษ",
       classTeach: "ปริญญาโท",
-      goal: "เข้าสอบ",
+      category: "เข้าสอบ",
       introduce:
         "ดีค่าา สำหรับใครที่อยากจะเพิ่มเติมความรู้เกี่ยวกับการบริหารธุรกิจสามารถมาคุยกันได้ก่อนได้นะคะ",
     },
@@ -36,7 +36,7 @@ function Card() {
       gradFrom: "KMITL",
       subject: "อังกฤษ ไทย",
       classTeach: "ปริญญาเอก",
-      goal: "ไม่รู้1",
+      category: "ไม่รู้1",
       introduce: "ไม่รู้ว้อยยยยยsdcccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
     },
     {
@@ -46,7 +46,7 @@ function Card() {
       gradFrom: "KMITL",
       subject: "ประวัติศาสตร์",
       classTeach: "ปริญญาใจ",
-      goal: "ไม่รู้2",
+      category: "ไม่รู้2",
       introduce: "1245",
     },
     {
@@ -56,7 +56,7 @@ function Card() {
       gradFrom: "KMITL",
       subject: "ไม่สอน!!!",
       classTeach: "ปานาติปาตา",
-      goal: "ไม่รู้3",
+      category: "ไม่รู้3",
       introduce: "ชิวๆ ซิ่วเลย",
     },
   ];
@@ -97,7 +97,7 @@ function Card() {
                     ระดับชั้นที่สอน: {detail.classTeach}
                   </p>
                   <p class="mt-3 text-md font-bold text-skin-base leading-5">
-                    เป้าหมาย: {detail.goal}
+                    ประเภทการสอน: {detail.category}
                   </p>
                 </div>
                 
