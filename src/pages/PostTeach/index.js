@@ -7,8 +7,8 @@ function PostTeach() {
     // value
 
     const [values, setValues] = useState({    //เก็บค่าตัวแปรต่างๆที่เป็น text
-        price: "",                   //ราคา
-        experience: ""             //รายละเอียดเพิ่มเติม (คะแนนสอบต่างๆ ประสบการณ์)
+        experience: "" ,            //รายละเอียดเพิ่มเติม (คะแนนสอบต่างๆ ประสบการณ์)
+        detail: ""
 
 
       });
@@ -33,6 +33,27 @@ function PostTeach() {
         russian:false,
         chinese:false,
         programming:false
+    });
+
+    const [price, setPrice] = useState({            // เก็บค่า text ราคา ของวิชาต่างๆ
+        english: '',
+        maths:'',
+        bio:'',
+        physics:'',
+        chemistry:'',
+        thai:'',
+        social:'',
+        gat: '',
+        astronomy:'',
+        science:'',
+        french:'',
+        german:'',
+        japanese:'',
+        arabic:'',
+        korean:'',
+        russian:'',
+        chinese:'',
+        programming:''
     });
 
 
@@ -107,9 +128,21 @@ function PostTeach() {
         setChecked({ ...checked,[e.target.name]: !checked[e.target.name]})   
     };
 
-    const handleChangeSubjectCheckbox = (e) => {                                    //การเปลี่ยนแปรงค่าเมื่อ checkbox วิชาต่างๆ
+    const handleChangeSubjectCheckbox = (e) => {                                //การเปลี่ยนแปรงค่าเมื่อ checkbox วิชาต่างๆ
+        if({ ...subject,[e.target.name]:true}){
+            setPrice({ ...price, [e.target.name]: ('')});
+          }                               
         setSubject({ ...subject,[e.target.name]: !subject[e.target.name]})
     };
+
+    const handleChangePrice = (e)=> {                                            //การเปลี่ยนแปรงค่าเมื่อกรอกราคาของวิชาต่างๆ 
+        setPrice({ ...price, 
+            [e.target.name]: e.target.value });
+    
+    };
+
+
+    
 
     const handleChangeClassCheckbox = (e) => {                                          //การเปลี่ยนแปรงค่าเมื่อ checkbox ระดับชั้นต่างๆ
         setClassTeach({ ...classTeach,[e.target.name]: !classTeach[e.target.name]})
@@ -119,7 +152,7 @@ function PostTeach() {
         setType({ ...type,[e.target.name]: !type[e.target.name]})
     };
           
-    const handleChangePlaceCheckbox = (e) => {                                          //การเปลี่ยนแปรงค่าเมื่อ checkbox ประเภทสอนต่างๆ
+    const handleChangePlaceCheckbox = (e) => {                                          //การเปลี่ยนแปรงค่าเมื่อ checkbox สถานที่ต่างๆ
         setPlace({ ...place,[e.target.name]: !place[e.target.name]})
     };
 
@@ -152,124 +185,376 @@ function PostTeach() {
                             >       
                                 วิชาที่สอน * 
                             </label> 
-                            <div className="px-10 flex flex-row space-x-5"> 
+                            <div className="px-10 flex flex-row space-x-2"> 
                                 <div className="mr-16">
                                     
-                                    <div className="flex items-center mb-4">
+                                    <div className="flex items-center mb-2">
                                         <input id="english" name="english" type="checkbox"  checked={subject.english}  onChange={handleChangeSubjectCheckbox}  
                                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" 
                                             required={!subject.english & !subject.maths & !subject.arabic & !subject.astronomy & !subject.bio & !subject.chemistry & !subject.chinese & !subject.french & !subject.gat & !subject.gat & !subject.german & !subject.japanese & !subject.korean & !subject.physics & !subject.programming & !subject.russian & !subject.science & !subject.social & !subject.thai}/>
                                         <label className="block text-gray-700 text-m mx-4">ภาษาอังกฤษ</label>
                                     </div>
-                                    <div className="flex items-center mb-4">
+                                    <div>
+                                            <input className="shadow appearance-none border rounded w-40 h-10  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline mb-6"    
+                                            id="english"
+                                            pattern="[0-9]*"
+                                            onChange={handleChangePrice}
+                                            name="english"
+                                            value={price.english}   
+                                            disabled={!(subject.english)}
+                                            required
+                                            autoComplete="none"
+                                            placeholder="ราคา/ชั่วโมง ex.250"
+                                            />
+                                    </div>
+
+                                    
+                                    <div className="flex items-center mb-2">
                                         <input  id="maths" name="maths" type="checkbox"   checked={subject.maths}  onChange={handleChangeSubjectCheckbox}  
                                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">คณิตศาสตร์</label>
                                     </div>
-                                    <div className="flex items-center mb-4">
+                                    <div>
+                                            <input className="shadow appearance-none border rounded w-40 h-10  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline mb-6"    
+                                            id="maths"
+                                            pattern="[0-9]*"
+                                            onChange={handleChangePrice}
+                                            name="maths"
+                                            value={price.maths}   
+                                            disabled={!(subject.maths)}
+                                            required
+                                            autoComplete="none"
+                                            placeholder="ราคา/ชั่วโมง ex.250"
+                                            />
+                                    </div>
+
+
+                                    <div className="flex items-center mb-2">
                                         <input id="bio" name="bio" type="checkbox"   checked={subject.bio} onChange={handleChangeSubjectCheckbox} 
                                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">ชีวะ</label>
                                     </div>
-                                    <div className="flex items-center mb-4">
+                                    <div>
+                                            <input className="shadow appearance-none border rounded w-40 h-10  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline mb-6"    
+                                            id="bio"
+                                            pattern="[0-9]*"
+                                            onChange={handleChangePrice}
+                                            name="bio"
+                                            value={price.bio}   
+                                            disabled={!(subject.bio)}
+                                            required
+                                            autoComplete="none"
+                                            placeholder="ราคา/ชั่วโมง ex.250"
+                                            />
+                                    </div>
+
+                                    
+                                    <div className="flex items-center mb-2">
                                         <input  id="physics" name="physics" type="checkbox"   checked={subject.physics} onChange={handleChangeSubjectCheckbox} 
                                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">ฟิสิกส์</label>
                                     </div>
-                                    <div className="flex items-center mb-4">
+                                    <div>
+                                            <input className="shadow appearance-none border rounded w-40 h-10  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline mb-6"    
+                                            id="physics"
+                                            pattern="[0-9]*"
+                                            onChange={handleChangePrice}
+                                            name="physics"
+                                            value={price.physics}   
+                                            disabled={!(subject.physics)}
+                                            required
+                                            autoComplete="none"
+                                            placeholder="ราคา/ชั่วโมง ex.250"
+                                            />
+                                    </div>
+
+                                    
+                                    <div className="flex items-center mb-2">
                                         <input id="chemistry" name="chemistry" type="checkbox"   checked={subject.chemistry} onChange={handleChangeSubjectCheckbox} 
                                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">เคมี</label>
                                     </div>
-                                    <div className="flex items-center mb-4">
+                                    <div>
+                                            <input className="shadow appearance-none border rounded w-40 h-10  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline mb-6"    
+                                            id="chemistry"
+                                            pattern="[0-9]*"
+                                            onChange={handleChangePrice}
+                                            name="chemistry"
+                                            value={price.chemistry}   
+                                            disabled={!(subject.chemistry)}
+                                            required
+                                            autoComplete="none"
+                                            placeholder="ราคา/ชั่วโมง ex.250"
+                                            />
+                                    </div>
+
+
+                                    <div className="flex items-center mb-2">
                                         <input  id="thai" name="thai" type="checkbox"   checked={subject.thai} onChange={handleChangeSubjectCheckbox} 
                                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">ภาษาไทย</label>
                                     </div>
-                                    <div className="flex items-center mb-4">
+                                    <div>
+                                            <input className="shadow appearance-none border rounded w-40 h-10  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline mb-6"    
+                                            id="thai"
+                                            pattern="[0-9]*"
+                                            onChange={handleChangePrice}
+                                            name="thai"
+                                            value={price.thai}   
+                                            disabled={!(subject.thai)}
+                                            required
+                                            autoComplete="none"
+                                            placeholder="ราคา/ชั่วโมง ex.250"
+                                            />
+                                    </div>
+
+
+                                    <div className="flex items-center mb-2">
                                         <input id="social" name="social" type="checkbox"   checked={subject.social} onChange={handleChangeSubjectCheckbox} 
                                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">สังคม</label>
                                     </div>
-                                    <div className="flex items-center mb-4">
+                                    <div>
+                                            <input className="shadow appearance-none border rounded w-40 h-10  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline mb-6"    
+                                            id="social"
+                                            pattern="[0-9]*"
+                                            onChange={handleChangePrice}
+                                            name="social"
+                                            value={price.social}   
+                                            disabled={!(subject.social)}
+                                            required
+                                            autoComplete="none"
+                                            placeholder="ราคา/ชั่วโมง ex.250"
+                                            />
+                                    </div>
+
+
+                                    <div className="flex items-center mb-2">
                                         <input  id="gat" name="gat" type="checkbox"   checked={subject.gat} onChange={handleChangeSubjectCheckbox} 
                                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">GAT เชื่อมโยง</label>
                                     </div>
-                                    <div className="flex items-center mb-4">
+                                    <div>
+                                            <input className="shadow appearance-none border rounded w-40 h-10  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline mb-6"    
+                                            id="gat"
+                                            pattern="[0-9]*"
+                                            onChange={handleChangePrice}
+                                            name="gat"
+                                            value={price.gat}   
+                                            disabled={!(subject.gat)}
+                                            required
+                                            autoComplete="none"
+                                            placeholder="ราคา/ชั่วโมง ex.250"
+                                            />
+                                    </div>
+
+
+                                    <div className="flex items-center mb-2">
                                         <input  id="astronomy" name="astronomy" type="checkbox"   checked={subject.astronomy} onChange={handleChangeSubjectCheckbox} 
                                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">ดาราศาสตร์</label>
                                     </div>
+                                    <div>
+                                            <input className="shadow appearance-none border rounded w-40 h-10  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline mb-6"    
+                                            id="astronomy"
+                                            pattern="[0-9]*"
+                                            onChange={handleChangePrice}
+                                            name="astronomy"
+                                            value={price.astronomy}   
+                                            disabled={!(subject.astronomy)}
+                                            required
+                                            autoComplete="none"
+                                            placeholder="ราคา/ชั่วโมง ex.250"
+                                            />
+                                    </div>
+
+
                                 </div>
                                 <div>
-                                    <div className="flex items-center mb-4">
+                                    <div className="flex items-center mb-2">
                                         <input id="science" name="science" type="checkbox"   checked={subject.science} onChange={handleChangeSubjectCheckbox} 
                                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">วิทยาศาสตร์</label>
                                     </div>
-                                    <div className="flex items-center mb-4">
+                                    <div>
+                                            <input className="shadow appearance-none border rounded w-40 h-10  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline mb-6"    
+                                            id="science"
+                                            pattern="[0-9]*"
+                                            onChange={handleChangePrice}
+                                            name="science"
+                                            value={price.science}   
+                                            disabled={!(subject.science)}
+                                            required
+                                            autoComplete="none"
+                                            placeholder="ราคา/ชั่วโมง ex.250"
+                                            />
+                                    </div>
+
+
+                                    <div className="flex items-center mb-2">
                                         <input  id="french" name="french" type="checkbox"   checked={subject.french} onChange={handleChangeSubjectCheckbox} 
                                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">ภาษาฝรั่งเศส</label>
                                     </div>
-                                    <div className="flex items-center mb-4">
+                                    <div>
+                                            <input className="shadow appearance-none border rounded w-40 h-10  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline mb-6"    
+                                            id="french"
+                                            pattern="[0-9]*"
+                                            onChange={handleChangePrice}
+                                            name="french"
+                                            value={price.french}   
+                                            disabled={!(subject.french)}
+                                            required
+                                            autoComplete="none"
+                                            placeholder="ราคา/ชั่วโมง ex.250"
+                                            />
+                                    </div>
+
+
+                                    <div className="flex items-center mb-2">
                                         <input id="german" name="german" type="checkbox"   checked={subject.german} onChange={handleChangeSubjectCheckbox} 
                                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">ภาษาเยอรมัน</label>
                                     </div>
-                                    <div className="flex items-center mb-4">
+                                    <div>
+                                            <input className="shadow appearance-none border rounded w-40 h-10  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline mb-6"    
+                                            id="german"
+                                            pattern="[0-9]*"
+                                            onChange={handleChangePrice}
+                                            name="german"
+                                            value={price.german}   
+                                            disabled={!(subject.german)}
+                                            required
+                                            autoComplete="none"
+                                            placeholder="ราคา/ชั่วโมง ex.250"
+                                            />
+                                    </div>
+
+
+                                    <div className="flex items-center mb-2">
                                         <input  id="japanese" name="japanese" type="checkbox"   checked={subject.japanese} onChange={handleChangeSubjectCheckbox} 
                                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">ภาษาญี่ปุ่น</label>
                                     </div>
-                                    <div className="flex items-center mb-4">
+                                    <div>
+                                            <input className="shadow appearance-none border rounded w-40 h-10  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline mb-6"    
+                                            id="japanese"
+                                            pattern="[0-9]*"
+                                            onChange={handleChangePrice}
+                                            name="japanese"
+                                            value={price.japanese}   
+                                            disabled={!(subject.japanese)}
+                                            required
+                                            autoComplete="none"
+                                            placeholder="ราคา/ชั่วโมง ex.250"
+                                            />
+                                    </div>
+
+
+                                    <div className="flex items-center mb-2">
                                         <input id="arabic" name="arabic" type="checkbox"   checked={subject.arabic} onChange={handleChangeSubjectCheckbox} 
                                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">ภาษาอาหรับ</label>
                                     </div>
-                                    <div className="flex items-center mb-4">
+                                    <div>
+                                            <input className="shadow appearance-none border rounded w-40 h-10  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline mb-6"    
+                                            id="arabic"
+                                            pattern="[0-9]*"
+                                            onChange={handleChangePrice}
+                                            name="arabic"
+                                            value={price.arabic}   
+                                            disabled={!(subject.arabic)}
+                                            required
+                                            autoComplete="none"
+                                            placeholder="ราคา/ชั่วโมง ex.250"
+                                            />
+                                    </div>
+
+
+                                    <div className="flex items-center mb-2">
                                         <input  id="korean" name="korean" type="checkbox"   checked={subject.korean} onChange={handleChangeSubjectCheckbox} 
                                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">ภาษาเกาหลี</label>
                                     </div>
-                                    <div className="flex items-center mb-4">
+                                    <div>
+                                            <input className="shadow appearance-none border rounded w-40 h-10  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline mb-6"    
+                                            id="korean"
+                                            pattern="[0-9]*"
+                                            onChange={handleChangePrice}
+                                            name="korean"
+                                            value={price.korean}   
+                                            disabled={!(subject.korean)}
+                                            required
+                                            autoComplete="none"
+                                            placeholder="ราคา/ชั่วโมง ex.250"
+                                            />
+                                    </div>
+
+
+                                    <div className="flex items-center mb-2">
                                         <input id="russian" name="russian" type="checkbox"   checked={subject.russian} onChange={handleChangeSubjectCheckbox} 
                                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">ภาษารัสเซีย</label>
                                     </div>
-                                    <div className="flex items-center mb-4">
+                                    <div>
+                                            <input className="shadow appearance-none border rounded w-40 h-10  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline mb-6"    
+                                            id="russian"
+                                            pattern="[0-9]*"
+                                            onChange={handleChangePrice}
+                                            name="russian"
+                                            value={price.russian}   
+                                            disabled={!(subject.russian)}
+                                            required
+                                            autoComplete="none"
+                                            placeholder="ราคา/ชั่วโมง ex.250"
+                                            />
+                                    </div>
+
+
+                                    <div className="flex items-center mb-2">
                                         <input  id="chinese" name="chinese" type="checkbox"   checked={subject.chinese} onChange={handleChangeSubjectCheckbox} 
                                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">ภาษาจีน</label>
                                     </div>
-                                    <div className="flex items-center mb-4">
+                                    <div>
+                                            <input className="shadow appearance-none border rounded w-40 h-10  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline mb-6"    
+                                            id="chinese"
+                                            pattern="[0-9]*"
+                                            onChange={handleChangePrice}
+                                            name="chinese"
+                                            value={price.chinese}   
+                                            disabled={!(subject.chinese)}
+                                            required
+                                            autoComplete="none"
+                                            placeholder="ราคา/ชั่วโมง ex.250"
+                                            />
+                                    </div>
+
+
+                                    <div className="flex items-center mb-2">
                                         <input  id="programming" name="programming" type="checkbox"   checked={subject.programming} onChange={handleChangeSubjectCheckbox} 
                                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/>
                                         <label className="block text-gray-700 text-m mx-4">เขียนโปรแกรม</label>
+                                    </div>
+                                    <div>
+                                            <input className="shadow appearance-none border rounded w-40 h-10  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline mb-6"    
+                                            id="programming"
+                                            pattern="[0-9]*"
+                                            onChange={handleChangePrice}
+                                            name="programming"
+                                            value={price.programming}   
+                                            disabled={!(subject.programming)}
+                                            required
+                                            autoComplete="none"
+                                            placeholder="ราคา/ชั่วโมง ex.250"
+                                            />
                                     </div>
 
                                 </div>
                             </div>
 
 
-                            <label className="block text-gray-700 text-m font-bold my-4" // รายละเอียดเพิ่มเติม(คะแนนสอบต่างๆ ประสบการณ์)
-                            >       
-                                รายละเอียดเพิ่มเติม (คะแนนสอบต่างๆ ประสบการณ์) *
-                            </label> 
                             
-                            <textarea className= "ml-10 shadow appearance-none border rounded w-96 h-24  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline "
-                                    id="experience"
-                                    onChange={handleChange}
-                                    name="experience"
-                                    rows="3"
-                                    placeholder="สอวน. ฟิสิกส์ ค่าย 1 และ 2"
-                                    autoComplete="none"
-                                    value={values.experience}
-                                    required
-                            >
-
-                            </textarea>
 
 
                             
@@ -396,20 +681,38 @@ function PostTeach() {
                             </div>      
 
 
-                            <label className="block text-gray-700 text-m font-bold my-4" // รายละเอียดราคาที่สอนแต่ละวิชา
+                            <label className="block text-gray-700 text-m font-bold mt-6 mb-4" // รายละเอียดเพิ่มเติม(คะแนนสอบต่างๆ ประสบการณ์)
                             >       
-                                รายละเอียดราคาที่สอนแต่ละวิชา *
+                                รายละเอียดเพิ่มเติม (รายละเอียดวิชาที่สอน คะแนนสอบต่างๆ) *
                             </label> 
                             
-                            <textarea className= "ml-10 shadow appearance-none border rounded w-96 h-24  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline "
-                                    id="price"
+                            <textarea className= "ml-10 shadow appearance-none border rounded w-96 h-40  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline "
+                                    id="detail"
                                     onChange={handleChange}
-                                    name="price"
-                                    rows="3"
-                                    placeholder="ฟิสิกส์ชั่วโมงละ 250 บาท , คณิตชั่วโมงละ 350 บาท"
+                                    name="detail"
+                                    rows="5"
+                                    placeholder="pat1 250/300 pat2 270/300"
                                     autoComplete="none"
+                                    value={values.detail}
                                     required
-                                    value={values.price}
+                            >
+
+                            </textarea>
+
+                            <label className="block text-gray-700 text-m font-bold mt-8 mb-4" // รายละเอียดเพิ่มเติม(คะแนนสอบต่างๆ ประสบการณ์)
+                            >       
+                                ประสบการณ์ *
+                            </label> 
+                            
+                            <textarea className= "ml-10 shadow appearance-none border rounded w-96 h-40  py-2 px-3 text-gray-700 leading-tight focus:outline-none border-gray-50 focus:border-primary-80 focus:shadow-outline "
+                                    id="experience"
+                                    onChange={handleChange}
+                                    name="experience"
+                                    rows="5"
+                                    placeholder="มีประสบการณ์สอนระดับประถม-มัธยม 3 ปี"
+                                    autoComplete="none"
+                                    value={values.experience}
+                                    required
                             >
 
                             </textarea>
