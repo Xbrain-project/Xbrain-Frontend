@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import Parse from 'parse/react-native';
+
 import forgotpass from "../../assets/pics/forgotpass1.jpg";
 
 export default function ForgotPassword() {
@@ -13,12 +13,7 @@ export default function ForgotPassword() {
         });
       };
     
-      const doRequestPasswordReset = async function () {
-        // Note that this value come from state variables linked to your text input
-        const emailValue = email;
-
-        parseFloat.U
-      };
+      
     return(
         <div class="flex flex-row">
         <img 
