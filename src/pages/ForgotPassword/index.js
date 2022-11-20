@@ -15,7 +15,11 @@ export default function ForgotPassword() {
 
   return (
     <div className="flex flex-row">
-      <img className="h-screen object-contain opacity-1" src={forgotpass}></img>
+      <img
+        className="h-screen object-contain opacity-1"
+        src={forgotpass}
+        alt=""
+      ></img>
 
       <div className="container px-6 py-12 h-screen bg-white-100 w-full">
         <div className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
