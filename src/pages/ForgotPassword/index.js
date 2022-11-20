@@ -1,8 +1,24 @@
-import React from 'react'
-import { useState, useEffect } from "react";
+import React, {useState} from 'react'
+import Parse from 'parse/react-native';
 import forgotpass from "../../assets/pics/forgotpass1.jpg";
 
 export default function ForgotPassword() {
+    const[email,setEmail] = useState();
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const data = new FormData(event.currentTarget);
+        console.log({
+          email: data.get("email"),
+          password: data.get("password"),
+        });
+      };
+    
+      const doRequestPasswordReset = async function () {
+        // Note that this value come from state variables linked to your text input
+        const emailValue = email;
+
+        parseFloat.U
+      };
     return(
         <div class="flex flex-row">
         <img 
@@ -39,6 +55,7 @@ export default function ForgotPassword() {
                         class="inline-block px-7 py-3 bg-primary-80 text-white-100 font-body font-semibold text-lg leading-snug rounded-2xl shadow-md hover:bg-primary-100 hover:shadow-lg focus:bg-primary-100 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-100 active:shadow-lg transition duration-150 ease-in-out w-full"
                         data-mdb-ripple="true"
                         data-mdb-ripple-color="light"
+                        onSubmit={handleSubmit}
                     >
                         Send recovery email 
                     </button>
