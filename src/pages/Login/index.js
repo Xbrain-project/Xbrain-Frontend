@@ -10,15 +10,15 @@ export default function Login() {
     //     password: "",
     // })
 
-    // //role
-    // const roleBase = (role) => {
-    //     console.log('roleBase', role);
-    //     if (role == 'student') {
-    //         window.location = '/homestudent'
-    //     } else {
-    //         window.location = '/homestudent' 
-    //     }
-    // }
+    //role
+    const roleBase = (role) => {
+        console.log('roleBase', role);
+        if (role == 'student') {
+            window.location = '/homestudent'
+        } else {
+            window.location = '/hometutor' 
+        }
+    }
     
     // // change
     // const handleChange = (e) => {  
