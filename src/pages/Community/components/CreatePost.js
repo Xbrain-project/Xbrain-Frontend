@@ -66,7 +66,7 @@ const CreatePost = () => {
         {/* button submit */}
         <button
           className="mt-4 px-4 py-3 font-bold text-2xl md:text-3xl rounded-2xl bg-primary-80 text-white-100 hover:bg-primary-100"
-          onclick={handleSubmit}
+          onClick={handleSubmit}
         >
           โพสต์
         </button>
