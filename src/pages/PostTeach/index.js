@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import axios  from "axios";
+
+
 
 
 function PostTeach() {                                                            
@@ -34,6 +37,9 @@ function PostTeach() {
         chinese:false,
         programming:false
     });
+
+
+
 
     const [price, setPrice] = useState({            // เก็บค่า text ราคา ของวิชาต่างๆ
         english: '',
@@ -105,18 +111,48 @@ function PostTeach() {
     });
 
 
+
+    const [postdata,setPost] = useState({
+
+        'detail': ''
+        ,'experience': ''
+        ,'openCourse':''
+        ,'studentClass':''
+        ,'teachType':''
+        ,'place':''
+        ,'freeTime':''
+        
+      })
+
+    const [recivePost,setRecivePost] = useState([])
+    var { user } = useState((state) => ({ ...state }));
+
+
+
+
+    // const [listClassTeach, setListClassTeach] = useState([]) 
+    // const [listType, setListType] = useState([]) 
+    // const [listPlace, setListPlace] = useState([]) 
+    // const [listDay, setListDay] = useState([]) 
+    // const [listSubject, setListSubject] = useState([]) 
+
+
     // handleChange
 
 
     const handleChange = (e) => {                             //การเปลี่ยนแปรงค่าเมื่อกรอก (ทั่วไป)
         setValues({ ...values, 
            [e.target.name]: e.target.value });
+        setPost({...postdata,
+            [e.target.name] : values[e.target.name]});
          
     };
 
     const handleChangeDayText = (e)=> {                      //การเปลี่ยนแปรงค่าเมื่อกรอกของวันต่างๆ ยากจัง
         setDay({ ...day, 
             [e.target.name]: e.target.value });
+
+        
     
     };
 
@@ -125,7 +161,20 @@ function PostTeach() {
           setDay({ ...day, [e.target.name]: ('')});
         //   setChecked({ ...checked,[e.target.name]:true})
         }
-        setChecked({ ...checked,[e.target.name]: !checked[e.target.name]})   
+        setChecked({ ...checked,[e.target.name]: !checked[e.target.name]})  
+        const newlistDay = [];    
+        for ( var e in checked ) { 
+        
+            if ( checked[e] ) { 
+                
+                // newLikings += e + " "; 
+                newlistDay.push(e + ' ' + day[e])
+                
+                
+            } 
+            
+        }           
+        setPost({ ...postdata,freeTime: newlistDay })  
     };
 
     const handleChangeSubjectCheckbox = (e) => {                                //การเปลี่ยนแปรงค่าเมื่อ checkbox วิชาต่างๆ
@@ -133,7 +182,20 @@ function PostTeach() {
             setPrice({ ...price, [e.target.name]: ('')});
           }                               
         setSubject({ ...subject,[e.target.name]: !subject[e.target.name]})
+        const newlistSubject = [];    
+        for ( var e in subject ) { 
+        
+            if ( subject[e] ) { 
+                // newLikings += e + " "; 
+                newlistSubject.push(e + ' ' + price[e])
+                
+                
+            } 
+            
+        }           
+        setPost({ ...postdata,openCourse: newlistSubject }) 
     };
+
 
     const handleChangePrice = (e)=> {                                            //การเปลี่ยนแปรงค่าเมื่อกรอกราคาของวิชาต่างๆ 
         setPrice({ ...price, 
@@ -142,33 +204,112 @@ function PostTeach() {
     };
 
 
-    
 
-    const handleChangeClassCheckbox = (e) => {                                          //การเปลี่ยนแปรงค่าเมื่อ checkbox ระดับชั้นต่างๆ
-        setClassTeach({ ...classTeach,[e.target.name]: !classTeach[e.target.name]})
+    const handleChangeClassCheckbox =  (e) => {                                          //การเปลี่ยนแปรงค่าเมื่อ checkbox ระดับชั้นต่างๆ
+        setClassTeach({ ...classTeach,[e.target.name]: !classTeach[e.target.name]})    //ตอนนี้มีปัญหาที่ตัวแปรยังไม่ทันเปลี่ยนค่าก็เอามาใช้ต่อแล้ว
+        // setClassTeach((state) => {
+        //     console.log(state); // "React is awesome!"
+            
+        //     return state;
+        //   });
+        //console.log('college ' + classTeach.college)  
+        const newlistClassTeach = [];    
+        for ( var e in classTeach ) { 
+                // console.log('college ' + classTeach.college)  
+                // console.log('graduated ' + classTeach.graduated) 
+                // console.log('high ' + classTeach.high) 
+                // console.log('middle '+classTeach.middle) 
+                // console.log('kindergarten ' + classTeach.kindergarten) 
+                // console.log('primary '+ classTeach.primary) 
+        
+            if ( classTeach[e] ) { 
+                // newLikings += e + " "; 
+                newlistClassTeach.push(e)
+                
+            } 
+            
+        }           
+        setPost({ ...postdata,studentClass: newlistClassTeach })  
     };
-
+    
+  
     const handleChangeTypeCheckbox = (e) => {                                          //การเปลี่ยนแปรงค่าเมื่อ checkbox ประเภทสอนต่างๆ
         setType({ ...type,[e.target.name]: !type[e.target.name]})
+        const newlistType = [];    
+        for ( var e in type ) { 
+        
+            if ( type[e] ) { 
+                // newLikings += e + " "; 
+                newlistType.push(e)
+                
+            } 
+            
+        }           
+        setPost({ ...postdata,teachType: newlistType }) 
     };
+
           
     const handleChangePlaceCheckbox = (e) => {                                          //การเปลี่ยนแปรงค่าเมื่อ checkbox สถานที่ต่างๆ
         setPlace({ ...place,[e.target.name]: !place[e.target.name]})
+        const newlistPlace = [];    
+        for ( var e in place ) { 
+        
+            if ( place[e] ) { 
+                // newLikings += e + " "; 
+                newlistPlace.push(e)
+                
+            } 
+            
+        }           
+        setPost({ ...postdata,place: newlistPlace }) 
     };
 
 
 
 
+    // const handleSubmit = (e) => {   
+    //     console.log(checked.monday)                         //ฟังชั่นจากการกด submit
+    //     alert("Saved");
+    // };
 
-    const handleSubmit = (e) => {   
-        console.log(checked.monday)                         //ฟังชั่นจากการกด submit
-        alert("Saved");
-    };
 
-    const handletest = (e) => {   
-        console.log(classTeach.graduated)                         //ฟังชั่นจากการกด test
-        console.log(classTeach.college)    
-    };
+    async function handleSubmit (e) {
+        e.preventDefault()
+
+        let keyP = ['detail','experience','openCourse','studentClass','teachType','place','freeTime']
+        for (var i =0 ; i < keyP.length ;i++){
+          if (postdata[keyP[i]] === '' || postdata[keyP[i]] === 0){
+            delete postdata[keyP[i]]
+          }
+        }
+        console.log('postdata',postdata)
+      
+    //    const res = await axios.post(process.env.REACT_APP_API+'/posts',postdata,{headers:{'authorization':`Bearer ${user.token}`} })
+    //    .then((res)=> {
+    //     //toast.success("Post Created");
+       
+    //   console.log('resdatais:',res.data)   
+    //    setRecivePost(res.data)
+    //   console.log('recivePostis:',recivePost)   
+    
+    // })
+     
+    }
+
+
+
+
+    // const handletest = (e) => {
+            
+    //     console.log(postdata)
+    
+        
+    // };
+   
+
+    
+    
+    
 
 
 
