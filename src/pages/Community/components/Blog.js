@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { CardBlog } from "../components/CardBlog";
 import CreatePost from "./CreatePost";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { listPost } from "../../../api/post";
+import TestData from "./TestData";
 
 // หน้ารวม Blog ใหม่ๆ
 const Blog = () => {
   const [values, setValues] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     loadData();
@@ -23,6 +27,13 @@ const Blog = () => {
       });
   };
 
+  // const [values, setValues] = useState([]);
+
+  // useEffect(() => {
+  //   setValues(TestData);
+  //   //console.log(TestData);
+  // }, [TestData]);
+
   return (
     <div className="container items-center justify-center mx-auto w-full md:w-3/5 bg-slate-200">
       <div className="flex flex-col md:flex-row gap-6">
@@ -36,15 +47,14 @@ const Blog = () => {
             <h1 className="py-4 font-bold text-2xl leading-8 md:text-3xl text-primary-80 font-body">
               ข่าวสาร
             </h1>
-            {/* {values.map((item) => (
-              <CardBlog title={item.title} content={item.content} />
+            {/* Map data */}
+            {/* {values.map((value) => (
+              <CardBlog title={value.title} content={value.content} />
             ))} */}
-            <CardBlog title="ควย" content="erigknlqgkgnmlemg;wegm" />
-            <CardBlog title="ควย" content="erigknlqgkgnmlemg;wegm" />
-            <CardBlog title="ควย" content="erigknlqgkgnmlemg;wegm" />
-            <CardBlog title="ควย" content="erigknlqgkgnmlemg;wegm" />
-            <CardBlog title="ควย" content="erigknlqgkgnmlemg;wegm" />
-            <CardBlog title="ควย" content="erigknlqgkgnmlemg;wegm" />
+            {/*path :  {`/Feed/?id=${recivePost._id}`} */}
+            <Link to={`/Feed`} className="">
+              <CardBlog title="ควย" content="yesh" />
+            </Link>
           </div>
         </div>
       </div>

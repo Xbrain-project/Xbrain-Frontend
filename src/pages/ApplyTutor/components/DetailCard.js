@@ -14,64 +14,6 @@ const DetailCard = () => {
     //console.log(TestData);
   }, [TestData]);
 
-  //ผลการสมัคร
-
-  const [value, setValue] = useState({
-    ClickYes: false,
-    ClickNo: false,
-    canClick: true,
-  });
-
-  const handleApprove = (e) => {
-    alert("ยืนยันผลการสมัคร");
-    e.preventDefault();
-    setValue({
-      canClick: false,
-      ClickYes: true,
-    });
-    console.log("yes");
-  };
-
-  const handleReject = (e) => {
-    alert("ยืนยันผลการสมัคร");
-    e.preventDefault();
-    setValue({
-      canClick: false,
-      ClickNo: true,
-    });
-    console.log("no");
-  };
-
-  // const [result, setResult] = useState({
-  //   ClickYes: false,
-  //   ClickNo: false,
-  //   canClick: true,
-  // });
-
-  // const handleApprove = () => {
-  //   alert("ยืนยันผลการสมัคร");
-  //   //e.preventDefault();
-
-  //   setResult({
-  //     canClick: false,
-  //     ClickYes: true,
-  //   });
-
-  //   console.log("yes");
-  //   console.log(setValues);
-  // };
-
-  // const handleReject = (index) => {
-  //   alert("ยืนยันผลการสมัคร");
-  //   //e.preventDefault();
-  //   setResult({
-  //     canClick: false,
-  //     ClickNo: true,
-  //   });
-  //   console.log("no");
-  //   console.log(index);
-  // };
-
   return (
     <div className="md:mt-32 md:mb-32">
       <div className="mt-20 text-center md:text-center xl:text-center">
