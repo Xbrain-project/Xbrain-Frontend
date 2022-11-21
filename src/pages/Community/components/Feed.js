@@ -12,6 +12,12 @@ import "moment/locale/th";
 const Feed = () => {
   //back button : useNavigate
   let navigate = useNavigate();
+  const [values, setValues] = useState({
+    id: "",
+    timestap: "",
+    title: "",
+    content: "",
+  });
   const [comment, setComment] = useState([]);
   const [newComment, setNewComment] = useState({
     id: "",
