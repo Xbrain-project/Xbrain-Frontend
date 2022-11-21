@@ -3,13 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import community from "../../../assets/icons/community.png";
 import TestData from "./TestData";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Moment from "react-moment";
 import "moment/locale/th";
 
 //คลิกเข้าไป comment
 const Feed = () => {
+  const params = useParams();
   //back button : useNavigate
   let navigate = useNavigate();
   const [values, setValues] = useState({
