@@ -20,6 +20,7 @@ const CreatePost = () => {
     e.preventDefault();
     createPost(values, "1").then((res) => {
       console.log(res.data);
+      window.location.reload(false);
     });
   };
 
