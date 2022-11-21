@@ -17,6 +17,7 @@ import HomeTutor from "./pages/HomeTutor";
 import HistoryStudent from "./pages/HistoryStudent";
 import ApplyTutor from "./pages/ApplyTutor";
 import Community from "./pages/Community";
+import Feed from "./pages/Community/components/Feed";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
           <Route path="/applytutor" element={<ApplyTutor />} />
 
           <Route path="/community" element={<Community />} />
+          <Route path="/feed/:id" element={<Feed />} />
 
           {/* Layout Navbar ยังทำไม่ได้คร่า*/}
           {/* <Route element={<LayoutStudent/>}>

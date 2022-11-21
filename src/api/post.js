@@ -17,15 +17,9 @@ export const createPost = async (value, id) => {
   return await axios.post("http://localhost:9090/api/users/" + id, value);
 };
 
-// export const updatePost = async (authtoken, value, id) => {
+// export const updatePost = async (authtoken, value, valu , id) => {
 //   return await axios.put("http://localhost:5000/posts/edit-post/" + id,
-//     value,
-//     {
-//       headers: {
-//         Authorization: `Bearer ${authtoken}`,
-//       },
-//     }
-//   );
+
 // };
 
 export const removePost = async (id) => {

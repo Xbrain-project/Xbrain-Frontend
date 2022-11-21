@@ -3,6 +3,7 @@ import { createPost } from "../../../api/post";
 import { useNavigate } from "react-router-dom";
 import TestData from "./TestData";
 import Blog from "./Blog";
+import axios from "axios";
 
 //Create Post
 const CreatePost = () => {
@@ -10,13 +11,14 @@ const CreatePost = () => {
     title: "",
     content: "",
   });
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     createPost(values, "1").then((res) => {
       console.log(res.data);
@@ -40,8 +42,8 @@ const CreatePost = () => {
             <input
               name="title"
               type="text"
-              placeholder="กรุณากรอกหัวข้อ..."
               onChange={handleChange}
+              placeholder="กรุณากรอกหัวข้อ..."
               className="mt-1 w-full px-3 py-2 bg-white-100 border border-slate-300 rounded-md text-base md:text-lg shadow-sm placeholder-slate-400
       focus:outline-none focus:border-primary-80 focus:ring-1 focus:ring-primary-80
       invalid:border-[#FF3358] invalid:text-[#FF3358]
@@ -69,7 +71,7 @@ const CreatePost = () => {
         </div>
         {/* button submit */}
         <button
-          className="mt-4 px-6 py-3.5 font-bold text-2xl md:text-3xl rounded-2xl bg-primary-80 text-white-100 hover:bg-primary-100"
+          className="mt-4 px-4 py-3 font-bold text-2xl md:text-3xl rounded-2xl bg-primary-80 text-white-100 hover:bg-primary-100"
           onClick={handleSubmit}
         >
           โพสต์
