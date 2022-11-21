@@ -11,6 +11,7 @@ function Card() {
       id: "1",
       image: `${avatarTutor}`,
       nameTutor: "พี่โอม",
+      
       gradFrom: "KMITL",
       subject: "ไทย",
       classTeach: "ปริญญาตรี",
@@ -88,7 +89,7 @@ function Card() {
                   </h4>
 
                   <p class="mt-3 text-md font-bold text-skin-base leading-5">
-                    จบจาก: {detail.gradFrom}
+                  กำลังศึกษาอยู่ที่/จบจาก: {detail.gradFrom}
                   </p>
                   <p class="mt-3 text-md font-bold text-skin-base leading-5">
                     วิชาที่สอน: {detail.subject}
