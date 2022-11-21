@@ -4,6 +4,7 @@ import forgotpass from "../../assets/pics/forgotpass1.jpg";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);

@@ -45,7 +45,7 @@ function App() {
           <Route path="/applytutor" element={<ApplyTutor />} />
 
           <Route path="/community" element={<Community />} />
-          <Route path="/feed" element={<Feed />} />
+          <Route path="/feed/:id" element={<Feed />} />
 
           {/* Layout Navbar ยังทำไม่ได้คร่า*/}
           {/* <Route element={<LayoutStudent/>}>

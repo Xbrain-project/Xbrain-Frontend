@@ -27,13 +27,6 @@ const Blog = () => {
       });
   };
 
-  // const [values, setValues] = useState([]);
-
-  // useEffect(() => {
-  //   setValues(TestData);
-  //   //console.log(TestData);
-  // }, [TestData]);
-
   return (
     <div className="container items-center justify-center mx-auto w-full md:w-3/5 bg-slate-200">
       <div className="flex flex-col md:flex-row gap-6">
@@ -48,13 +41,11 @@ const Blog = () => {
               ข่าวสาร
             </h1>
             {/* Map data */}
-            {/* {values.map((value) => (
-              <CardBlog title={value.title} content={value.content} />
-            ))} */}
-            {/*path :  {`/Feed/?id=${recivePost._id}`} */}
-            <Link to={`/Feed`} className="">
-              <CardBlog title="ควย" content="yesh" />
-            </Link>
+            {values.map((value) => (
+              <Link to={`/Feed/${value.id}`} className="">
+                <CardBlog title={value.title} content={value.content} />
+              </Link>
+            ))}
           </div>
         </div>
       </div>

@@ -3,6 +3,7 @@ import { createPost } from "../../../api/post";
 import { useNavigate } from "react-router-dom";
 import TestData from "./TestData";
 import Blog from "./Blog";
+import axios from "axios";
 
 //Create Post
 const CreatePost = () => {
@@ -10,15 +11,18 @@ const CreatePost = () => {
     title: "",
     content: "",
   });
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     createPost(values, "1").then((res) => {
       console.log(res.data);
+      window.location.reload(false);
     });
   };
 
