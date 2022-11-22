@@ -14,7 +14,7 @@ const Feed = () => {
   const [values, setValues] = useState({
     title: "",
     content: "",
-    username: "",
+    name: "",
     imgSrc: "",
     dataCreated: "",
   });
@@ -60,12 +60,12 @@ const Feed = () => {
   //back button : useNavigate
   let navigate = useNavigate();
 
+  let storeEmail = localStorage.getItem("email");
   const handleChange = (e) => {
     setNewComment({
       ...newComment,
       [e.target.name]: e.target.value,
-      email: "w8@gmail.com",
-      // TODO: แก้เอา email user มาใส่
+      email: storeEmail,
     });
   };
 
@@ -102,7 +102,7 @@ const Feed = () => {
           <div className="flex w-full min-w-0 flex-col -space-y-1">
             {/* ชื่อคนโพสต์ + ชื่อมหาลัย */}
             <div className="pb-2 text-blck font-semibold text-lg text-left md:text-xl">
-              {values.username}
+              {values.name}
             </div>
             <div className="text-sm font-normal">
               {moment(values.dataCreated).format("DD-MM-YYYY")}
@@ -136,9 +136,7 @@ const Feed = () => {
               // TODO: แก้เอา imgSrc มาใส่
             </div>
             <div className="rounded-md px-6 py-2 bg-[#D7C9FF]">
-              <div className="font-semibold text-lg">
-                {i.userEntity.username}
-              </div>
+              <div className="font-semibold text-lg">{i.userEntity.name}</div>
               <div className="text-base md:text-lg">{i.content}</div>
             </div>
             <Moment
