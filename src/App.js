@@ -70,6 +70,7 @@ function App() {
               <Route path="/community" element={<Community />} />
               </Route>
            
+           
         </Routes>
       </div>
     </PayPalScriptProvider>
