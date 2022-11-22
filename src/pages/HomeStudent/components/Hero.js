@@ -29,10 +29,17 @@ const Hero = () => {
           </div>
 
           {/* button click */}
+
+          <Link to="/Payment">
+          <button className="mt-6 px-6 py-3.5 font-bold text-3xl rounded-2xl bg-primary-80 text-white-100 hover:bg-primary-100">
+            สมัครเรียน
+          </button>
+
           <Link to={"/findtutor"}>
             <button className="mt-6 px-6 py-3.5 font-bold text-3xl rounded-2xl bg-primary-80 text-white-100 hover:bg-primary-100">
               สมัครเรียน
             </button>
+
           </Link>
         </div>
         {/* right side */}
