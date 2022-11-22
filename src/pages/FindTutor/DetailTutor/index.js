@@ -73,7 +73,6 @@ function DetailTutor() {
     friDayTeach: false, //
     saturDayTeach: false, //
     sunDayTeach: false, //
-
   });
 
   {
@@ -157,42 +156,51 @@ function DetailTutor() {
     friDayTeach: true, //
     saturDayTeach: true, //
     sunDayTeach: false, //
-   
   });
   //------------------------########*-*SUBMIT*-*########-----------------------------
-  const returnObj = (e) =>{
-    
 
+  const getTrueKey = obj => {
+    for (const key in obj) {
+
+
+      var keys = Object.keys(obj);
+
+var filtered = keys.filter(function(key) {
+    return obj[key]
+});
+
+
+
+    };
+    return filtered;
   };
 
 
   const onSubmit = (e) => {
-    const upload = {
-      dayTutorReg,
-     // subjectReg,
-     // price,
-      placeReg,
-      typeReg,
-    };
-    console.log("submit uplond", upload);
 
-   
-    for (var va of Object.entries(upload)) {
-    console.log(typeof(va)  + " -> " + va)
-   
-  }
+    let dayTutorRegTrue = getTrueKey(dayTutorReg);
+    let placeRegTrue = getTrueKey(placeReg);
+    let typeRegTrue = getTrueKey(typeReg);
 
+    const uplondReg = { RegStudentSubmit:[{    //###########################################################################ไอ้ตัวนี้เอาไว้ส่งงงงงงงงงงงงงงงงงงงงงงงงงงงงงงง
+      dayTutorRegTrue,
+      subjectReg,
+      price,
+      placeRegTrue,
+      typeRegTrue,}]
 
+    }
+    console.log("submit uplond", uplondReg);
   
+
+   
 
     // fillterTrue = upload.map(upload => {
     //   var keys = Object.keys(upload);
-    //   var 
+    //   var
 
-    //   return   
+    //   return
     // })
-   
-
   };
 
   //-----------Any Funcation---------------------------------------
@@ -323,22 +331,20 @@ function DetailTutor() {
   };
 
   const initialStateDayTutorReg = {
-    monDayTeach: false,  // คืนค่าต่างๆ เป็น false
+    monDayTeach: false, // คืนค่าต่างๆ เป็น false
     tuesDayTeach: false, //
     wednesDayTeach: false, //
     thursDayTeach: false, //
     friDayTeach: false, //
     saturDayTeach: false, //
     sunDayTeach: false, //
- 
   };
-
 
   const resetState = () => {
     //แก้แล้ว
     setDayTutorReg(initialStateDayTutorReg);
     setSubjectRegCheck(initialStateSubjectRegCheck);
-    setSubjectReg(initialStateSubjectReg)
+    setSubjectReg(initialStateSubjectReg);
     setTypeReg(initialStateTypeReg);
     setPlaceReg(initialStatePlaceReg);
     setShowModalSuccess(false);
@@ -348,11 +354,11 @@ function DetailTutor() {
   const [showModal, setShowModal] = useState(false);
   const [showModalSuccess, setShowModalSuccess] = useState(false);
 
-  console.log("day has hit", dayTutorReg);
-  console.log("subject has hit", subjectReg);
-  console.log("subjectRegCheck has hit", subjectRegCheck);
-  console.log("type has hit", typeReg);
-  console.log("place has hit", placeReg);
+  // console.log("day has hit", dayTutorReg);
+  // console.log("subject has hit", subjectReg);
+  // console.log("subjectRegCheck has hit", subjectRegCheck);
+  // console.log("type has hit", typeReg);
+  // console.log("place has hit", placeReg);
 
   return (
     <>
@@ -637,7 +643,6 @@ function DetailTutor() {
                     <div className="pb-5 pt-5 flex flex-row space-x-1">
                       <div className="ml-1 mr-3">
                         <div className="flex items-center mb-4 ">
-
                           <input
                             type="radio"
                             id="english"
@@ -677,12 +682,12 @@ function DetailTutor() {
                           <label className="block text-gray-700 text-m ml-4 mr-1 ">
                             ภาษาอังกฤษ
                           </label>
-                          <labe
+                          <label
                             className={`text-m ml-1   
                           ${subject.english ? "text-[black]" : "invisible"}`}
                           >
                             ราคา: {price.english} บาท/ชม.
-                          </labe>
+                          </label>
                         </div>
                         <div className="flex items-center mb-4">
                           <input
@@ -724,12 +729,12 @@ function DetailTutor() {
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             คณิตศาสตร์
                           </label>
-                          <labe
+                          <label
                             className={`text-m ml-1
                           ${subject.maths ? "text-[black]" : "invisible"}`}
                           >
                             ราคา: {price.maths} บาท/ชม.
-                          </labe>
+                          </label>
                         </div>
                         <div className="flex items-center mb-4">
                           <input
@@ -769,12 +774,12 @@ function DetailTutor() {
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             ชีวะวิทยา
                           </label>
-                          <labe
+                          <label
                             className={`text-m ml-1
                           ${subject.bio ? "text-[black]" : "invisible"}`}
                           >
                             ราคา: {price.bio} บาท/ชม.
-                          </labe>
+                          </label>
                         </div>
                         <div className="flex items-center mb-4">
                           <input
@@ -814,12 +819,12 @@ function DetailTutor() {
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             ฟิสิกส์
                           </label>
-                          <labe
+                          <label
                             className={`text-m ml-1
                           ${subject.physics ? "text-[black]" : "invisible"}`}
                           >
                             ราคา: {price.physics} บาท/ชม.
-                          </labe>
+                          </label>
                         </div>
                         <div className="flex items-center mb-4">
                           <input
@@ -859,12 +864,12 @@ function DetailTutor() {
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             เคมี
                           </label>
-                          <labe
+                          <label
                             className={`text-m ml-1
                           ${subject.chemistry ? "text-[black]" : "invisible"}`}
                           >
                             ราคา: {price.chemistry} บาท/ชม.
-                          </labe>
+                          </label>
                         </div>
                         <div className="flex items-center mb-4">
                           <input
@@ -904,12 +909,12 @@ function DetailTutor() {
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             ภาษาไทย
                           </label>
-                          <labe
+                          <label
                             className={`text-m ml-1
                           ${subject.thai ? "text-[black]" : "invisible"}`}
                           >
                             ราคา: {price.thai} บาท/ชม.
-                          </labe>
+                          </label>
                         </div>
                         <div className="flex items-center mb-4">
                           <input
@@ -949,12 +954,12 @@ function DetailTutor() {
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             สังคม
                           </label>
-                          <labe
+                          <label
                             className={`text-m ml-1
                           ${subject.social ? "text-[black]" : "invisible"}`}
                           >
                             ราคา: {price.social} บาท/ชม.
-                          </labe>
+                          </label>
                         </div>
                         <div className="flex items-center mb-4">
                           <input
@@ -994,12 +999,12 @@ function DetailTutor() {
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             GAT เชื่อมโยง
                           </label>
-                          <labe
+                          <label
                             className={`text-m ml-1
                           ${subject.gat ? "text-[black]" : "invisible"}`}
                           >
                             ราคา: {price.gat} บาท/ชม.
-                          </labe>
+                          </label>
                         </div>
                         <div className="flex items-center mb-4">
                           <input
@@ -1039,12 +1044,12 @@ function DetailTutor() {
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             ดาราศาสตร์
                           </label>
-                          <labe
+                          <label
                             className={`text-m ml-1
                           ${subject.astronomy ? "text-[black]" : "invisible"}`}
                           >
                             ราคา: {price.astronomy} บาท/ชม.
-                          </labe>
+                          </label>
                         </div>
                       </div>
                       <div className="ml-1">
@@ -1086,12 +1091,12 @@ function DetailTutor() {
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             วิทยาศาสตร์
                           </label>
-                          <labe
+                          <label
                             className={`text-m ml-1
                           ${subject.science ? "text-[black]" : "invisible"}`}
                           >
                             ราคา: {price.science} บาท/ชม.
-                          </labe>
+                          </label>
                         </div>
                         <div className="flex items-center mb-4">
                           <input
@@ -1131,12 +1136,12 @@ function DetailTutor() {
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             ภาษาฝรั่งเศส
                           </label>
-                          <labe
+                          <label
                             className={`text-m ml-1
                           ${subject.french ? "text-[black]" : "invisible"}`}
                           >
                             ราคา: {price.french} บาท/ชม.
-                          </labe>
+                          </label>
                         </div>
                         <div className="flex items-center mb-4">
                           <input
@@ -1176,12 +1181,12 @@ function DetailTutor() {
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             ภาษาเยอรมัน
                           </label>
-                          <labe
+                          <label
                             className={`text-m ml-1
                           ${subject.german ? "text-[black]" : "invisible"}`}
                           >
                             ราคา: {price.german} บาท/ชม.
-                          </labe>
+                          </label>
                         </div>
                         <div className="flex items-center mb-4">
                           <input
@@ -1221,12 +1226,12 @@ function DetailTutor() {
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             ภาษาญี่ปุ่น
                           </label>
-                          <labe
+                          <label
                             className={`text-m ml-1
                           ${subject.japanese ? "text-[black]" : "invisible"}`}
                           >
                             ราคา: {price.japanese} บาท/ชม.
-                          </labe>
+                          </label>
                         </div>
                         <div className="flex items-center mb-4">
                           <input
@@ -1266,12 +1271,12 @@ function DetailTutor() {
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             ภาษาอาหรับ
                           </label>
-                          <labe
+                          <label
                             className={`text-m ml-1
                           ${subject.arabic ? "text-[black]" : "invisible"}`}
                           >
                             ราคา: {price.arabic} บาท/ชม.
-                          </labe>
+                          </label>
                         </div>
                         <div className="flex items-center mb-4">
                           <input
@@ -1311,12 +1316,12 @@ function DetailTutor() {
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             ภาษาเกาหลี
                           </label>
-                          <labe
+                          <label
                             className={`text-m ml-1
                           ${subject.korean ? "text-[black]" : "invisible"}`}
                           >
                             ราคา: {price.korean} บาท/ชม.
-                          </labe>
+                          </label>
                         </div>
                         <div className="flex items-center mb-4">
                           <input
@@ -1356,12 +1361,12 @@ function DetailTutor() {
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             ภาษารัสเซีย
                           </label>
-                          <labe
+                          <label
                             className={`text-m ml-1
                           ${subject.russian ? "text-[black]" : "invisible"}`}
                           >
                             ราคา: {price.russian} บาท/ชม.
-                          </labe>
+                          </label>
                         </div>
                         <div className="flex items-center mb-4">
                           <input
@@ -1401,12 +1406,12 @@ function DetailTutor() {
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             ภาษาจีน
                           </label>
-                          <labe
+                          <label
                             className={`text-m ml-1
                           ${subject.chinese ? "text-[black]" : "invisible"}`}
                           >
                             ราคา: {price.chinese} บาท/ชม.
-                          </labe>
+                          </label>
                         </div>
                         <div className="flex items-center mb-4">
                           <input
@@ -1446,14 +1451,14 @@ function DetailTutor() {
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             เขียนโปรแกรม
                           </label>
-                          <labe
+                          <label
                             className={`text-m ml-1
                           ${
                             subject.programming ? "text-[black]" : "invisible"
                           }`}
                           >
                             ราคา: {price.programming} บาท/ชม.
-                          </labe>
+                          </label>
                         </div>
                       </div>
                     </div>
@@ -1731,7 +1736,7 @@ function DetailTutor() {
                     className="text-md text-[#855CF8] bg-transparent border border-green-700 hover:bg-[gray] hover:text-[white] focus:ring-2 focus:outline-none focus:ring-green-300 font-medium rounded-lg  px-5 py-1.5 text-center dark:border-green-800 dark:text-green-800 dark:hover:text-white"
                     data-dismiss-target="#alert-additional-content-3"
                     aria-label="Close"
-                    onClick={() => setShowModalSuccess(false)& resetState()}
+                    onClick={() => setShowModalSuccess(false) & resetState()}
                   >
                     ปิด
                   </button>
