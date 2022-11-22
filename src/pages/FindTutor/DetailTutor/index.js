@@ -26,6 +26,7 @@ function DetailTutor() {
   const [subjectReg, setSubjectReg] = useState({
     // เก็บค่า checkbox ของวิชาต่างๆ จากที่จอง ส่งไปหลังบ้าน
     subject: "",
+    id:"",
   });
 
   const [typeReg, setTypeReg] = useState({
@@ -248,11 +249,13 @@ var filtered = keys.filter(function(key) {
   function handleChangeRegSubjectCheckbox(event) {
     //การเปลี่ยนแปรงค่าเมื่อ checkbox วิชาต่างๆ Return ออกมาเป็น string
     console.log(event);
-    const { name, value, type, checked } = event.target;
+    const { name, id ,value, type, checked,title  } = event.target;
     setSubjectReg((prevFormData) => {
       return {
         ...prevFormData,
         [name]: type === "checkbox" ? checked : value,
+        [title]: type === "checkbox" ? checked : id,
+
       };
     });
   }
@@ -644,10 +647,11 @@ var filtered = keys.filter(function(key) {
                       <div className="ml-1 mr-3">
                         <div className="flex items-center mb-4 ">
                           <input
+                             title="id"
                             type="radio"
                             id="english"
                             name="subject"
-                            value={"ภาษาอังกฤษ"}
+                            value={`ภาษาอังกฤษ`}
                             checked={subjectReg.subject === "ภาษาอังกฤษ"}
                             onChange={(e) => {
                               handleChangeRegSubjectCheckCheckbox(e);
