@@ -1,15 +1,43 @@
-import React from 'react';
-import { useForm } from 'react-hook-form';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function SignUpTutor() {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => {
-        console.log(data);
-    }
-    // {alert(JSON.stringify(data))}
+    //เก็บค่า form sign up
+    const [form, setForm] = useState({ 
+        email: "",
+        password: "",
+        cfpassword: "",
+        role: "tutor",
+    })
 
-    console.log(watch("example"));
+    const navigate = useNavigate();
+
+    // change
+    const handleChange = (e) => {  
+        setForm({ ...form, 
+           [e.target.name]: e.target.value });
+         
+    };
+
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (form.password !== form.cfpassword) {
+          alert("Password not match");
+        } else {
+          signup(form)
+            .then((res) => {
+              console.log(res);
+              alert("Register Success!");
+              navigate("/")
+            })
+            .catch((err) => {
+              console.log(err);
+              
+            });
+        }
+      }
     return(    
         <div className="bg-purple-200 w-full h-full">
         <div 
@@ -20,7 +48,7 @@ export default function SignUpTutor() {
                     <div 
                     className=" w-9/12 p-10">
                     {/* <!-- Form --> */}
-                    <form onSubmit={handleSubmit(onSubmit)}>
+                    <form onSubmit={handleSubmit}>
                     <div className="text-center font-bold text-6xl text-primary-80 py-5">
                         Register
                     </div>
@@ -43,14 +71,16 @@ export default function SignUpTutor() {
                         <input
                         type="email"
                         name="email"
-                        style={{borderColor: errors.email ? "red" :"", }}
+                        //style={{borderColor: errors.email ? "red" :"", }}
                         className="form-control block w-full px-4 py-2 bg-white-100 bg-clip-padding border border-solid border-gray-50 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                         placeholder='you@gmail.com'
-                        {...register("email", {required : 'Email is required'})}
+                        onSubmit={handleChange}
+                        required
+                        //{...register("email", {required : 'Email is required'})}
                         />
-                            {errors.email && <span style={{color : "red"}}>
+                            {/* {errors.email && <span style={{color : "red"}}>
                             {errors.email.message}
-                            </span>}
+                            </span>} */}
                     </div>
                     
 
@@ -63,19 +93,21 @@ export default function SignUpTutor() {
                         <input
                         type="password"
                         name='password'
-                        style={{borderColor: errors.password ? "red" :"", }}
+                        //style={{borderColor: errors.password ? "red" :"", }}
                         className="form-control block w-full px-4 py-2 bg-white-100 bg-clip-padding border border-solid border-gray-50 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                         placeholder="******************"
-                        {...register("password", {required : 'Password is required',
-                            minLength:{
-                                value: 8,
-                                message: 'Password must be at least 8 characters.'
-                            }
-                            })}
+                        onSubmit={handleChange}
+                        required
+                        // {...register("password", {required : 'Password is required',
+                        //     minLength:{
+                        //         value: 8,
+                        //         message: 'Password must be at least 8 characters.'
+                        //     }
+                        //     })}
                         />
-                            {errors.password && <span style={{color : "red"}}>
+                            {/* {errors.password && <span style={{color : "red"}}>
                             {errors.password.message}
-                            </span>}
+                            </span>} */}
                     </div>
 
                     {/* <!-- Confirm Password input --> */}
@@ -87,20 +119,23 @@ export default function SignUpTutor() {
                         <input
                         type="cfpassword"
                         name='cfpassword'
-                        style={{borderColor: errors.cfpassword ? "red" :"", }}
+                        //style={{borderColor: errors.cfpassword ? "red" :"", }}
+                        
                         className="form-control block w-full px-4 py-2 bg-white-100 bg-clip-padding border border-solid border-gray-50 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                         placeholder="******************"
-                        {...register("cfpassword", {required : 'Confirm Password is required',
-                            minLength:{
-                                value: 8,
-                                message: 'ConFirm Password must be at least 8 characters.'
-                            },
-                            validate: (value) => value === watch('password') || "Password do not match.",
-                            })}
+                        onSubmit={handleChange}
+                        required
+                        // {...register("cfpassword", {required : 'Confirm Password is required',
+                        //     minLength:{
+                        //         value: 8,
+                        //         message: 'ConFirm Password must be at least 8 characters.'
+                        //     },
+                        //     validate: (value) => value === watch('password') || "Password do not match.",
+                        //     })}
                         />
-                            {errors.cfpassword && <span style={{color : "red"}}>
+                            {/* {errors.cfpassword && <span style={{color : "red"}}>
                             {errors.cfpassword.message}
-                            </span>}
+                            </span>} */}
                     </div>
 
                     {/* <!-- Submit button --> */}
