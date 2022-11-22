@@ -13,8 +13,8 @@ export const currentPost = async (id) => {
   return await axios.get("http://localhost:9090/api/posts/" + id);
 };
 
-export const createPost = async (value, id) => {
-  return await axios.post("http://localhost:9090/api/users/" + id, value);
+export const createPost = async (value) => {
+  return await axios.post("http://localhost:9090/api/users/post", value);
 };
 
 // export const updatePost = async (authtoken, value, valu , id) => {

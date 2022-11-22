@@ -10,17 +10,23 @@ const CreatePost = () => {
   const [values, setValues] = useState({
     title: "",
     content: "",
+    email: "",
   });
 
   const navigate = useNavigate();
 
+  let storeEmail = localStorage.getItem("email");
   const handleChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value,
+      email: storeEmail,
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    createPost(values, "1").then((res) => {
+    createPost(values).then((res) => {
       console.log(res.data);
       window.location.reload(false);
     });

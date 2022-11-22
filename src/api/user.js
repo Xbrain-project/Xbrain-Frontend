@@ -14,7 +14,7 @@ export const login = async (value) => {
   return await axios.post("http://localhost:8080/api/login", value);
 };
 
-export const register = async (value) => {
+export const signUp = async (value) => {
   return await axios.post("http://localhost:8080/api/register", value);
 };
 

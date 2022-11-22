@@ -35,13 +35,18 @@ export default function Login() {
 
     login(form)
       .then((res) => {
-        console.log(res.data);
+        if (res.data.role == "student") {
+          localStorage.setItem("id", res.data.student_id);
+        } else {
+          localStorage.setItem("id", res.data.teacher_id);
+        }
+        console.log(res.data.student_id);
+        localStorage.setItem("role", res.data.role); // ***เก็บ token โดยใช้ข้อมูลจาก res
+        localStorage.setItem("email", res.data.email); // ***เก็บ token โดยใช้ข้อมูลจาก res
+
         // แจ้งเตือน alert
         roleBaseRedirect(res.data.role); // เช็คถ้าเป็น role ไหนให้ไปหน้านั้น โดยใช้ข้อมูลจาก res
         alert(" Login Success");
-
-        localStorage.setItem("id", res.data.id); // ***เก็บ token โดยใช้ข้อมูลจาก res
-        localStorage.setItem("role", res.data.role);
       })
       .catch((err) => {
         console.log("Login:", err.response.data);
