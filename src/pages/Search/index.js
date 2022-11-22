@@ -180,7 +180,7 @@ function Search() {
                 onChange={handleChangeSubjectCheckbox} // checkbox อังกฤษ
               ></input>
               <label
-                for="english"
+                htmlFor="english" 
                 className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg   text-center">อังกฤษ</div>
@@ -197,7 +197,7 @@ function Search() {
                 onChange={handleChangeSubjectCheckbox} // checkbox คณิตศาสตร์
               ></input>
               <label
-                for="maths"
+                htmlFor="maths"
                 className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg  text-center">คณิตศาสตร์</div>
@@ -214,7 +214,7 @@ function Search() {
                 onChange={handleChangeSubjectCheckbox} // checkbox ชีวะ
               ></input>
               <label
-                for="bio"
+                htmlFor="bio"
                 className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg  text-center">ชีวะ</div>
@@ -231,7 +231,7 @@ function Search() {
                 onChange={handleChangeSubjectCheckbox} // checkbox ฟิสิกส์
               ></input>
               <label
-                for="physics"
+                htmlFor="physics"
                 className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg   text-center">ฟิสิกส์</div>
@@ -248,7 +248,7 @@ function Search() {
                 onChange={handleChangeSubjectCheckbox} // checkbox เคมี
               ></input>
               <label
-                for="chemistry"
+                htmlFor="chemistry"
                 className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg   text-center">เคมี</div>
@@ -265,7 +265,7 @@ function Search() {
                 onChange={handleChangeSubjectCheckbox} // checkbox ภาษาไทย
               ></input>
               <label
-                for="thai"
+                htmlFor="thai"
                 className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg  text-center">ภาษาไทย</div>
@@ -286,7 +286,7 @@ function Search() {
                 onChange={handleChangeSubjectCheckbox} // checkbox อังกฤษ
               ></input>
               <label
-                for="science"
+                htmlFor="science"
                 className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg   text-center">วิทยาศาสตร์</div>
@@ -303,7 +303,7 @@ function Search() {
                 onChange={handleChangeSubjectCheckbox} // checkbox คณิตศาสตร์
               ></input>
               <label
-                for="social"
+                htmlFor="social"
                 className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg   text-center">สังคม</div>
@@ -320,7 +320,7 @@ function Search() {
                 onChange={handleChangeSubjectCheckbox} // checkbox ชีวะ
               ></input>
               <label
-                for="gat"
+                htmlFor="gat"
                 className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg  text-center">GAT เชื่อมโยง</div>
@@ -337,7 +337,7 @@ function Search() {
                 onChange={handleChangeSubjectCheckbox} // checkbox ฟิสิกส์
               ></input>
               <label
-                for="astronomy"
+                htmlFor="astronomy"
                 className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg   text-center">ดาราศาสตร์</div>
@@ -354,7 +354,7 @@ function Search() {
                 onChange={handleChangeSubjectCheckbox} // checkbox เคมี
               ></input>
               <label
-                for="french"
+                htmlFor="french"
                 className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg   text-center">ภาษาฝรั่งเศส</div>
@@ -371,7 +371,7 @@ function Search() {
                 onChange={handleChangeSubjectCheckbox} // checkbox ภาษาไทย
               ></input>
               <label
-                for="german"
+                htmlFor="german"
                 className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg  text-center">ภาษาเยอรมัน</div>
@@ -392,7 +392,7 @@ function Search() {
                 onChange={handleChangeSubjectCheckbox} // checkbox อังกฤษ
               ></input>
               <label
-                for="japanese"
+                htmlFor="japanese"
                 className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg   text-center">ภาษาญี่ปุ่น</div>
@@ -409,7 +409,7 @@ function Search() {
                 onChange={handleChangeSubjectCheckbox} // checkbox คณิตศาสตร์
               ></input>
               <label
-                for="arabic"
+                htmlFor="arabic"
                 className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg   text-center">ภาษาอาหรับ</div>
@@ -426,7 +426,7 @@ function Search() {
                 onChange={handleChangeSubjectCheckbox} // checkbox ชีวะ
               ></input>
               <label
-                for="korean"
+                htmlFor="korean"
                 className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg  text-center">ภาษาเกาหลี</div>
@@ -443,7 +443,7 @@ function Search() {
                 onChange={handleChangeSubjectCheckbox} // checkbox ฟิสิกส์
               ></input>
               <label
-                for="russian"
+                htmlFor="russian"
                 className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg   text-center">ภาษารัสเซีย</div>
@@ -460,7 +460,7 @@ function Search() {
                 onChange={handleChangeSubjectCheckbox} // checkbox เคมี
               ></input>
               <label
-                for="chinese"
+                htmlFor="chinese"
                 className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg   text-center">ภาษาจีน</div>
@@ -477,7 +477,7 @@ function Search() {
                 onChange={handleChangeSubjectCheckbox} // checkbox ภาษาไทย
               ></input>
               <label
-                for="programming"
+                htmlFor="programming"
                 className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg  text-center">เขียนโปรแกรม</div>
@@ -503,7 +503,7 @@ function Search() {
                 onChange={handleChangeClassCheckbox} // checkbox อนุบาล
               ></input>
               <label
-                for="kindergarten"
+                htmlFor="kindergarten"
                 className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg   text-center">อนุบาล</div>
@@ -520,7 +520,7 @@ function Search() {
                 onChange={handleChangeClassCheckbox} // checkbox ประถม
               ></input>
               <label
-                for="primary"
+                htmlFor="primary"
                 className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg  text-center">ประถม</div>
@@ -537,7 +537,7 @@ function Search() {
                 onChange={handleChangeClassCheckbox} // checkbox มัธยมต้น
               ></input>
               <label
-                for="middle"
+                htmlFor="middle"
                 className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg  text-center">มัธยมต้น</div>
@@ -557,7 +557,7 @@ function Search() {
                 onChange={handleChangeClassCheckbox} // checkbox มัธยมปลาย
               ></input>
               <label
-                for="high"
+                htmlFor="high"
                 className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg   text-center">มัธยมปลาย</div>
@@ -574,7 +574,7 @@ function Search() {
                 onChange={handleChangeClassCheckbox} // checkbox มหาลัย
               ></input>
               <label
-                for="college"
+                htmlFor="college"
                 className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg  text-center">มหาลัย</div>
@@ -591,7 +591,7 @@ function Search() {
                 onChange={handleChangeClassCheckbox} // checkbox เรียนจบแล้ว
               ></input>
               <label
-                for="graduated"
+                htmlFor="graduated"
                 className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg  text-center">เรียนจบแล้ว</div>
@@ -619,7 +619,7 @@ function Search() {
                 onChange={handleChangeTypeCheckbox} // checkbox เพิ่มเกรดแต่ละชั้นปี
               ></input>
               <label
-                for="grade"
+                htmlFor="grade"
                 className="inline-flex justify-between items-center h-12 w-44 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg   text-center">
@@ -638,7 +638,7 @@ function Search() {
                 onChange={handleChangeTypeCheckbox} // checkbox สอบเข้ามัธยมต้น
               ></input>
               <label
-                for="enPrimary"
+                htmlFor="enPrimary"
                 className="inline-flex justify-between items-center h-12 w-44 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg  text-center">
@@ -657,7 +657,7 @@ function Search() {
                 onChange={handleChangeTypeCheckbox} // checkbox สอบเข้ามัธยมปลาย
               ></input>
               <label
-                for="enHigh"
+                htmlFor="enHigh"
                 className="inline-flex justify-between items-center h-12 w-44 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg  text-center">
@@ -679,7 +679,7 @@ function Search() {
                 onChange={handleChangeTypeCheckbox} // checkbox สอบเข้ามหาลัย
               ></input>
               <label
-                for="entrance"
+                htmlFor="entrance"
                 className="inline-flex justify-between items-center h-12 w-44 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg   text-center">
@@ -698,7 +698,7 @@ function Search() {
                 onChange={handleChangeTypeCheckbox} // checkbox เพิ่มความรู้
               ></input>
               <label
-                for="knowledge"
+                htmlFor="knowledge"
                 className="inline-flex justify-between items-center h-12 w-44 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg  text-center">เพิ่มความรู้</div>
@@ -724,7 +724,7 @@ function Search() {
                 onChange={handleChangePlaceCheckbox} // checkbox ออนไลน์
               ></input>
               <label
-                for="online"
+                htmlFor="online"
                 className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg   text-center">ออนไลน์</div>
@@ -741,7 +741,7 @@ function Search() {
                 onChange={handleChangePlaceCheckbox} // checkbox ออนไซต์
               ></input>
               <label
-                for="onsite"
+                htmlFor="onsite"
                 className="inline-flex justify-between items-center h-12 w-36 text-black-100 rounded-lg border-2 border-gray-200 cursor-pointer  bg-[#D7C9FF] peer-checked:bg-primary-80   peer-checked:text-white-100 hover:border-primary-80 "
               >
                 <div className="w-full text-lg  text-center">ออนไซต์</div>

@@ -54,11 +54,11 @@ function App() {
           <Route path="/feed/:id" element={<Feed />} />
 
 
-          <Route path="/ProfileStudent" element={<ProfileStudent/>} />
-          <Route path="/ProfileTutor" element={<ProfileTutor/>} />
-          <Route path="/PostTeach" element={<PostTeach/>}/>
-          <Route path="/Search" element={<Search/>}/>
-          <Route path="/Contact" element={<Contact/>}/>
+          <Route path="/profilestudent" element={<ProfileStudent/>} />
+          <Route path="/profiletutor" element={<ProfileTutor/>} />
+          <Route path="/postteach" element={<PostTeach/>}/>
+          <Route path="/search" element={<Search/>}/>
+          <Route path="/contact" element={<Contact/>}/>
 
           {/* Layout Navbar ยังทำไม่ได้คร่า*/}
           {/* <Route element={<LayoutStudent/>}>
