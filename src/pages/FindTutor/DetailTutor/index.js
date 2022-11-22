@@ -647,8 +647,8 @@ var filtered = keys.filter(function(key) {
                       <div className="ml-1 mr-3">
                         <div className="flex items-center mb-4 ">
                           <input
-                             title="id"
                             type="radio"
+                            title="id"
                             id="english"
                             name="subject"
                             value={`ภาษาอังกฤษ`}
@@ -699,6 +699,7 @@ var filtered = keys.filter(function(key) {
                             value={"คณิตศาสตร์"}
                             name="subject"
                             type="radio"
+                            title="id"
                             checked={subjectReg.subject === "คณิตศาสตร์"}
                             onChange={(e) => {
                               handleChangeRegSubjectCheckCheckbox(e);
@@ -746,6 +747,7 @@ var filtered = keys.filter(function(key) {
                             value={"ชีวะวิทยา"}
                             name="subject"
                             type="radio"
+                            title="id"
                             checked={subjectReg.subject === "ชีวะวิทยา"}
                             onChange={(e) => {
                               handleChangeRegSubjectCheckCheckbox(e);
@@ -791,6 +793,7 @@ var filtered = keys.filter(function(key) {
                             value={"ฟิสิกส์"}
                             name="subject"
                             type="radio"
+                            title="id"
                             checked={subjectReg.subject === "ฟิสิกส์"}
                             onChange={(e) => {
                               handleChangeRegSubjectCheckCheckbox(e);
@@ -836,6 +839,7 @@ var filtered = keys.filter(function(key) {
                             value={"เคมี"}
                             name="subject"
                             type="radio"
+                            title="id"
                             checked={subjectReg.subject === "เคมี"}
                             onChange={(e) => {
                               handleChangeRegSubjectCheckCheckbox(e);
@@ -881,6 +885,7 @@ var filtered = keys.filter(function(key) {
                             value={"ไทย"}
                             name="subject"
                             type="radio"
+                            title="id"
                             checked={subjectReg.subject === "ไทย"}
                             onChange={(e) => {
                               handleChangeRegSubjectCheckCheckbox(e);
@@ -926,6 +931,7 @@ var filtered = keys.filter(function(key) {
                             value={"สังคม"}
                             name="subject"
                             type="radio"
+                            title="id"
                             checked={subjectReg.subject === "สังคม"}
                             onChange={(e) => {
                               handleChangeRegSubjectCheckCheckbox(e);
@@ -971,6 +977,7 @@ var filtered = keys.filter(function(key) {
                             value={"GAT เชื่อมโยง"}
                             name="subject"
                             type="radio"
+                            title="id"
                             checked={subjectReg.subject === "GAT เชื่อมโยง"}
                             onChange={(e) => {
                               handleChangeRegSubjectCheckCheckbox(e);
@@ -1016,6 +1023,7 @@ var filtered = keys.filter(function(key) {
                             value={"ดาราศาสตร์"}
                             name="subject"
                             type="radio"
+                            title="id"
                             checked={subjectReg.subject === "ดาราศาสตร์"}
                             onChange={(e) => {
                               handleChangeRegSubjectCheckCheckbox(e);
@@ -1063,6 +1071,7 @@ var filtered = keys.filter(function(key) {
                             value={"วิทยาศาสตร์"}
                             name="subject"
                             type="radio"
+                            title="id"
                             checked={subjectReg.subject === "วิทยาศาสตร์"}
                             onChange={(e) => {
                               handleChangeRegSubjectCheckCheckbox(e);
@@ -1108,6 +1117,7 @@ var filtered = keys.filter(function(key) {
                             value={"ภาษาฝรั่งเศส"}
                             name="subject"
                             type="radio"
+                            title="id"
                             checked={subjectReg.subject === "ภาษาฝรั่งเศส"}
                             onChange={(e) => {
                               handleChangeRegSubjectCheckCheckbox(e);
@@ -1153,6 +1163,7 @@ var filtered = keys.filter(function(key) {
                             value={"ภาษาเยอรมัน"}
                             name="subject"
                             type="radio"
+                            title="id"
                             checked={subjectReg.subject === "ภาษาเยอรมัน"}
                             onChange={(e) => {
                               handleChangeRegSubjectCheckCheckbox(e);
@@ -1198,6 +1209,7 @@ var filtered = keys.filter(function(key) {
                             value={"ภาษาญี่ปุ่น"}
                             name="subject"
                             type="radio"
+                            title="id"
                             checked={subjectReg.subject === "ภาษาญี่ปุ่น"}
                             onChange={(e) => {
                               handleChangeRegSubjectCheckCheckbox(e);
@@ -1243,6 +1255,7 @@ var filtered = keys.filter(function(key) {
                             value={"ภาษาอาหรับ"}
                             name="subject"
                             type="radio"
+                            title="id"
                             checked={subjectReg.subject === "ภาษาอาหรับ"}
                             onChange={(e) => {
                               handleChangeRegSubjectCheckCheckbox(e);
@@ -1288,6 +1301,7 @@ var filtered = keys.filter(function(key) {
                             value={"ภาษาเกาหลี"}
                             name="subject"
                             type="radio"
+                            title="id"
                             checked={subjectReg.subject === "ภาษาเกาหลี"}
                             onChange={(e) => {
                               handleChangeRegSubjectCheckCheckbox(e);
@@ -1333,6 +1347,7 @@ var filtered = keys.filter(function(key) {
                             value={"ภาษารัสเซีย"}
                             name="subject"
                             type="radio"
+                            title="id"
                             checked={subjectReg.subject === "ภาษารัสเซีย"}
                             onChange={(e) => {
                               handleChangeRegSubjectCheckCheckbox(e);
@@ -1378,6 +1393,7 @@ var filtered = keys.filter(function(key) {
                             value={"ภาษาจีน"}
                             name="subject"
                             type="radio"
+                            title="id"
                             checked={subjectReg.subject === "ภาษาจีน"}
                             onChange={(e) => {
                               handleChangeRegSubjectCheckCheckbox(e);
@@ -1423,6 +1439,7 @@ var filtered = keys.filter(function(key) {
                             value={"เขียนโปรแกรม"}
                             name="subject"
                             type="radio"
+                            title="id"
                             checked={subjectReg.subject === "เขียนโปรแกรม"}
                             onChange={(e) => {
                               handleChangeRegSubjectCheckCheckbox(e);
