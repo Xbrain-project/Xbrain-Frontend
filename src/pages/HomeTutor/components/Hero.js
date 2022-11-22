@@ -1,6 +1,7 @@
 import React from "react";
 import herotutor from "../../../assets/pics/herotutor.png";
 import lightbulb from "../../../assets/icons/lightbulb.png";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -29,10 +30,11 @@ const Hero = () => {
           </div>
 
           {/* button click */}
-
-          <button className="mt-6 px-6 py-3.5 font-bold text-3xl rounded-2xl bg-primary-80 text-white-100 hover:bg-primary-100">
-            ลงสอนพิเศษ
-          </button>
+          <Link to={"/postteach"}>
+            <button className="mt-6 px-6 py-3.5 font-bold text-3xl rounded-2xl bg-primary-80 text-white-100 hover:bg-primary-100">
+              ลงสอนพิเศษ
+            </button>
+          </Link>
         </div>
 
         {/* right side */}
