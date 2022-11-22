@@ -552,6 +552,7 @@ function Search() {
                 className="hidden peer"
                 checked={classTeach.college}
                 onChange={handleChangeClassCheckbox} // checkbox มหาลัย
+                required
               ></input>
               <label
                 for="college"

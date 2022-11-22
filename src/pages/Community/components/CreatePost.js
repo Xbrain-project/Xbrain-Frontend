@@ -44,10 +44,10 @@ const CreatePost = () => {
               type="text"
               onChange={handleChange}
               placeholder="กรุณากรอกหัวข้อ..."
-              className="mt-1 w-full px-3 py-2 bg-white-100 border border-slate-300 rounded-md text-base md:text-lg shadow-sm placeholder-slate-400
+              required
+              className="cool-input mt-1 w-full px-3 py-2 bg-white-100 border border-slate-300 rounded-md text-base md:text-lg shadow-sm placeholder-slate-400
       focus:outline-none focus:border-primary-80 focus:ring-1 focus:ring-primary-80
-      invalid:border-[#FF3358] invalid:text-[#FF3358]
-      focus:invalid:border-[#FF3358] focus:invalid:ring-[#FF3358]"
+   "
             />
           </label>
         </div>
@@ -62,10 +62,10 @@ const CreatePost = () => {
               type="text"
               onChange={handleChange}
               placeholder="กรุณากรอกรายละเอียด..."
+              required
               className="mt-1 w-full h-[200px] px-3 py-2 bg-white-100 border border-slate-300 rounded-md text-base md:text-lg shadow-sm placeholder-slate-400
       focus:outline-none focus:border-primary-80 focus:ring-1 focus:ring-primary-80
-      invalid:border-[#FF3358] invalid:text-[#FF3358]
-      focus:invalid:border-[#FF3358] focus:invalid:ring-[#FF3358]"
+      "
             />
           </label>
         </div>
