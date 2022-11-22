@@ -116,7 +116,7 @@ const Feed = () => {
       {/* comment toggle */}
       <div
         className="flex h-14 cursor-pointer items-center text-white-100 px-10 bg-primary-80 "
-        onClick={(e) => toggle()}
+        onClick={() => toggle()}
       >
         <div className="mr-3 text-lg md:text-xl font-semibold text-white-100">
           Comment
@@ -128,6 +128,7 @@ const Feed = () => {
           }`}
         />
       </div>
+
       {/* comment */}
       <div className="w-full bg-slate-200 py-4 pb-4 px-10 rounded-b-xl">
         {comment.map((i) => (
