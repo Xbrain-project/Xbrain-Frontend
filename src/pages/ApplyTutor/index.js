@@ -3,7 +3,7 @@ import DetailCard from "./components/DetailCard";
 
 const ApplyTutor = () => {
   return (
-    <div>
+    <div className="w-full justify-center">
       <DetailCard />
     </div>
   );

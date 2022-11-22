@@ -1,6 +1,7 @@
 import React from "react";
 import herostudent from "../../../assets/pics/herostudent.png";
 import lightbulb from "../../../assets/icons/lightbulb.png";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -28,14 +29,16 @@ const Hero = () => {
           </div>
 
           {/* button click */}
-          <button className="mt-6 px-6 py-3.5 font-bold text-3xl rounded-2xl bg-primary-80 text-white-100 hover:bg-primary-100">
-            สมัครเรียน
-          </button>
+          <Link to={"/findtutor"}>
+            <button className="mt-6 px-6 py-3.5 font-bold text-3xl rounded-2xl bg-primary-80 text-white-100 hover:bg-primary-100">
+              สมัครเรียน
+            </button>
+          </Link>
         </div>
         {/* right side */}
-        <div className="flex justify-center mb-10 md:self-end">
+        <div className="flex flex-col items-center justify-center mb-10 lg:self-end xl:self-end">
           <div className="relative">
-            <div className="bg-primary-50 absolute -top-10 left-1/2 -translate-x-1/2 w-[260px] h-[260px] rounded-full md:top-90 md:w-[600px] md:h-[600px] "></div>
+            <div className="bg-primary-50 absolute -top-10 left-1/2 -translate-x-1/2 rounded-full w-[260px] h-[260px] md:w-[320px] md:h-[320px] lg:top-90 lg:w-[600px] lg:h-[600px] "></div>
             <img
               src={herostudent}
               alt="herostudent"

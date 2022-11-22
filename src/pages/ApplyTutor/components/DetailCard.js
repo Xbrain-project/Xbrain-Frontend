@@ -14,70 +14,14 @@ const DetailCard = () => {
     //console.log(TestData);
   }, [TestData]);
 
-  //ผลการสมัคร
-
-  const [value, setValue] = useState({
-    ClickYes: false,
-    ClickNo: false,
-    canClick: true,
-  });
-
-  const handleApprove = (e) => {
-    alert("ยืนยันผลการสมัคร");
-    e.preventDefault();
-    setValue({
-      canClick: false,
-      ClickYes: true,
-    });
-    console.log("yes");
-  };
-
-  const handleReject = (e) => {
-    alert("ยืนยันผลการสมัคร");
-    e.preventDefault();
-    setValue({
-      canClick: false,
-      ClickNo: true,
-    });
-    console.log("no");
-  };
-
-  // const [result, setResult] = useState({
-  //   ClickYes: false,
-  //   ClickNo: false,
-  //   canClick: true,
-  // });
-
-  // const handleApprove = () => {
-  //   alert("ยืนยันผลการสมัคร");
-  //   //e.preventDefault();
-
-  //   setResult({
-  //     canClick: false,
-  //     ClickYes: true,
-  //   });
-
-  //   console.log("yes");
-  //   console.log(setValues);
-  // };
-
-  // const handleReject = (index) => {
-  //   alert("ยืนยันผลการสมัคร");
-  //   //e.preventDefault();
-  //   setResult({
-  //     canClick: false,
-  //     ClickNo: true,
-  //   });
-  //   console.log("no");
-  //   console.log(index);
-  // };
-
   return (
     <div className="md:mt-32 md:mb-32">
       <div className="mt-20 text-center md:text-center xl:text-center">
-        <h1 className="font-bold text-2xl leading-8 md:text-3xl font-body">
-          ใบสมัคร
-        </h1>
+        <div className="container mx-auto px-10 py-4 gap-5 mt-6 flex flex-col rounded-xl drop-shadow-lg font-body md:w-2/4 bg-[#503795]">
+          <h1 className="font-bold text-2xl leading-8 md:text-3xl text-white-100">
+            ใบสมัคร
+          </h1>
+        </div>
       </div>
 
       {/* Map data */}

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import community from "../../../assets/icons/community.png";
-import TestData from "./TestData";
 import { useNavigate, useParams } from "react-router-dom";
 import moment from "moment";
 import { currentPost } from "../../../api/post";
