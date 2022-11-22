@@ -18,6 +18,12 @@ import HistoryStudent from "./pages/HistoryStudent";
 import ApplyTutor from "./pages/ApplyTutor";
 import Community from "./pages/Community";
 import Feed from "./pages/Community/components/Feed";
+import ProfileStudent from "./pages/ProfileStudent";
+import ProfileTutor from "./pages/ProfileTutor";
+import PostTeach from "./pages/PostTeach";
+import Search from "./pages/Search"
+import Contact from "./pages/Contact"
+
 
 function App() {
   return (
@@ -46,6 +52,13 @@ function App() {
 
           <Route path="/community" element={<Community />} />
           <Route path="/feed/:id" element={<Feed />} />
+
+
+          <Route path="/ProfileStudent" element={<ProfileStudent/>} />
+          <Route path="/ProfileTutor" element={<ProfileTutor/>} />
+          <Route path="/PostTeach" element={<PostTeach/>}/>
+          <Route path="/Search" element={<Search/>}/>
+          <Route path="/Contact" element={<Contact/>}/>
 
           {/* Layout Navbar ยังทำไม่ได้คร่า*/}
           {/* <Route element={<LayoutStudent/>}>
