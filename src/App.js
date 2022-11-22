@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route, Router, Outlet,  } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import Login from "./pages/Login";
 import ForgotPassword from "./pages/ForgotPassword";
@@ -51,6 +52,7 @@ function App() {
           <Route path="/forgotpass" element={<ForgotPassword />} />
           <Route path="/chooserole" element={<ChooseRole />} />
           <Route path="/signupstudent" element={<SignUpStudent />} />
+          <Route path="/signuptutor" element={<SignUpTutor />} />
           <Route path="/payment" element={<Payment />} />
 
           <Route element={<LayoutStudent></LayoutStudent>}>
@@ -63,7 +65,6 @@ function App() {
             <Route element={<StudentRoutes></StudentRoutes>} */}
           <Route element={<LayoutTutor></LayoutTutor>}>
             <Route element={<TutorRoutes></TutorRoutes>}/>
-              <Route path="/signuptutor" element={<SignUpTutor />} />
               <Route path="/hometutor" element={<HomeTutor />} />
               <Route path="/applytutor" element={<ApplyTutor />} />
               <Route path="/community" element={<Community />} />

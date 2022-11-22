@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 
 
 export default function SignUpStudent() {
@@ -36,6 +37,12 @@ export default function SignUpStudent() {
           
     // }
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const dispatch = useDispatch();
+    const defaultValues = {
+        email:'',
+        password:'',
+        cfpassword:'',
+    };
     const onSubmit = data => {
         console.log(data);
     }

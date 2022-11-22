@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
 import { useDispatch, connect } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -6,19 +6,56 @@ import { useNavigate } from 'react-router-dom';
 import tutorpic from "../../assets/pics/login1.jpg";
 
 export default function Login() {
-    // //เก็บค่า form login
-    // const [form, setForm] = useState({ 
-    //     email: "",
-    //     password: "",
-    // })
+    //เก็บค่า form login
+    const [form, setForm] = useState({ 
+        email: "",
+        password: "",
+    })
 
-    
-    // // change
-    // const handleChange = (e) => {  
-    //     setForm({ ...form, 
-    //        [e.target.name]: e.target.value });
+    const navigate = useNavigate();
+
+     //role
+     const roleBaseRedirect = (role) => {
+        console.log('roleBaseRedirect', role);
+        if (role == 'student') {
+            navigate ('/homestudent')
+        } else {
+            navigate ('/hometutor') 
+        }
+    }
+
+    // change
+    const handleChange = (e) => {  
+        setForm({ ...form, 
+           [e.target.name]: e.target.value });
          
-    // };
+    };
+
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(e);
+    
+        signIn(form).then((res) => {
+    
+            console.log(res.data);
+               // แจ้งเตือน alert
+            roleBaseRedirect(res.data.payload.user.role);         // เช็คถ้าเป็น role ไหนให้ไปหน้านั้น โดยใช้ข้อมูลจาก res
+            alert(" Login Success");
+            
+            
+          localStorage.setItem("id", res.data.id);     // ***เก็บ token โดยใช้ข้อมูลจาก res
+          localStorage.setItem("role", res.data.payload.user.role);
+    
+        })
+        .catch((err) => {
+            console.log('Login:',err.response.data);
+            
+            alert('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง กรุณากรอกข้อมูลใหม่อีกครั้ง')
+          });
+      };
+
 
     // //submit
     // const handleSubmit = (e) => { 
@@ -40,26 +77,15 @@ export default function Login() {
     // }
 
 
-    const navigate = useNavigate();
 
-    //role
-    const roleBaseRedirect = (role) => {
-        console.log('roleBaseRedirect', role);
-        if (role == 'student') {
-            navigate ('/homestudent')
-        } else {
-            navigate ('/hometutor') 
-        }
-    }
-
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = (data) => {
-        if(register.current.value)
-        {
-            localStorage.setItem("register", register.current.value)
-        }
-        // console.log(data);
-    }
+    // const { register, handleSubmit, formState: { errors } } = useForm();
+    // const onSubmit = (data) => {
+    //     if(register.current.value)
+    //     {
+    //         localStorage.setItem("register", register.current.value)
+    //     }
+    //     // console.log(data);
+    // }
     
     
 
@@ -85,7 +111,7 @@ export default function Login() {
                     {/* <!-- Form --> */}
                     {/* <pre>{JSON.stringify(userInfo, undefined, 2)}</pre> //check  */}
                     
-                    <form onSubmit={handleSubmit(onSubmit) }>
+                    <form onSubmit={handleSubmit}>
                     <div className="font-body text-center font-bold text-6xl text-primary-80 py-5">
                         Login
                     </div>
@@ -98,14 +124,16 @@ export default function Login() {
                         <input
                         type="email"
                         name="email"
-                        style={{borderColor: errors.email ? "red" :"", }}
+                        //style={{borderColor: errors.email ? "red" :"", }}
                         className="form-control block w-full px-4 py-2 bg-white-100 bg-clip-padding border border-solid border-gray-50 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                         placeholder="you@gmail.com"
-                        {...register("email", {required : 'Email is required'})}
+                        required
+                        onChange={handleChange}
+                        //{...register("email", {required : 'Email is required'})}
                         />
-                        {errors.email && <span style={{color : "red"}}>
+                        {/* {errors.email && <span style={{color : "red"}}>
                             {errors.email.message}
-                            </span>}
+                            </span>} */}
                     </div>
                     
 
@@ -118,21 +146,23 @@ export default function Login() {
                         <input
                         type="password"
                         name="password"
-                        style={{borderColor: errors.password ? "red" :"", }}
+                        //style={{borderColor: errors.password ? "red" :"", }}
                         className="form-control block w-full px-4 py-2 bg-white-100 bg-clip-padding border border-solid border-gray-50 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                         placeholder="******************"
-                        {...register("password", {required : 'Password is required',
-                            minLength:{
-                                value: 8,
-                                message: 'Password must be at least 8 characters.'
-                            }
-                            })}
+                        required
+                        onChange={handleChange}
+                        // {...register("password", {required : 'Password is required',
+                        //     minLength:{
+                        //         value: 8,
+                        //         message: 'Password must be at least 8 characters.'
+                        //     }
+                        //     })}
                         />
-                        {errors.password && (
+                        {/* {errors.password && (
                             <span style={{color : "red"}}>
                                 {errors.password.message}
                             </span>
-                        )}
+                        )} */}
                     </div>
 
                     <div className="py-2 grid justify-items-end">
