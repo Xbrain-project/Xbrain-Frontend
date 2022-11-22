@@ -17,9 +17,11 @@ const DetailCard = () => {
   return (
     <div className="md:mt-32 md:mb-32">
       <div className="mt-20 text-center md:text-center xl:text-center">
-        <h1 className="font-bold text-2xl leading-8 md:text-3xl font-body">
-          ใบสมัคร
-        </h1>
+        <div className="container mx-auto px-10 py-4 gap-5 mt-6 flex flex-col rounded-xl drop-shadow-lg font-body md:w-2/4 bg-[#503795]">
+          <h1 className="font-bold text-2xl leading-8 md:text-3xl text-white-100">
+            ใบสมัคร
+          </h1>
+        </div>
       </div>
 
       {/* Map data */}
