@@ -16,7 +16,7 @@ const About = () => {
           />
         </div>
 
-        <div className="mt-8 md:w-2/4 lg:w-1/2">
+        <div className="font-body mt-8 md:w-2/4 lg:w-1/2">
           {/* title */}
           <div className="px-4 sm:text-left md:pb-4 ">
             <h1 className="font-bold text-primary-80 text-2xl leading-8 md:text-4xl">

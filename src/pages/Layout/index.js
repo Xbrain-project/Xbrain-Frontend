@@ -1,23 +1,24 @@
 import { Outlet } from "react-router-dom";
-// import Navbarcompany from "../../components/navbar/Navbar-company";
-import Navbarstudent from "../../components/navbar/Navbar-student";
-// import Footer from "../../components/footer/Footer";
+
+import Navbarstudent from "../../components/navbar/NavbarStudent";
+import NavbarTutor from "../../components/navbar/NavbarTutor";
+
 import { useSelector } from "react-redux";
 const Layout = ({role}) => {
     var { user } = useSelector((state) => ({ ...state }));
     const checkRole = () => {
     if(user.role === "student" ){
-        return   (  <Navbarstudent/>
+        return   (<Navbarstudent/>
      )
 
-    }else if (user.role === "company" ){
-        return <h1>ดีจ้า</h1>
-    //  return (<Navbarcompany/>)
+    }else if (user.role === "tutor" ){
+        return (<NavbarTutor/>)
+    
     }
 }
 
   return (
-    <body class="flex flex-col min-h-screen ">
+    <body className="flex flex-col min-h-screen ">
            
         <header>
         {checkRole()}
@@ -25,9 +26,6 @@ const Layout = ({role}) => {
     <main class="flex-grow">
         <Outlet />
     </main>
-    <footer>
-        <Footer />
-    </footer>
 
            
         </body>

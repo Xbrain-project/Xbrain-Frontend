@@ -1,5 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
+import { useDispatch, connect } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import tutorpic from "../../assets/pics/login1.jpg";
 
@@ -10,15 +12,6 @@ export default function Login() {
     //     password: "",
     // })
 
-    //role
-    const roleBase = (role) => {
-        console.log('roleBase', role);
-        if (role == 'student') {
-            window.location = '/homestudent'
-        } else {
-            window.location = '/hometutor' 
-        }
-    }
     
     // // change
     // const handleChange = (e) => {  
@@ -46,26 +39,33 @@ export default function Login() {
           
     // }
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const onSubmit = data => {
 
-        // //check match
-        // const userData = JSON.parse(localStorage.getItem(data.email));
-        //     if (userData) { // getItem can return actual value or null
-        //     if (userData.password === data.password) {
-        //         console.log(userData.name + " You Are Successfully Logged In");
-        //     } else {
-        //         console.log("Email or Password is not matching with our record");
-        //     }
-        //     } else {
-        //     console.log("Email or Password is not matching with our record");
-        //     }
-                console.log(data);
+    const navigate = useNavigate();
+
+    //role
+    const roleBaseRedirect = (role) => {
+        console.log('roleBaseRedirect', role);
+        if (role == 'student') {
+            navigate ('/homestudent')
+        } else {
+            navigate ('/hometutor') 
+        }
     }
+
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const onSubmit = (data) => {
+        if(register.current.value)
+        {
+            localStorage.setItem("register", register.current.value)
+        }
+        // console.log(data);
+    }
+    
+    
 
     // {alert(JSON.stringify(data))}
 
-    console.log(watch("example"));
+    
 
     return(
         <div className="flex flex-row">
@@ -81,9 +81,11 @@ export default function Login() {
                 className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
                     <div 
                     className=" w-9/12 p-10">
+                    
                     {/* <!-- Form --> */}
                     {/* <pre>{JSON.stringify(userInfo, undefined, 2)}</pre> //check  */}
-                    <form onSubmit={handleSubmit(onSubmit)}>
+                    
+                    <form onSubmit={handleSubmit(onSubmit) }>
                     <div className="font-body text-center font-bold text-6xl text-primary-80 py-5">
                         Login
                     </div>

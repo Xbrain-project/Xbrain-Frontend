@@ -1,37 +1,43 @@
 import React from 'react'
 import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
-export default function Navbar() {
+export default function NavbarStudent() {
     const [showProfile, setShowProfile] = useState(false);
     const handleClick = () =>{
         setShowProfile(!showProfile);
     };
+    
     return(
+        // <Router>
         <nav
-            class="bg-primary-80 px-2 sm:px-4 py-2.5 w-full z-20 top-0 left-0 sticky">
+            className="bg-primary-80 px-2 sm:px-4 py-2.5 w-full z-20 top-0 left-0"
+            >
            <div 
-                class="w-full bg-primary-100 flex flex-row">
+                className="w-full bg-primary-100 flex flex-row">
             {/* Logo */}
             <div 
-                class="bg-primary-80 w-full" 
-                href="/home">
-                <a 
-                    href="/home" 
-                    class="flex items-center place-self-start">
+                className="bg-primary-80 w-full" 
+                
+                >
+                <Link to ={"/homestudent"}
+                    className="flex items-center place-self-start">
                 <span 
-                    class="self-center text-5xl font-body font-extrabold whitespace-nowrap dark:text-white text-primary-50">
+                    className="self-center text-5xl font-body font-extrabold whitespace-nowrap dark:text-white text-primary-50">
                     X-brain</span>
-                </a>
+                </Link>
             </div>
             {/* Menu right */}
             <div 
-                class="bg-primary-80 w-full flex flex-row-reverse item-center ">
+                className="bg-primary-80 w-full flex flex-row-reverse item-center ">
             {/* Search */}
-            <a 
-                href="/home"
-                class="font-body font-semibold text-white-100 text-xl ml-2 mr-2 pl-2 pr-2 pt-2 hover:bg-primary-100 hover:rounded-md">
+            
+            <Link to ={"/search"}
+                
+                className="font-body font-semibold text-white-100 text-xl ml-2 mr-2 pl-2 pr-2 pt-2 hover:bg-primary-100 hover:rounded-md">
                     <svg 
-                        class="h-8 w-8 text-white"  
+                        className="h-8 w-8 text-white"  
                         width="24" 
                         height="24" 
                         viewBox="0 0 24 24" 
@@ -53,23 +59,24 @@ export default function Navbar() {
                                     x2="15" 
                                     y2="15" />
                     </svg>
-            </a>
+            </Link>
+            
 
             {/* Dropdown */}
             <div 
-                class="relative inline-block text-left">
+                className="relative inline-block text-left">
                 <div>
                     <button
                         onClick={handleClick}
                         type="button"
-                        class="flex flex-row ml-2 mr-2 pl-2 pr-2 pt-2 pb-2 hover:bg-primary-100 hover:rounded-md cursor-pointer"
+                        className="flex flex-row ml-2 mr-2 pl-2 pr-2 pt-2 pb-2 hover:bg-primary-100 hover:rounded-md cursor-pointer"
                         id="menu-button"
                         aria-expanded="true" 
                         aria-haspopup="true">
                     <div 
-                        class="font-body font-semibold text-white-100 text-xl ">
+                        className="font-body font-semibold text-white-100 text-xl ">
                     <svg 
-                        class="h-8 w-8 text-white fill-white-100 border border-4 rounded-md"  
+                        className="h-8 w-8 text-white fill-white-100 border-4 rounded-md"  
                         viewBox="0 0 24 24" 
                         stroke="currentColor">
                         <path 
@@ -80,9 +87,9 @@ export default function Navbar() {
                     </svg>
                     </div>
                     <div 
-                        class="font-body font-semibold text-white-100 text-xl pt-1">
+                        className="font-body font-semibold text-white-100 text-xl pt-1">
                     <svg 
-                        class="h-6 w-6 text-white" 
+                        className="h-6 w-6 text-white" 
                         width="24" 
                         height="24" 
                         viewBox="0 0 24 24" 
@@ -103,79 +110,73 @@ export default function Navbar() {
                 {/* Show Dropdown   */}
                 {showProfile && (
                     <div 
-                        class="absolute right-0 z-10 w-56 mt-4 origin-top-right rounded-md bg-primary-80 shadow-xl ring-1 ring-white-100 ring-opacity-5 focus:outline-none" 
+                        className="absolute right-0 z-10 w-56 mt-4 origin-top-right rounded-md bg-primary-80 shadow-xl ring-1 ring-white-100 ring-opacity-5 focus:outline-none" 
                         role="menu" 
                         aria-orientation="vertical" 
                         aria-labelledby="menu-button" 
                         tabindex="-1">
                         <div 
-                            class="py-1" 
+                            className="py-1" 
                             role="none">
-                            <a 
-                                href="/" 
-                                class="block px-4 py-2 font-body text-lg font-medium text-white-100 hover:bg-primary-100" 
+                            <Link to ={"/profilestudent"} 
+                                className="block px-4 py-2 font-body text-lg font-medium text-white-100 hover:bg-primary-100" 
                                 role="menuitem" 
                                 tabindex="-1" 
                                 id="menu-item-0">
                                     โปรไฟล์
-                            </a>
-                            <a 
-                                href="/" 
-                                class="block px-4 py-2 font-body text-lg font-medium text-white-100 hover:bg-primary-100" 
+                            </Link>
+                            <Link to ={"/historystudent"}
+                                className="block px-4 py-2 font-body text-lg font-medium text-white-100 hover:bg-primary-100" 
                                 role="menuitem" 
                                 tabindex="-1" 
                                 id="menu-item-1">
                                     ประวัติการสมัคร
-                            </a>
-                            <a 
-                                href="/" 
-                                class="block px-4 py-2 font-body text-lg font-medium text-white-100 hover:bg-primary-100" 
+                            </Link>
+                            <Link to ={"/"}
+                                className="block px-4 py-2 font-body text-lg font-medium text-white-100 hover:bg-primary-100" 
                                 role="menuitem" 
                                 tabindex="-1" 
                                 id="menu-item-2">
                                     Sign out
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 )}
             </div>
-            <a 
-                href="/home"
-                class="font-body font-semibold text-white-100 text-xl ml-2 mr-2 pl-2 pr-2 pt-3 hover:bg-primary-100 hover:rounded-md ">
+            <Link to ={"/contact"}
+                className="font-body font-semibold text-white-100 text-xl ml-2 mr-2 pl-2 pr-2 pt-3 hover:bg-primary-100 hover:rounded-md ">
                     ติดต่อสอบถาม
-            </a>
-            <a 
-                href="/home"
-                class="font-body font-semibold text-white-100 text-xl ml-2 mr-2 pl-2 pr-2 pt-3 hover:bg-primary-100 hover:rounded-md ">
+            </Link>
+            <Link to ={"/community"}
+                className="font-body font-semibold text-white-100 text-xl ml-2 mr-2 pl-2 pr-2 pt-3 hover:bg-primary-100 hover:rounded-md ">
                     ข่าวสาร
-            </a>
-            <a 
-                href="/home"
-                class="font-body font-semibold text-white-100 text-xl ml-2 mr-2 pl-2 pr-2 pt-3 hover:bg-primary-100 hover:rounded-md ">
+            </Link>
+            <Link to ={"/search"}
+                className="font-body font-semibold text-white-100 text-xl ml-2 mr-2 pl-2 pr-2 pt-3 hover:bg-primary-100 hover:rounded-md ">
                     หา Tutor
-            </a>
-            <a 
-                href="/home"
-                class="font-body font-semibold text-white-100 text-xl ml-2 mr-2 pl-2 pr-2 pt-3 hover:bg-primary-100 hover:rounded-md ">
+            </Link>
+            <Link to ={"/homestudent"}
+                className="font-body font-semibold text-white-100 text-xl ml-2 mr-2 pl-2 pr-2 pt-3 hover:bg-primary-100 hover:rounded-md ">
                     หน้าแรก
-            </a>
+            </Link>
             </div>
             </div>
 
             
             
         </nav>
+        // </Router>
     );
 }
 
 
 {/* <--Logo--> */}
-{/* <a href="/home" class="flex items-center place-self-start">
-<span class="self-center text-5xl font-body font-extrabold whitespace-nowrap dark:text-white text-primary-50">X-brain</span>
+{/* <a href="/home" className="flex items-center place-self-start">
+<span className="self-center text-5xl font-body font-extrabold whitespace-nowrap dark:text-white text-primary-50">X-brain</span>
 </a>
 
-<div class="flex place-self-end">
-            <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</a>
-            <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">sds</a>
+<div className="flex place-self-end">
+            <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</a>
+            <a href="#" className="block py-2 pr-4 pl-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">sds</a>
             </div>
             </div> */}
