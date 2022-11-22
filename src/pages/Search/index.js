@@ -55,25 +55,101 @@ function Search(){
     });
 
 
+    const [searchdata,setSearch] = useState({
+
+        'subject': ''
+        ,'class': ''
+        ,'type':''
+        ,'place':''
+        
+        
+      })
+
+
     const handleChangeSubjectCheckbox = (e) => {                                    //การเปลี่ยนแปรงค่าเมื่อ checkbox วิชาต่างๆ
         setSubject({ ...subject,[e.target.name]: !subject[e.target.name]})
+        const newlistSubject = [];    
+        for ( var e in subject ) { 
+        
+            if ( subject[e] ) { 
+                // newLikings += e + " "; 
+                newlistSubject.push(e)
+                
+                
+            } 
+            
+        }           
+        setSearch({ ...searchdata,subject: newlistSubject }) 
     };
 
     const handleChangeClassCheckbox = (e) => {                                          //การเปลี่ยนแปรงค่าเมื่อ checkbox ระดับชั้นต่างๆ
         setClassTeach({ ...classTeach,[e.target.name]: !classTeach[e.target.name]})
+        const newlistClassTeach = [];    
+        for ( var e in classTeach ) { 
+        
+            if ( classTeach[e] ) { 
+                // newLikings += e + " "; 
+                newlistClassTeach.push(e)
+                
+                
+            } 
+            
+        }           
+        setSearch({ ...searchdata,class: newlistClassTeach }) 
     };
+
 
     const handleChangeTypeCheckbox = (e) => {                                          //การเปลี่ยนแปรงค่าเมื่อ checkbox ประเภทสอนต่างๆ
         setType({ ...type,[e.target.name]: !type[e.target.name]})
+        const newlistType = [];    
+        for ( var e in type ) { 
+        
+            if ( type[e] ) { 
+                // newLikings += e + " "; 
+                newlistType.push(e)
+                
+                
+            } 
+            
+        }           
+        setSearch({ ...searchdata,type: newlistType }) 
+        
     };
           
     const handleChangePlaceCheckbox = (e) => {                                          //การเปลี่ยนแปรงค่าเมื่อ checkbox ประเภทสอนต่างๆ
         setPlace({ ...place,[e.target.name]: !place[e.target.name]})
+        const newlistPlace = [];    
+        for ( var e in place ) { 
+        
+            if ( place[e] ) { 
+                // newLikings += e + " "; 
+                newlistPlace.push(e)
+                
+                
+            } 
+            
+        }           
+        setSearch({ ...searchdata,place: newlistPlace }) 
+
     };
 
+
+
     const handleSubmit = (e) => {                            //ฟังชั่นจากการกด submit
-               alert("Saved");
-       };
+        e.preventDefault()
+
+        let keyP = ['subject','class','type','place']
+        for (var i =0 ; i < keyP.length ;i++){
+          if (searchdata[keyP[i]] === '' || searchdata[keyP[i]] === 0){
+            delete searchdata[keyP[i]]
+          }
+        }
+        console.log('searchdata',searchdata)
+
+        console.log("subject คือ วิชาที่เลือก class คือ ระดับชั้น type คือ เป้าหมายการเรียน  place คือ สถานที่ออนไลน์ออนไซต์")
+    };
+
+
 
     const handletest = (e) => {   
         console.log(classTeach.kindergarten)                         //ฟังชั่นจากการกด test
