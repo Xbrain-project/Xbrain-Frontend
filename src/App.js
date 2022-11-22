@@ -17,6 +17,12 @@ import HomeTutor from "./pages/HomeTutor";
 import HistoryStudent from "./pages/HistoryStudent";
 import ApplyTutor from "./pages/ApplyTutor";
 import Community from "./pages/Community";
+import Feed from "./pages/Community/components/Feed";
+import ProfileStudent from "./pages/ProfileStudent";
+import ProfileTutor from "./pages/ProfileTutor";
+import PostTeach from "./pages/PostTeach";
+import Search from "./pages/Search";
+import Contact from "./pages/Contact";
 
 import NavbarStudent from "./components/navbar/NavbarStudent";
 import NavbarTutor from "./components/navbar/NavbarTutor";
@@ -58,6 +64,22 @@ function App() {
           <Route element={<LayoutStudent></LayoutStudent>}>
           <Route path="/homestudent" element={<HomeStudent />} />
           <Route path="/historystudent" element={<HistoryStudent />} />
+
+          <Route path="/applytutor" element={<ApplyTutor />} />
+
+          <Route path="/community" element={<Community />} />
+          <Route path="/feed/:id" element={<Feed />} />
+
+          <Route path="/profilestudent" element={<ProfileStudent />} />
+          <Route path="/profiletutor" element={<ProfileTutor />} />
+          <Route path="/postteach" element={<PostTeach />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/contact" element={<Contact />} />
+
+          {/* Layout Navbar ยังทำไม่ได้คร่า*/}
+          {/* <Route element={<LayoutStudent/>}>
+          <Route element={<RoutesStudent/>}>
+
           </Route>
         
 

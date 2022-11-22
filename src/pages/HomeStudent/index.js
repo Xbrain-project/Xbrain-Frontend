@@ -8,7 +8,7 @@ const HomeStudent = () => {
   return (
     
     <div className="w-full justify-center ">
-      
+
       <Hero />
       <Card />
       <About />

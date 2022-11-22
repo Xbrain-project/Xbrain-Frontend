@@ -1,5 +1,4 @@
 import React from "react";
-
 export const CardBlog = ({ title, content }) => {
   return (
     <div className="group container w-full h-full mx-auto px-10 py-4 flex flex-col rounded-xl drop-shadow-md border-2 border-slate-100 font-body bg-white-100 hover:bg-[#F7C9FF] ">
