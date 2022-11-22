@@ -3,15 +3,10 @@ import React, { useState } from "react";
 import avatarTutor from "../../../assets/pics/avatar.jpg";
 import PopUp from "../components/Popup";
 import PopupSuccess from "../components/PopupSuccess";
-
+import axios from "axios";
 import "../DetailTutor/index.css";
 
 function DetailTutor() {
-
-
-
-
-
   const [infotutor, setInfotutor] = useState({
     // เก็บค่า infotutor    ดึงจากหลังบ้าน ไม่มีส่ง
     id: "1",
@@ -21,33 +16,17 @@ function DetailTutor() {
     subject: "คณิตศาสตร์",
     classTeach: "มัธยมต้น มัธยมปลาย",
     category: "เพิ่มความรู้",
-    introduce:"ดีค่าา สำหรับใครที่อยากจะเพิ่มเติม ความรู้เกี่ยวกับการบริหารธุรกิจ สามารถมาคุยกันได้ก่อนได้นะคะ",
-      detailTech:"เน้นทำความเข้าใจพื้นฐานเพื่อสามารถทำข้อสอบประยุกต์ได้",
-      experience:"มีประสบการณ์การสอน เด็ก ระดับ ประถมปลาย (น้อง ป.5 ระยะเวลาสอน 2 เดือน เน้นการวิเคราะห์โจทย์ปัญหาธุรกิจ)",
+    introduce:
+      "ดีค่าา สำหรับใครที่อยากจะเพิ่มเติม ความรู้เกี่ยวกับการบริหารธุรกิจ สามารถมาคุยกันได้ก่อนได้นะคะ",
+    detailTech: "เน้นทำความเข้าใจพื้นฐานเพื่อสามารถทำข้อสอบประยุกต์ได้",
+    experience:
+      "มีประสบการณ์การสอน เด็ก ระดับ ประถมปลาย (น้อง ป.5 ระยะเวลาสอน 2 เดือน เน้นการวิเคราะห์โจทย์ปัญหาธุรกิจ)",
   });
 
   const [subjectReg, setSubjectReg] = useState({
-    // เก็บค่า checkbox ของวิชาต่างๆ จากที่จอง ส่งไปหลังบ้าน 
-    english: false,
-    maths: false,
-    bio: false,
-    physics: false,
-    chemistry: false,
-    thai: false,
-    social: false,
-    gat: false,
-    astronomy: false,
-    science: false,
-    french: false,
-    german: false,
-    japanese: false,
-    arabic: false,
-    korean: false,
-    russian: false,
-    chinese: false,
-    programming: false,
+    // เก็บค่า checkbox ของวิชาต่างๆ จากที่จอง ส่งไปหลังบ้าน
+    subject: "",
   });
-
 
   const [typeReg, setTypeReg] = useState({
     // เก็บค่า checkbox ของประเภทการสอนต่างๆ ส่งไปหลังบ้าน
@@ -63,8 +42,6 @@ function DetailTutor() {
     online: false,
     onsite: false,
   });
-
- 
 
   const [priceReg, setPriceReg] = useState({
     // เก็บค่าตัวเลข ราคาของวิชาต่างๆ ส่งไปหลังบ้าน ไม่น่าได้ใช้
@@ -96,18 +73,17 @@ function DetailTutor() {
     friDayTeach: false, //
     saturDayTeach: false, //
     sunDayTeach: false, //
-    submitable: true,
+
   });
-  
 
-
-  
-{/*------------------------------------------------------------------------------------------*/ }
+  {
+    /*------------------------------------------------------------------------------------------*/
+  }
   const [subject, setSubject] = useState({
     // เก็บค่า checkbox ของวิชาต่างๆ จากที่post ดึงมาจากหลังบ้าน
-    english: false,
+    english: true,
     maths: true,
-    bio: false,
+    bio: true,
     physics: false,
     chemistry: false,
     thai: false,
@@ -181,71 +157,178 @@ function DetailTutor() {
     friDayTeach: true, //
     saturDayTeach: true, //
     sunDayTeach: false, //
-    submitable: true,
+   
   });
-
+  //------------------------########*-*SUBMIT*-*########-----------------------------
   const onSubmit = (e) => {
-    const upload ={
+    const upload = {
       dayTutorReg,
       subjectReg,
-      typeReg,
+      price,
       placeReg,
+      typeReg,
     };
-    console.log('submit uplond',upload);
-    
+    console.log("submit uplond", upload);
   };
+
+  //-----------Any Funcation---------------------------------------
+
+  const [subjectRegCheck, setSubjectRegCheck] = useState({
+    // เอาไว้เช็คค่าเมื่อตอนจะกดจอง ถ้าไม่กดวิชา ก็กดไม่ได้
+    english: false,
+    maths: false,
+    bio: false,
+    physics: false,
+    chemistry: false,
+    thai: false,
+    social: false,
+    gat: false,
+    astronomy: false,
+    science: false,
+    french: false,
+    german: false,
+    japanese: false,
+    arabic: false,
+    korean: false,
+    russian: false,
+    chinese: false,
+    programming: false,
+  });
+
+  const handleChangeRegSubjectCheckCheckbox = (e) => {
+    //การเปลี่ยนแปรงค่าเมื่อ checkbox วิชาต่างๆ เอาไว้เช็คว่ากดยัง
+    setSubjectRegCheck({
+      ...subjectRegCheck,
+      [e.target.id]: !subjectRegCheck[e.target.id],
+    });
+  };
+
+  //----------------------------handle------------------------
 
   const handleChangeRegDayTutorCheckbox = (e) => {
     //การเปลี่ยนแปรงค่าเมื่อ checkbox วันต่างๆ
-    setDayTutorReg({ ...dayTutorReg, [e.target.name]: !dayTutorReg[e.target.name] });
+    setDayTutorReg({
+      ...dayTutorReg,
+      [e.target.name]: !dayTutorReg[e.target.name],
+    });
   };
- 
-  const handleChangeRegSubjectCheckbox = (e) => {
-    //การเปลี่ยนแปรงค่าเมื่อ checkbox วิชาต่างๆ
-    setSubjectReg({ ...subjectReg, [e.target.name]: !subjectReg[e.target.name] });
-  };
+
+  function handleChangeRegSubjectCheckbox(event) {
+    //การเปลี่ยนแปรงค่าเมื่อ checkbox วิชาต่างๆ Return ออกมาเป็น string
+    console.log(event);
+    const { name, value, type, checked } = event.target;
+    setSubjectReg((prevFormData) => {
+      return {
+        ...prevFormData,
+        [name]: type === "checkbox" ? checked : value,
+      };
+    });
+  }
 
   const handleChangeRegTypeCheckbox = (e) => {
     //การเปลี่ยนแปรงค่าเมื่อ checkbox ประเภทสอนต่างๆ
-    setTypeReg({...typeReg, [e.target.name]: !typeReg[e.target.name]});
+    setTypeReg({ ...typeReg, [e.target.name]: !typeReg[e.target.name] });
   };
 
   const handleChangeRegPlaceCheckbox = (e) => {
     //การเปลี่ยนแปรงค่าเมื่อ checkbox ประเภทสอนต่างๆ
     setPlaceReg({ ...placeReg, [e.target.name]: !placeReg[e.target.name] });
   };
-  //-----------------------------------------------------------
-  const initialStatePlace = {
+
+  //------------------initialState------------------------------
+  const initialStatePlaceReg = {
     online: false,
     onsite: false,
-};
-
-
-
-  
-
-  const resetState = () => { //ยากจังงงงงงงงงงงงงงงงงงงหกดหกดฆฏโฆฏดหฟกดเหฟกดำก
-    setPlaceReg(initialStatePlace);
-
-    setDayTutorReg(dayTutor);
-    setSubjectReg(subject);
-    setTypeReg(type);
-    setShowModalSuccess(false);
+  };
+  const initialStateSubjectRegCheck = {
+    // คืนค่าต่างๆ เป็น false
+    english: false,
+    maths: false,
+    bio: false,
+    physics: false,
+    chemistry: false,
+    thai: false,
+    social: false,
+    gat: false,
+    astronomy: false,
+    science: false,
+    french: false,
+    german: false,
+    japanese: false,
+    arabic: false,
+    korean: false,
+    russian: false,
+    chinese: false,
+    programming: false,
   };
 
+  const initialStateSubjectReg = {
+    // คืนค่าต่างๆ เป็น ""
+    subject: "",
+  };
+
+  const initialStateTypeReg = {
+    // คืนค่าต่างๆ เป็น false
+    grade: false,
+    enHigh: false,
+    knowledge: false,
+    enPrimary: false,
+    entrance: false,
+  };
+
+  const initialStatePriceReg = {
+    //  // คืนค่าต่างๆ เป็น ...เอ่อ ไม่น่าได้ใช้
+    english: "",
+    maths: "1000",
+    bio: "",
+    physics: "",
+    chemistry: "",
+    thai: "",
+    social: "",
+    gat: "1000",
+    astronomy: "",
+    science: "",
+    french: "",
+    german: "",
+    japanese: "",
+    arabic: "",
+    korean: "",
+    russian: "",
+    chinese: "",
+    programming: "",
+  };
+
+  const initialStateDayTutorReg = {
+    monDayTeach: false,  // คืนค่าต่างๆ เป็น false
+    tuesDayTeach: false, //
+    wednesDayTeach: false, //
+    thursDayTeach: false, //
+    friDayTeach: false, //
+    saturDayTeach: false, //
+    sunDayTeach: false, //
+ 
+  };
+
+
+  const resetState = () => {
+    //แก้แล้ว
+    setDayTutorReg(initialStateDayTutorReg);
+    setSubjectRegCheck(initialStateSubjectRegCheck);
+    setSubjectReg(initialStateSubjectReg)
+    setTypeReg(initialStateTypeReg);
+    setPlaceReg(initialStatePlaceReg);
+    setShowModalSuccess(false);
+  };
+  //------------------------------------------------------------------
 
   const [showModal, setShowModal] = useState(false);
   const [showModalSuccess, setShowModalSuccess] = useState(false);
 
- 
-
-
-  console.log('day has hit',dayTutorReg);
-  console.log('subject has hit',subjectReg);
-  console.log('type has hit',typeReg);
-  console.log('place has hit',placeReg);
-
-
+  console.log("day has hit", dayTutorReg);
+  console.log("subject has hit", subjectReg);
+  console.log("subjectRegCheck has hit", subjectRegCheck);
+  console.log("type has hit", typeReg);
+  console.log("place has hit", placeReg);
 
   return (
     <>
@@ -264,11 +347,12 @@ function DetailTutor() {
             <h4 className=" text-[#855CF8]  mb-5 text-3xl leading-6 font-semibold font-sans text-skin-inverted group-hover:text-skin-primary">
               {infotutor.nameTutor} {/*ดึงจากหลังบ้าน*/}
             </h4>
-            <p> กำลังศึกษาอยู่ที่/จบจาก {infotutor.gradFrom}</p>   {/*ดึงจากหลังบ้าน*/}
+            <p> กำลังศึกษาอยู่ที่/จบจาก {infotutor.gradFrom}</p>{" "}
             {/*ดึงจากหลังบ้าน*/}
-            <p> วิชาที่สอน {infotutor.subject}</p>   {/*ดึงจากหลังบ้าน*/}
-            <p> ระดับชั้นที่สอน {infotutor.classTeach}</p>   {/*ดึงจากหลังบ้าน*/}
-            <p> ประเภทการสอน {infotutor.category}</p>   {/*ดึงจากหลังบ้าน*/}
+            {/*ดึงจากหลังบ้าน*/}
+            <p> วิชาที่สอน {infotutor.subject}</p> {/*ดึงจากหลังบ้าน*/}
+            <p> ระดับชั้นที่สอน {infotutor.classTeach}</p> {/*ดึงจากหลังบ้าน*/}
+            <p> ประเภทการสอน {infotutor.category}</p> {/*ดึงจากหลังบ้าน*/}
           </div>
 
           <PopUp visible={showModal} onClose={() => setShowModal(false)}>
@@ -298,9 +382,7 @@ function DetailTutor() {
                             type="checkbox"
                             value="1"
                             name="monDayTeach"
-                            onChange={
-                              handleChangeRegDayTutorCheckbox 
-                            }
+                            onChange={handleChangeRegDayTutorCheckbox}
                             hidden
                             disabled={!dayTutor.monDayTeach}
                           />
@@ -323,9 +405,7 @@ function DetailTutor() {
                             type="checkbox"
                             value="1"
                             name="tuesDayTeach"
-                            onChange={
-                              handleChangeRegDayTutorCheckbox 
-                            }
+                            onChange={handleChangeRegDayTutorCheckbox}
                             hidden
                             disabled={!dayTutor.tuesDayTeach}
                           />
@@ -348,10 +428,7 @@ function DetailTutor() {
                             type="checkbox"
                             value="1"
                             name="wednesDayTeach"
-
-                            onChange={
-                              handleChangeRegDayTutorCheckbox 
-                            }
+                            onChange={handleChangeRegDayTutorCheckbox}
                             hidden
                             disabled={!dayTutor.wednesDayTeach}
                           />
@@ -374,10 +451,7 @@ function DetailTutor() {
                             type="checkbox"
                             value="1"
                             name="thursDayTeach"
-
-                            onChange={
-                              handleChangeRegDayTutorCheckbox 
-                            }
+                            onChange={handleChangeRegDayTutorCheckbox}
                             hidden
                             disabled={!dayTutor.thursDayTeach}
                           />
@@ -400,10 +474,7 @@ function DetailTutor() {
                             type="checkbox"
                             value="1"
                             name="friDayTeach"
-
-                            onChange={
-                              handleChangeRegDayTutorCheckbox 
-                            }
+                            onChange={handleChangeRegDayTutorCheckbox}
                             hidden
                             disabled={!dayTutor.friDayTeach}
                           />
@@ -426,10 +497,7 @@ function DetailTutor() {
                             type="checkbox"
                             value="1"
                             name="saturDayTeach"
-
-                            onChange={
-                              handleChangeRegDayTutorCheckbox 
-                            }
+                            onChange={handleChangeRegDayTutorCheckbox}
                             hidden
                             disabled={!dayTutor.saturDayTeach}
                           />
@@ -452,10 +520,7 @@ function DetailTutor() {
                             type="checkbox"
                             value="1"
                             name="sunDayTeach"
-
-                            onChange={
-                              handleChangeRegDayTutorCheckbox 
-                            }
+                            onChange={handleChangeRegDayTutorCheckbox}
                             hidden
                             disabled={!dayTutor.sunDayTeach}
                           />
@@ -532,8 +597,7 @@ function DetailTutor() {
                   </p>
                   <form
                     className="grid  overflow-y-auto h-64"
-                    onSubmit={onSubmit()}
-                    
+                    //onSubmit={}
                   >
                     <h3 className="text-sm font-semibold leading-relaxed mb-1 text-[black] ">
                       รายละเอียดคอร์ส/วิชาที่ต้องการจะเรียน
@@ -549,15 +613,41 @@ function DetailTutor() {
                     <div className="pb-5 pt-5 flex flex-row space-x-1">
                       <div className="ml-1 mr-3">
                         <div className="flex items-center mb-4 ">
+
                           <input
+                            type="radio"
                             id="english"
-                            name="english"
-                            type="checkbox"
-                            onChange={
-                              handleChangeRegSubjectCheckbox 
-                            }
+                            name="subject"
+                            value={"ภาษาอังกฤษ"}
+                            checked={subjectReg.subject === "ภาษาอังกฤษ"}
+                            onChange={(e) => {
+                              handleChangeRegSubjectCheckCheckbox(e);
+                              handleChangeRegSubjectCheckbox(e);
+                            }}
                             className="w-4  h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            disabled={!subject.english}
+                            disabled={
+                              !(
+                                subject.english
+                                // &&
+                                // (subjectReg.arabic ||
+                                //   subjectReg.astronomy ||
+                                //   subjectReg.bio ||
+                                //   subjectReg.chemistry ||
+                                //   subjectReg.chinese ||
+                                //   subjectReg.french ||
+                                //   subjectReg.gat ||
+                                //   subjectReg.german ||
+                                //   subjectReg.japanese ||
+                                //   subjectReg.korean ||
+                                //   subjectReg.maths ||
+                                //   subjectReg.physics ||
+                                //   subjectReg.programming ||
+                                //   subjectReg.russian ||
+                                //   subjectReg.science ||
+                                //   subjectReg.social ||
+                                //   subjectReg.thai)
+                              )
+                            }
                           />
 
                           <label className="block text-gray-700 text-m ml-4 mr-1 ">
@@ -573,13 +663,38 @@ function DetailTutor() {
                         <div className="flex items-center mb-4">
                           <input
                             id="maths"
-                            name="maths"
-                            type="checkbox"
-                            onChange={
-                              handleChangeRegSubjectCheckbox
-                            }
+                            value={"คณิตศาสตร์"}
+                            name="subject"
+                            type="radio"
+                            checked={subjectReg.subject === "คณิตศาสตร์"}
+                            onChange={(e) => {
+                              handleChangeRegSubjectCheckCheckbox(e);
+                              handleChangeRegSubjectCheckbox(e);
+                            }}
                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            disabled={!subject.maths}
+                            disabled={
+                              !(
+                                subject.maths
+                                // &&
+                                // (subjectReg.arabic ||
+                                //   subjectReg.astronomy ||
+                                //   subjectReg.bio ||
+                                //   subjectReg.chemistry ||
+                                //   subjectReg.chinese ||
+                                //   subjectReg.english ||
+                                //   subjectReg.french ||
+                                //   subjectReg.gat ||
+                                //   subjectReg.german ||
+                                //   subjectReg.japanese ||
+                                //   subjectReg.korean ||
+                                //   subjectReg.physics ||
+                                //   subjectReg.programming ||
+                                //   subjectReg.russian ||
+                                //   subjectReg.science ||
+                                //   subjectReg.social ||
+                                //   subjectReg.thai)
+                              )
+                            }
                           />
 
                           <label className="block text-gray-700 text-m ml-4 mr-1">
@@ -595,16 +710,40 @@ function DetailTutor() {
                         <div className="flex items-center mb-4">
                           <input
                             id="bio"
-                            name="bio"
-                            type="checkbox"
-                            onChange={
-                              handleChangeRegSubjectCheckbox
-                            }
+                            value={"ชีวะวิทยา"}
+                            name="subject"
+                            type="radio"
+                            checked={subjectReg.subject === "ชีวะวิทยา"}
+                            onChange={(e) => {
+                              handleChangeRegSubjectCheckCheckbox(e);
+                              handleChangeRegSubjectCheckbox(e);
+                            }}
                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            disabled={!subject.bio}
+                            disabled={
+                              !(
+                                subject.bio
+                                // &&
+                                // (subjectReg.arabic ||
+                                //   subjectReg.astronomy ||
+                                //   subjectReg.chemistry ||
+                                //   subjectReg.chinese ||
+                                //   subjectReg.english ||
+                                //   subjectReg.french ||
+                                //   subjectReg.gat ||
+                                //   subjectReg.german ||
+                                //   subjectReg.japanese ||
+                                //   subjectReg.korean ||
+                                //   subjectReg.physics ||
+                                //   subjectReg.programming ||
+                                //   subjectReg.russian ||
+                                //   subjectReg.science ||
+                                //   subjectReg.social ||
+                                //   subjectReg.thai)
+                              )
+                            }
                           />
                           <label className="block text-gray-700 text-m ml-4 mr-1">
-                            ชีวะ
+                            ชีวะวิทยา
                           </label>
                           <labe
                             className={`text-m ml-1
@@ -616,13 +755,37 @@ function DetailTutor() {
                         <div className="flex items-center mb-4">
                           <input
                             id="physics"
-                            name="physics"
-                            type="checkbox"
-                            onChange={
-                              handleChangeRegSubjectCheckbox 
-                            }
+                            value={"ฟิสิกส์"}
+                            name="subject"
+                            type="radio"
+                            checked={subjectReg.subject === "ฟิสิกส์"}
+                            onChange={(e) => {
+                              handleChangeRegSubjectCheckCheckbox(e);
+                              handleChangeRegSubjectCheckbox(e);
+                            }}
                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            disabled={!subject.physics}
+                            disabled={
+                              !(
+                                subject.physics
+                                // &&
+                                // (subjectReg.arabic ||
+                                //   subjectReg.astronomy ||
+                                //   subjectReg.bio ||
+                                //   subjectReg.chemistry ||
+                                //   subjectReg.chinese ||
+                                //   subjectReg.english ||
+                                //   subjectReg.french ||
+                                //   subjectReg.gat ||
+                                //   subjectReg.german ||
+                                //   subjectReg.japanese ||
+                                //   subjectReg.korean ||
+                                //   subjectReg.programming ||
+                                //   subjectReg.russian ||
+                                //   subjectReg.science ||
+                                //   subjectReg.social ||
+                                //   subjectReg.thai)
+                              )
+                            }
                           />
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             ฟิสิกส์
@@ -637,13 +800,37 @@ function DetailTutor() {
                         <div className="flex items-center mb-4">
                           <input
                             id="chemistry"
-                            name="chemistry"
-                            type="checkbox"
-                            onChange={
-                              handleChangeRegSubjectCheckbox
-                            }
+                            value={"เคมี"}
+                            name="subject"
+                            type="radio"
+                            checked={subjectReg.subject === "เคมี"}
+                            onChange={(e) => {
+                              handleChangeRegSubjectCheckCheckbox(e);
+                              handleChangeRegSubjectCheckbox(e);
+                            }}
                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            disabled={!subject.chemistry}
+                            disabled={
+                              !(
+                                subject.chemistry
+                                // &&
+                                // (subjectReg.arabic ||
+                                //   subjectReg.astronomy ||
+                                //   subjectReg.bio ||
+                                //   subjectReg.chinese ||
+                                //   subjectReg.english ||
+                                //   subjectReg.french ||
+                                //   subjectReg.gat ||
+                                //   subjectReg.german ||
+                                //   subjectReg.japanese ||
+                                //   subjectReg.korean ||
+                                //   subjectReg.physics ||
+                                //   subjectReg.programming ||
+                                //   subjectReg.russian ||
+                                //   subjectReg.science ||
+                                //   subjectReg.social ||
+                                //   subjectReg.thai)
+                              )
+                            }
                           />
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             เคมี
@@ -658,13 +845,37 @@ function DetailTutor() {
                         <div className="flex items-center mb-4">
                           <input
                             id="thai"
-                            name="thai"
-                            type="checkbox"
-                            onChange={
-                              handleChangeRegSubjectCheckbox 
-                            }
+                            value={"ไทย"}
+                            name="subject"
+                            type="radio"
+                            checked={subjectReg.subject === "ไทย"}
+                            onChange={(e) => {
+                              handleChangeRegSubjectCheckCheckbox(e);
+                              handleChangeRegSubjectCheckbox(e);
+                            }}
                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            disabled={!subject.thai}
+                            disabled={
+                              !(
+                                subject.thai
+                                // &&
+                                // (subjectReg.arabic ||
+                                //   subjectReg.astronomy ||
+                                //   subjectReg.bio ||
+                                //   subjectReg.chemistry ||
+                                //   subjectReg.chinese ||
+                                //   subjectReg.english ||
+                                //   subjectReg.french ||
+                                //   subjectReg.gat ||
+                                //   subjectReg.german ||
+                                //   subjectReg.japanese ||
+                                //   subjectReg.korean ||
+                                //   subjectReg.physics ||
+                                //   subjectReg.programming ||
+                                //   subjectReg.russian ||
+                                //   subjectReg.science ||
+                                //   subjectReg.social)
+                              )
+                            }
                           />
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             ภาษาไทย
@@ -679,13 +890,37 @@ function DetailTutor() {
                         <div className="flex items-center mb-4">
                           <input
                             id="social"
-                            name="social"
-                            type="checkbox"
-                            onChange={
-                              handleChangeRegSubjectCheckbox 
-                            }
+                            value={"สังคม"}
+                            name="subject"
+                            type="radio"
+                            checked={subjectReg.subject === "สังคม"}
+                            onChange={(e) => {
+                              handleChangeRegSubjectCheckCheckbox(e);
+                              handleChangeRegSubjectCheckbox(e);
+                            }}
                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            disabled={!subject.social}
+                            disabled={
+                              !(
+                                subject.social
+                                // &&
+                                // (subjectReg.arabic ||
+                                //   subjectReg.astronomy ||
+                                //   subjectReg.bio ||
+                                //   subjectReg.chemistry ||
+                                //   subjectReg.chinese ||
+                                //   subjectReg.english ||
+                                //   subjectReg.french ||
+                                //   subjectReg.gat ||
+                                //   subjectReg.german ||
+                                //   subjectReg.japanese ||
+                                //   subjectReg.korean ||
+                                //   subjectReg.physics ||
+                                //   subjectReg.programming ||
+                                //   subjectReg.russian ||
+                                //   subjectReg.science ||
+                                //   subjectReg.thai)
+                              )
+                            }
                           />
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             สังคม
@@ -700,13 +935,37 @@ function DetailTutor() {
                         <div className="flex items-center mb-4">
                           <input
                             id="gat"
-                            name="gat"
-                            type="checkbox"
-                            onChange={
-                              handleChangeRegSubjectCheckbox 
-                            }
+                            value={"GAT เชื่อมโยง"}
+                            name="subject"
+                            type="radio"
+                            checked={subjectReg.subject === "GAT เชื่อมโยง"}
+                            onChange={(e) => {
+                              handleChangeRegSubjectCheckCheckbox(e);
+                              handleChangeRegSubjectCheckbox(e);
+                            }}
                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            disabled={!subject.gat}
+                            disabled={
+                              !(
+                                subject.gat
+                                // &&
+                                // (subjectReg.arabic ||
+                                //   subjectReg.astronomy ||
+                                //   subjectReg.bio ||
+                                //   subjectReg.chemistry ||
+                                //   subjectReg.chinese ||
+                                //   subjectReg.english ||
+                                //   subjectReg.french ||
+                                //   subjectReg.german ||
+                                //   subjectReg.japanese ||
+                                //   subjectReg.korean ||
+                                //   subjectReg.physics ||
+                                //   subjectReg.programming ||
+                                //   subjectReg.russian ||
+                                //   subjectReg.science ||
+                                //   subjectReg.social ||
+                                //   subjectReg.thai)
+                              )
+                            }
                           />
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             GAT เชื่อมโยง
@@ -721,13 +980,37 @@ function DetailTutor() {
                         <div className="flex items-center mb-4">
                           <input
                             id="astronomy"
-                            name="astronomy"
-                            type="checkbox"
-                            onChange={
-                              handleChangeRegSubjectCheckbox 
-                            }
+                            value={"ดาราศาสตร์"}
+                            name="subject"
+                            type="radio"
+                            checked={subjectReg.subject === "ดาราศาสตร์"}
+                            onChange={(e) => {
+                              handleChangeRegSubjectCheckCheckbox(e);
+                              handleChangeRegSubjectCheckbox(e);
+                            }}
                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            disabled={!subject.astronomy}
+                            disabled={
+                              !(
+                                subject.astronomy
+                                // &&
+                                // (subjectReg.arabic ||
+                                //   subjectReg.bio ||
+                                //   subjectReg.chemistry ||
+                                //   subjectReg.chinese ||
+                                //   subjectReg.english ||
+                                //   subjectReg.french ||
+                                //   subjectReg.gat ||
+                                //   subjectReg.german ||
+                                //   subjectReg.japanese ||
+                                //   subjectReg.korean ||
+                                //   subjectReg.physics ||
+                                //   subjectReg.programming ||
+                                //   subjectReg.russian ||
+                                //   subjectReg.science ||
+                                //   subjectReg.social ||
+                                //   subjectReg.thai)
+                              )
+                            }
                           />
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             ดาราศาสตร์
@@ -744,13 +1027,37 @@ function DetailTutor() {
                         <div className="flex items-center mb-4">
                           <input
                             id="science"
-                            name="science"
-                            type="checkbox"
-                            onChange={
-                              handleChangeRegSubjectCheckbox 
-                            }
+                            value={"วิทยาศาสตร์"}
+                            name="subject"
+                            type="radio"
+                            checked={subjectReg.subject === "วิทยาศาสตร์"}
+                            onChange={(e) => {
+                              handleChangeRegSubjectCheckCheckbox(e);
+                              handleChangeRegSubjectCheckbox(e);
+                            }}
                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            disabled={!subject.science}
+                            disabled={
+                              !(
+                                subject.science
+                                // &&
+                                // (subjectReg.arabic ||
+                                //   subjectReg.astronomy ||
+                                //   subjectReg.bio ||
+                                //   subjectReg.chemistry ||
+                                //   subjectReg.chinese ||
+                                //   subjectReg.english ||
+                                //   subjectReg.french ||
+                                //   subjectReg.gat ||
+                                //   subjectReg.german ||
+                                //   subjectReg.japanese ||
+                                //   subjectReg.korean ||
+                                //   subjectReg.physics ||
+                                //   subjectReg.programming ||
+                                //   subjectReg.russian ||
+                                //   subjectReg.social ||
+                                //   subjectReg.thai)
+                              )
+                            }
                           />
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             วิทยาศาสตร์
@@ -765,13 +1072,37 @@ function DetailTutor() {
                         <div className="flex items-center mb-4">
                           <input
                             id="french"
-                            name="french"
-                            type="checkbox"
-                            onChange={
-                              handleChangeRegSubjectCheckbox 
-                            }
+                            value={"ภาษาฝรั่งเศส"}
+                            name="subject"
+                            type="radio"
+                            checked={subjectReg.subject === "ภาษาฝรั่งเศส"}
+                            onChange={(e) => {
+                              handleChangeRegSubjectCheckCheckbox(e);
+                              handleChangeRegSubjectCheckbox(e);
+                            }}
                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            disabled={!subject.french}
+                            disabled={
+                              !(
+                                subject.french
+                                // &&
+                                // (subjectReg.arabic ||
+                                //   subjectReg.astronomy ||
+                                //   subjectReg.bio ||
+                                //   subjectReg.chemistry ||
+                                //   subjectReg.chinese ||
+                                //   subjectReg.english ||
+                                //   subjectReg.gat ||
+                                //   subjectReg.german ||
+                                //   subjectReg.japanese ||
+                                //   subjectReg.korean ||
+                                //   subjectReg.physics ||
+                                //   subjectReg.programming ||
+                                //   subjectReg.russian ||
+                                //   subjectReg.science ||
+                                //   subjectReg.social ||
+                                //   subjectReg.thai)
+                              )
+                            }
                           />
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             ภาษาฝรั่งเศส
@@ -786,13 +1117,37 @@ function DetailTutor() {
                         <div className="flex items-center mb-4">
                           <input
                             id="german"
-                            name="german"
-                            type="checkbox"
-                            onChange={
-                              handleChangeRegSubjectCheckbox 
-                            }
+                            value={"ภาษาเยอรมัน"}
+                            name="subject"
+                            type="radio"
+                            checked={subjectReg.subject === "ภาษาเยอรมัน"}
+                            onChange={(e) => {
+                              handleChangeRegSubjectCheckCheckbox(e);
+                              handleChangeRegSubjectCheckbox(e);
+                            }}
                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            disabled={!subject.german}
+                            disabled={
+                              !(
+                                subject.german
+                                // &&
+                                // (subjectReg.arabic ||
+                                //   subjectReg.astronomy ||
+                                //   subjectReg.bio ||
+                                //   subjectReg.chemistry ||
+                                //   subjectReg.chinese ||
+                                //   subjectReg.english ||
+                                //   subjectReg.french ||
+                                //   subjectReg.gat ||
+                                //   subjectReg.japanese ||
+                                //   subjectReg.korean ||
+                                //   subjectReg.physics ||
+                                //   subjectReg.programming ||
+                                //   subjectReg.russian ||
+                                //   subjectReg.science ||
+                                //   subjectReg.social ||
+                                //   subjectReg.thai)
+                              )
+                            }
                           />
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             ภาษาเยอรมัน
@@ -807,13 +1162,37 @@ function DetailTutor() {
                         <div className="flex items-center mb-4">
                           <input
                             id="japanese"
-                            name="japanese"
-                            type="checkbox"
-                            onChange={
-                              handleChangeRegSubjectCheckbox 
-                            }
+                            value={"ภาษาญี่ปุ่น"}
+                            name="subject"
+                            type="radio"
+                            checked={subjectReg.subject === "ภาษาญี่ปุ่น"}
+                            onChange={(e) => {
+                              handleChangeRegSubjectCheckCheckbox(e);
+                              handleChangeRegSubjectCheckbox(e);
+                            }}
                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            disabled={!subject.japanese}
+                            disabled={
+                              !(
+                                subject.japanese
+                                // &&
+                                // (subjectReg.arabic ||
+                                //   subjectReg.astronomy ||
+                                //   subjectReg.bio ||
+                                //   subjectReg.chemistry ||
+                                //   subjectReg.chinese ||
+                                //   subjectReg.english ||
+                                //   subjectReg.french ||
+                                //   subjectReg.gat ||
+                                //   subjectReg.german ||
+                                //   subjectReg.korean ||
+                                //   subjectReg.physics ||
+                                //   subjectReg.programming ||
+                                //   subjectReg.russian ||
+                                //   subjectReg.science ||
+                                //   subjectReg.social ||
+                                //   subjectReg.thai)
+                              )
+                            }
                           />
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             ภาษาญี่ปุ่น
@@ -828,13 +1207,37 @@ function DetailTutor() {
                         <div className="flex items-center mb-4">
                           <input
                             id="arabic"
-                            name="arabic"
-                            type="checkbox"
-                            onChange={
-                              handleChangeRegSubjectCheckbox 
-                            }
+                            value={"ภาษาอาหรับ"}
+                            name="subject"
+                            type="radio"
+                            checked={subjectReg.subject === "ภาษาอาหรับ"}
+                            onChange={(e) => {
+                              handleChangeRegSubjectCheckCheckbox(e);
+                              handleChangeRegSubjectCheckbox(e);
+                            }}
                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            disabled={!subject.arabic}
+                            disabled={
+                              !(
+                                subject.arabic
+                                // &&
+                                // (subjectReg.astronomy ||
+                                //   subjectReg.bio ||
+                                //   subjectReg.chemistry ||
+                                //   subjectReg.chinese ||
+                                //   subjectReg.english ||
+                                //   subjectReg.french ||
+                                //   subjectReg.gat ||
+                                //   subjectReg.german ||
+                                //   subjectReg.japanese ||
+                                //   subjectReg.korean ||
+                                //   subjectReg.physics ||
+                                //   subjectReg.programming ||
+                                //   subjectReg.russian ||
+                                //   subjectReg.science ||
+                                //   subjectReg.social ||
+                                //   subjectReg.thai)
+                              )
+                            }
                           />
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             ภาษาอาหรับ
@@ -849,13 +1252,37 @@ function DetailTutor() {
                         <div className="flex items-center mb-4">
                           <input
                             id="korean"
-                            name="korean"
-                            type="checkbox"
-                            onChange={
-                              handleChangeRegSubjectCheckbox 
-                            }
+                            value={"ภาษาเกาหลี"}
+                            name="subject"
+                            type="radio"
+                            checked={subjectReg.subject === "ภาษาเกาหลี"}
+                            onChange={(e) => {
+                              handleChangeRegSubjectCheckCheckbox(e);
+                              handleChangeRegSubjectCheckbox(e);
+                            }}
                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            disabled={!subject.korean}
+                            disabled={
+                              !(
+                                subject.korean
+                                // &&
+                                // (subjectReg.arabic ||
+                                //   subjectReg.astronomy ||
+                                //   subjectReg.bio ||
+                                //   subjectReg.chemistry ||
+                                //   subjectReg.chinese ||
+                                //   subjectReg.english ||
+                                //   subjectReg.french ||
+                                //   subjectReg.gat ||
+                                //   subjectReg.german ||
+                                //   subjectReg.japanese ||
+                                //   subjectReg.physics ||
+                                //   subjectReg.programming ||
+                                //   subjectReg.russian ||
+                                //   subjectReg.science ||
+                                //   subjectReg.social ||
+                                //   subjectReg.thai)
+                              )
+                            }
                           />
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             ภาษาเกาหลี
@@ -870,13 +1297,37 @@ function DetailTutor() {
                         <div className="flex items-center mb-4">
                           <input
                             id="russian"
-                            name="russian"
-                            type="checkbox"
-                            onChange={
-                              handleChangeRegSubjectCheckbox 
-                            }
+                            value={"ภาษารัสเซีย"}
+                            name="subject"
+                            type="radio"
+                            checked={subjectReg.subject === "ภาษารัสเซีย"}
+                            onChange={(e) => {
+                              handleChangeRegSubjectCheckCheckbox(e);
+                              handleChangeRegSubjectCheckbox(e);
+                            }}
                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            disabled={!subject.russian}
+                            disabled={
+                              !(
+                                subject.russian
+                                // &&
+                                // (subjectReg.arabic ||
+                                //   subjectReg.astronomy ||
+                                //   subjectReg.bio ||
+                                //   subjectReg.chemistry ||
+                                //   subjectReg.chinese ||
+                                //   subjectReg.english ||
+                                //   subjectReg.french ||
+                                //   subjectReg.gat ||
+                                //   subjectReg.german ||
+                                //   subjectReg.japanese ||
+                                //   subjectReg.korean ||
+                                //   subjectReg.physics ||
+                                //   subjectReg.programming ||
+                                //   subjectReg.science ||
+                                //   subjectReg.social ||
+                                //   subjectReg.thai)
+                              )
+                            }
                           />
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             ภาษารัสเซีย
@@ -891,13 +1342,37 @@ function DetailTutor() {
                         <div className="flex items-center mb-4">
                           <input
                             id="chinese"
-                            name="chinese"
-                            type="checkbox"
-                            onChange={
-                              handleChangeRegSubjectCheckbox 
-                            }
+                            value={"ภาษาจีน"}
+                            name="subject"
+                            type="radio"
+                            checked={subjectReg.subject === "ภาษาจีน"}
+                            onChange={(e) => {
+                              handleChangeRegSubjectCheckCheckbox(e);
+                              handleChangeRegSubjectCheckbox(e);
+                            }}
                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            disabled={!subject.chinese}
+                            disabled={
+                              !(
+                                subject.chinese
+                                // &&
+                                // (subjectReg.arabic ||
+                                //   subjectReg.astronomy ||
+                                //   subjectReg.bio ||
+                                //   subjectReg.chemistry ||
+                                //   subjectReg.english ||
+                                //   subjectReg.french ||
+                                //   subjectReg.gat ||
+                                //   subjectReg.german ||
+                                //   subjectReg.japanese ||
+                                //   subjectReg.korean ||
+                                //   subjectReg.physics ||
+                                //   subjectReg.programming ||
+                                //   subjectReg.russian ||
+                                //   subjectReg.science ||
+                                //   subjectReg.social ||
+                                //   subjectReg.thai)
+                              )
+                            }
                           />
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             ภาษาจีน
@@ -912,13 +1387,37 @@ function DetailTutor() {
                         <div className="flex items-center mb-4">
                           <input
                             id="programming"
-                            name="programming"
-                            type="checkbox"
-                            onChange={
-                              handleChangeRegSubjectCheckbox 
-                            }
+                            value={"เขียนโปรแกรม"}
+                            name="subject"
+                            type="radio"
+                            checked={subjectReg.subject === "เขียนโปรแกรม"}
+                            onChange={(e) => {
+                              handleChangeRegSubjectCheckCheckbox(e);
+                              handleChangeRegSubjectCheckbox(e);
+                            }}
                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                            disabled={!subject.programming}
+                            disabled={
+                              !(
+                                subject.programming
+                                // &&
+                                // (subjectReg.arabic ||
+                                //   subjectReg.astronomy ||
+                                //   subjectReg.bio ||
+                                //   subjectReg.chemistry ||
+                                //   subjectReg.chinese ||
+                                //   subjectReg.english ||
+                                //   subjectReg.french ||
+                                //   subjectReg.gat ||
+                                //   subjectReg.german ||
+                                //   subjectReg.japanese ||
+                                //   subjectReg.korean ||
+                                //   subjectReg.physics ||
+                                //   subjectReg.russian ||
+                                //   subjectReg.science ||
+                                //   subjectReg.social ||
+                                //   subjectReg.thai)
+                              )
+                            }
                           />
                           <label className="block text-gray-700 text-m ml-4 mr-1">
                             เขียนโปรแกรม
@@ -943,17 +1442,19 @@ function DetailTutor() {
                     <div>
                       <div className="px-10 flex flex-row space-x-10">
                         <div>
-                          
                           <div className="flex items-center mb-4">
                             <input
                               id="checked-checkbox"
                               type="checkbox"
                               name="grade"
-                              disabled={(typeReg.enHigh||typeReg.enPrimary||typeReg.entrance||typeReg.knowledge)}
-                        
+                              disabled={
+                                typeReg.enHigh ||
+                                typeReg.enPrimary ||
+                                typeReg.entrance ||
+                                typeReg.knowledge
+                              }
                               onChange={handleChangeRegTypeCheckbox}
                               className="form-check-input  w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  
                             />
                             <label className="block text-gray-700 text-m mx-4">
                               เพิ่มเกรดแต่ละชั้นปี
@@ -964,11 +1465,12 @@ function DetailTutor() {
                               id="checked-checkbox"
                               type="checkbox"
                               name="enHigh"
-                              disabled={(typeReg.enPrimary||typeReg.entrance||typeReg.knowledge||typeReg.grade)}
-
-                 
-
-                    
+                              disabled={
+                                typeReg.enPrimary ||
+                                typeReg.entrance ||
+                                typeReg.knowledge ||
+                                typeReg.grade
+                              }
                               onChange={handleChangeRegTypeCheckbox}
                               className="form-check-input w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                             />
@@ -981,11 +1483,12 @@ function DetailTutor() {
                               id="checked-checkbox"
                               type="checkbox"
                               name="knowledge"
-                              disabled={(typeReg.enHigh||typeReg.enPrimary||typeReg.entrance||typeReg.grade)}
-
-                      
-
-                    
+                              disabled={
+                                typeReg.enHigh ||
+                                typeReg.enPrimary ||
+                                typeReg.entrance ||
+                                typeReg.grade
+                              }
                               onChange={handleChangeRegTypeCheckbox}
                               className="form-check-input w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                             />
@@ -1001,11 +1504,12 @@ function DetailTutor() {
                               id="checked-checkbox"
                               type="checkbox"
                               name="enPrimary"
-                              disabled={(typeReg.enHigh||typeReg.entrance||typeReg.knowledge||typeReg.grade)}
-
-                      
-
-                        
+                              disabled={
+                                typeReg.enHigh ||
+                                typeReg.entrance ||
+                                typeReg.knowledge ||
+                                typeReg.grade
+                              }
                               onChange={handleChangeRegTypeCheckbox}
                               className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                             />
@@ -1018,11 +1522,12 @@ function DetailTutor() {
                               id="checked-checkbox"
                               type="checkbox"
                               name="entrance"
-                              disabled={(typeReg.enHigh||typeReg.enPrimary||typeReg.knowledge||typeReg.grade)}
-                         
-                              
-
-                         
+                              disabled={
+                                typeReg.enHigh ||
+                                typeReg.enPrimary ||
+                                typeReg.knowledge ||
+                                typeReg.grade
+                              }
                               onChange={handleChangeRegTypeCheckbox}
                               className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                             />
@@ -1046,10 +1551,8 @@ function DetailTutor() {
                             id="default-checkbox"
                             type="checkbox"
                             name="online"
-                
                             onChange={handleChangeRegPlaceCheckbox}
                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                    
                             disabled={!place.online}
                           />
                           <label className="block text-gray-700 text-m mx-4">
@@ -1062,11 +1565,9 @@ function DetailTutor() {
                             id="default-checkbox"
                             type="checkbox"
                             name="onsite"
-                        
                             onChange={handleChangeRegPlaceCheckbox}
                             className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                             disabled={!place.onsite}
-                          
                           />
                           <label className="block text-gray-700 text-m mx-4">
                             Onsite (ออนไซต์)
@@ -1097,7 +1598,7 @@ function DetailTutor() {
                   <button
                     data-modal-toggle="book-modal"
                     type="button"
-                    onClick={() => setShowModal(false)}
+                    onClick={() => setShowModal(false) & resetState()}
                     className="text-[white] bg-[#656262] hover:bg-[#656262]-100 focus:ring-4 focus:outline-none focus:ring-[#656262]-300 rounded-lg border border-[#656262]-200 text-sm font-medium px-5 py-2.5 hover:text-[#656262]-900 focus:z-10 dark:bg-[#656262]-700 dark:text-[#656262]-300 dark:border-[#656262]-500 dark:hover:text-white dark:hover:bg-[#656262]-600 dark:focus:ring-[#656262]-600"
                   >
                     ปิด
@@ -1111,10 +1612,46 @@ function DetailTutor() {
                         : "text-gray-400"
                     } text-[white] bg-[#855CF8] hover:bg-[#855CF8]-800 focus:ring-4 focus:outline-none focus:ring-[#855CF8]-300 font-medium rounded-lg text-sm px-9 py-2.5 text-center dark:bg-[#855CF8]-600 dark:hover:bg-[#855CF8]-700 dark:focus:ring-[#855CF8]-800"`}
                     id="submit"
-                   // checked={s}
-                    disabled={!((placeReg.online || placeReg.onsite)&&((typeReg.enHigh)||(typeReg.entrance)||(typeReg.enPrimary)||(typeReg.knowledge)||(typeReg.grade) ))} //งงๆอยู่ เดะมาเพิ่ม
+                    // checked={s}
+                    disabled={
+                      !(
+                        (placeReg.online || placeReg.onsite) &&
+                        (typeReg.enHigh ||
+                          typeReg.entrance ||
+                          typeReg.enPrimary ||
+                          typeReg.knowledge ||
+                          typeReg.grade) &&
+                        (dayTutorReg.monDayTeach ||
+                          dayTutorReg.tuesDayTeach ||
+                          dayTutorReg.wednesDayTeach ||
+                          dayTutorReg.thursDayTeach ||
+                          dayTutorReg.friDayTeach ||
+                          dayTutorReg.saturDayTeach ||
+                          dayTutorReg.sunDayTeach) &&
+                        (subjectRegCheck.arabic ||
+                          subjectRegCheck.astronomy ||
+                          subjectRegCheck.bio ||
+                          subjectRegCheck.chemistry ||
+                          subjectRegCheck.chinese ||
+                          subjectRegCheck.english ||
+                          subjectRegCheck.french ||
+                          subjectRegCheck.gat ||
+                          subjectRegCheck.german ||
+                          subjectRegCheck.japanese ||
+                          subjectRegCheck.korean ||
+                          subjectRegCheck.maths ||
+                          subjectRegCheck.physics ||
+                          subjectRegCheck.programming ||
+                          subjectRegCheck.russian ||
+                          subjectRegCheck.science ||
+                          subjectRegCheck.social ||
+                          subjectRegCheck.thai)
+                      )
+                    }
                     onClick={() =>
-                      setShowModal(false) & setShowModalSuccess(true) 
+                      setShowModal(false) &
+                      setShowModalSuccess(true) &
+                      onSubmit()
                     }
                   >
                     จอง
@@ -1137,13 +1674,13 @@ function DetailTutor() {
 
               <div
                 id="alert-additional-content-3"
-                class="p-4 mb-4 border border-[#855CF8]-800 rounded-lg bg-[green] dark:bg-[white]"
+                className="p-4 mb-4 border border-[#855CF8]-800 rounded-lg bg-[white] dark:bg-[white]"
                 role="alert"
               >
-                <div class="flex items-center  justify-center">
+                <div className="flex items-center  justify-center">
                   <svg
                     aria-hidden="true"
-                    class="w-5 h-5 mr-2 text-green-700 dark:text-green-800"
+                    className="w-5 h-5 mr-2 text-green-800 dark:text-green-800"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                     xmlns="http://www.w3.org/2000/svg"
@@ -1154,23 +1691,23 @@ function DetailTutor() {
                       clip-rule="evenodd"
                     ></path>
                   </svg>
-                  <span class="sr-only">Info</span>
-                  <h6 class="font-md text-2xl text-green-700 dark:text-green-800 pb-1 ">
+                  <span className="sr-only">Info</span>
+                  <h6 className="font-md text-2xl text-green-700 dark:text-green-800 pb-1 ">
                     จองสำเร็จ!!!
                   </h6>
                 </div>
-                <div class="mt-2 mb-4 text-sm text-[green] dark:text-[green]">
+                <div className="mt-2 mb-4 text-sm text-[green] dark:text-[green]">
                   เราได้ทำการจองวัน และ เวลาเรียนให้ท่านแล้ว <br></br>
                   โปรดรอการยืนยันจากติวเตอร์อีกครั้ง
                   โดยสามารถตรวจสอบได้ที่หน้าประวัติการจอง
                 </div>
-                <div class="flex justify-center">
+                <div className="flex justify-center">
                   <button
                     type="button"
-                    class="text-md text-[#855CF8] bg-transparent border border-green-700 hover:bg-[gray] hover:text-[white] focus:ring-2 focus:outline-none focus:ring-green-300 font-medium rounded-lg  px-5 py-1.5 text-center dark:border-green-800 dark:text-green-800 dark:hover:text-white"
+                    className="text-md text-[#855CF8] bg-transparent border border-green-700 hover:bg-[gray] hover:text-[white] focus:ring-2 focus:outline-none focus:ring-green-300 font-medium rounded-lg  px-5 py-1.5 text-center dark:border-green-800 dark:text-green-800 dark:hover:text-white"
                     data-dismiss-target="#alert-additional-content-3"
                     aria-label="Close"
-                    onClick={() => resetState()}
+                    onClick={() => setShowModalSuccess(false)}
                   >
                     ปิด
                   </button>
@@ -1186,20 +1723,22 @@ function DetailTutor() {
               <div className="px-6 mt-20 pt-20">
                 {/* ---------------- */}
                 <div className="text-left mt-20 pt-5 ml-10 mb-7">
-                <h3 className="text-xl font-semibold leading-normal text-blueGray-700 mb-2">
+                  <h3 className="text-xl font-semibold leading-normal text-blueGray-700 mb-2">
                     แนะนำตัว
                   </h3>
                   <div className="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-normal uppercase">
-                    <label> 
-                      {infotutor.introduce}     {/* ------แนะนำตัว---หลังบ้าน---- */}
+                    <label>
+                      {infotutor.introduce}{" "}
+                      {/* ------แนะนำตัว---หลังบ้าน---- */}
                     </label>
                   </div>
                   <h3 className="text-xl font-semibold leading-normal text-blueGray-700 mb-2">
-                    รายละเอียดเกี่ยวกับวิชาที่สอน 
+                    รายละเอียดเกี่ยวกับวิชาที่สอน
                   </h3>
                   <div className="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-normal uppercase">
                     <label>
-                     {infotutor.detailTech}      {/* ------รายละเอียดเกี่ยวกับวิชาที่สอน----หลังบ้าน--- */}
+                      {infotutor.detailTech}{" "}
+                      {/* ------รายละเอียดเกี่ยวกับวิชาที่สอน----หลังบ้าน--- */}
                     </label>
                   </div>
                   <h3 className="text-xl font-semibold leading-normal text-blueGray-700 mb-2">
@@ -1207,68 +1746,14 @@ function DetailTutor() {
                   </h3>
                   <div className="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-normal uppercase">
                     <label>
-                      {infotutor.experience}       {/* -------ประสบการณ์-----หลังบ้าน---- */}
-                    </label> 
+                      {infotutor.experience}{" "}
+                      {/* -------ประสบการณ์-----หลังบ้าน---- */}
+                    </label>
                   </div>
-                  {/* <div className="mb-2 text-blueGray-600 mt-10">
-                  <i className="fas fa-briefcase mr-2 text-lg text-blueGray-400"></i>
-                  Solution Manager - Creative Tim Officer
-                </div>
-                <div className="mb-2 text-blueGray-600">
-                  <i className="fas fa-university mr-2 text-lg text-blueGray-400"></i>
-                  University of Computer Science
-                </div> */}
-                </div>
-                {/* <div className="mt-10 py-10 border-t border-blueGray-200 text-center">
-                <div className="flex flex-wrap justify-center">
-                  <div className="w-full lg:w-9/12 px-4">
-                    <p className="mb-4 text-lg leading-relaxed text-blueGray-700">
-                      An artist of considerable range, Jenna the name taken by
-                      Melbourne-raised, Brooklyn-based Nick Murphy writes,
-                      performs and records all of his own music, giving it a
-                      warm, intimate feel with a solid groove structure. An
-                      artist of considerable range.
-                    </p>
-                    <a
-                      href="javascript:void(0);"
-                      className="font-normal text-pink-500"
-                    >
-                      Show more
-                    </a>
-                  </div>
-                </div>
-              </div> */}
-              </div>
-            </div>
-          </div>
-          {/* <footer className="relative  pt-8 pb-6 mt-8">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-wrap items-center md:justify-between justify-center">
-              <div className="w-full md:w-6/12 px-4 mx-auto text-center">
-                <div className="text-sm text-blueGray-500 font-semibold py-1">
-                  Made with{" "}
-                  <a
-                    href="https://www.creative-tim.com/product/notus-js"
-                    className="text-blueGray-500 hover:text-gray-800"
-                    target="_blank"
-                  >
-                    Notus JS
-                  </a>{" "}
-                  by{" "}
-                  <a
-                    href="https://www.creative-tim.com"
-                    className="text-blueGray-500 hover:text-blueGray-800"
-                    target="_blank"
-                  >
-                    {" "}
-                    Creative Tim
-                  </a>
-                  .
                 </div>
               </div>
             </div>
           </div>
-        </footer> */}
         </div>
 
         <button
