@@ -65,7 +65,7 @@ const Feed = () => {
     setNewComment({
       ...newComment,
       [e.target.name]: e.target.value,
-      email: "ju@gmail.com",
+      email: "w8@gmail.com",
       // TODO: แก้เอา email user มาใส่
     });
   };
