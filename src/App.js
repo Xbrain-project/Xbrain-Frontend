@@ -23,6 +23,8 @@ import ProfileTutor from "./pages/ProfileTutor";
 import PostTeach from "./pages/PostTeach";
 import Search from "./pages/Search";
 import Contact from "./pages/Contact";
+import FindTutor from "./pages/FindTutor";
+import DetailTutor from "./pages/DetailTutor";
 
 function App() {
   return (
@@ -57,12 +59,8 @@ function App() {
           <Route path="/postteach" element={<PostTeach />} />
           <Route path="/search" element={<Search />} />
           <Route path="/contact" element={<Contact />} />
-
-          {/* Layout Navbar ยังทำไม่ได้คร่า*/}
-          {/* <Route element={<LayoutStudent/>}>
-          <Route element={<RoutesStudent/>}>
-          </Route>
-        </Route>  */}
+          <Route path="/findtutor" element={<FindTutor />} />
+          <Route path="/detailtutor" element={<DetailTutor />} />
         </Routes>
       </div>
     </PayPalScriptProvider>

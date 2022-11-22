@@ -118,7 +118,7 @@ const Feed = () => {
         onClick={(e) => toggle()}
       >
         <div className="mr-3 text-lg md:text-xl font-semibold text-white-100">
-          Comment
+          Comment ({comment?.length})
         </div>
         <FontAwesomeIcon
           icon={faChevronDown}
@@ -163,8 +163,7 @@ const Feed = () => {
               placeholder="เเสดงความคิดเห็น"
               className="mt-1 w-full h-20 px-3 py-2 bg-white-100 border border-slate-300 rounded-md text-base md:text-lg shadow-sm placeholder-slate-400
               focus:outline-none focus:border-primary-80 focus:ring-1 focus:ring-primary-80
-              invalid:border-[#FF3358] invalid:text-[#FF3358]
-              focus:invalid:border-[#FF3358] focus:invalid:ring-[#FF3358]"
+              "
             />
             <button
               type="submit"
