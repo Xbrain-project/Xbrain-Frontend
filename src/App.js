@@ -23,6 +23,8 @@ import ProfileTutor from "./pages/ProfileTutor";
 import PostTeach from "./pages/PostTeach";
 import Search from "./pages/Search"
 import Contact from "./pages/Contact"
+import FindTutor from "./pages/FindTutor"
+
 
 
 function App() {
@@ -59,6 +61,7 @@ function App() {
           <Route path="/postteach" element={<PostTeach/>}/>
           <Route path="/search" element={<Search/>}/>
           <Route path="/contact" element={<Contact/>}/>
+          <Route path="/findtutor" element={<FindTutor/>}/>
 
           {/* Layout Navbar ยังทำไม่ได้คร่า*/}
           {/* <Route element={<LayoutStudent/>}>
