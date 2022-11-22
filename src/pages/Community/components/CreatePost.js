@@ -40,6 +40,7 @@ const CreatePost = () => {
               หัวข้อ
             </span>
             <input
+              name="title"
               type="text"
               onChange={handleChange}
               placeholder="กรุณากรอกหัวข้อ..."
@@ -57,6 +58,7 @@ const CreatePost = () => {
               รายละเอียด
             </span>
             <textarea
+              name="content"
               type="text"
               onChange={handleChange}
               placeholder="กรุณากรอกรายละเอียด..."
