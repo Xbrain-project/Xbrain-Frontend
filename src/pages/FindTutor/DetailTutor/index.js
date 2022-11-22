@@ -160,15 +160,39 @@ function DetailTutor() {
    
   });
   //------------------------########*-*SUBMIT*-*########-----------------------------
+  const returnObj = (e) =>{
+    
+
+  };
+
+
   const onSubmit = (e) => {
     const upload = {
       dayTutorReg,
-      subjectReg,
-      price,
+     // subjectReg,
+     // price,
       placeReg,
       typeReg,
     };
     console.log("submit uplond", upload);
+
+   
+    for (var va of Object.entries(upload)) {
+    console.log(typeof(va)  + " -> " + va)
+   
+  }
+
+
+  
+
+    // fillterTrue = upload.map(upload => {
+    //   var keys = Object.keys(upload);
+    //   var 
+
+    //   return   
+    // })
+   
+
   };
 
   //-----------Any Funcation---------------------------------------
@@ -1707,7 +1731,7 @@ function DetailTutor() {
                     className="text-md text-[#855CF8] bg-transparent border border-green-700 hover:bg-[gray] hover:text-[white] focus:ring-2 focus:outline-none focus:ring-green-300 font-medium rounded-lg  px-5 py-1.5 text-center dark:border-green-800 dark:text-green-800 dark:hover:text-white"
                     data-dismiss-target="#alert-additional-content-3"
                     aria-label="Close"
-                    onClick={() => setShowModalSuccess(false)}
+                    onClick={() => setShowModalSuccess(false)& resetState()}
                   >
                     ปิด
                   </button>

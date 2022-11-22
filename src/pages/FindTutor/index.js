@@ -16,7 +16,7 @@ function FindTutor() {
       </p>
    
 
-    <div className="   mt-28 pt-20">
+    <div className="   mt-28 pt-20" key={CardTutor.id}>
       <CardTutor />
     </div>
   </div>
