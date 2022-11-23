@@ -151,7 +151,7 @@ export default function NavbarStudent() {
                 className="font-body font-semibold text-white-100 text-xl ml-2 mr-2 pl-2 pr-2 pt-3 hover:bg-primary-100 hover:rounded-md ">
                     ข่าวสาร
             </Link>
-            <Link to ={"/search"}
+            <Link to ={"/findtutor"}
                 className="font-body font-semibold text-white-100 text-xl ml-2 mr-2 pl-2 pr-2 pt-3 hover:bg-primary-100 hover:rounded-md ">
                     หา Tutor
             </Link>
