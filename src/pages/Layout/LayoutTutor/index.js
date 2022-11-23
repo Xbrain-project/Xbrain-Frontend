@@ -1,13 +1,13 @@
 import { Outlet } from "react-router-dom";
-import NavbarStudent from "../../../components/navbar/NavbarStudent";
+import NavbarTutor from "../../../components/navbar/NavbarTutor";
 
 function Layout() {
   return (
-    <body className="flex-col min-h-screen ">
+    <body class="flex flex-col min-h-screen ">
       <header className="sticky top-0 z-50">
-        <NavbarStudent />
+        <NavbarTutor />
       </header>
-      <main className="flex-grow relative">
+      <main class="flex-grow">
         <Outlet />
       </main>
     </body>

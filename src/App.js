@@ -7,11 +7,10 @@ import ChooseRole from "./pages/ChooseRole";
 import SignUpStudent from "./pages/SignUpStudent";
 import SignUpTutor from "./pages/SignUpTutor";
 import Payment from "./pages/Payment";
-import LayoutStudent from "./pages/Layout/LayoutStudent";
-import RoutesStudent from "./pages/Layout/RoutesStudent";
+
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
-import NavbarStudent from "./components/navbar/NavbarStudent";
-import NavbarTutor from "./components/navbar/NavbarTutor";
+// import NavbarStudent from "./components/navbar/NavbarStudent";
+// import NavbarTutor from "./components/navbar/NavbarTutor";
 import HomeStudent from "./pages/HomeStudent";
 import HomeTutor from "./pages/HomeTutor";
 import HistoryStudent from "./pages/HistoryStudent";
@@ -24,6 +23,11 @@ import PostTeach from "./pages/PostTeach";
 import Search from "./pages/Search";
 import Contact from "./pages/Contact";
 
+import TutorRoutes from "../src/pages/Layout/TutorRoutes";
+import Layout from "./pages/Layout";
+import LayoutStudent from "./pages/Layout/LayoutStudent";
+import LayoutTutor from "./pages/Layout/LayoutTutor";
+
 function App() {
   return (
     <PayPalScriptProvider
@@ -35,28 +39,27 @@ function App() {
     >
       <div>
         <Routes>
-          {/* <Route path="/" element={<NavbarStudent/>} />
-             <Route path="/1" element={<NavbarTutor/>} /> */}
-          <Route path="/" element={<Login />} />
-          <Route path="/forgotpass" element={<ForgotPassword />} />
-          <Route path="/chooserole" element={<ChooseRole />} />
-          <Route path="/signupstudent" element={<SignUpStudent />} />
-          <Route path="/signuptutor" element={<SignUpTutor />} />
-          <Route path="/payment" element={<Payment />} />
+          <Route element={<LayoutStudent></LayoutStudent>}>
+            <Route path="/homestudent" element={<HomeStudent />} />
+            <Route path="/profilestudent" element={<ProfileStudent />} />
+            <Route path="/historystudent" element={<HistoryStudent />} />
+            <Route path="/applytutor" element={<ApplyTutor />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/community" element={<Community />} />
+            <Route path="/contact" element={<Contact />} />
+          </Route>
 
-          <Route path="/homestudent" element={<HomeStudent />} />
-          <Route path="/hometutor" element={<HomeTutor />} />
-          <Route path="/historystudent" element={<HistoryStudent />} />
-          <Route path="/applytutor" element={<ApplyTutor />} />
-
-          <Route path="/community" element={<Community />} />
-          <Route path="/feed/:id" element={<Feed />} />
-
-          <Route path="/profilestudent" element={<ProfileStudent />} />
-          <Route path="/profiletutor" element={<ProfileTutor />} />
-          <Route path="/postteach" element={<PostTeach />} />
-          <Route path="/search" element={<Search />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route element={<LayoutTutor></LayoutTutor>}>
+            <Route element={<TutorRoutes></TutorRoutes>} />
+            <Route path="/hometutor" element={<HomeTutor />} />
+            <Route path="/profiletutor" element={<ProfileTutor />} />
+            <Route path="/postteach" element={<PostTeach />} />
+            <Route path="/applytutor" element={<ApplyTutor />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/community" element={<Community />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/feed/:id" element={<Feed />} />
+          </Route>
 
           {/* Layout Navbar ยังทำไม่ได้คร่า*/}
           {/* <Route element={<LayoutStudent/>}>
