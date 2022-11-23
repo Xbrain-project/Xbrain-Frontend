@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
+import CardTutor from "../FindTutor/components/CardTutor";
+import { Link } from "react-router-dom";
 
+import { listSearch, testSearch } from "../../api/search";
 function Search() {
   // const handleChange = (e) => {                             //การเปลี่ยนแปรงค่าเมื่อกรอก
   //     setValues({ ...values,
@@ -54,15 +57,23 @@ function Search() {
   });
 
   const [searchdata, setSearch] = useState({
-    subject: "",
-    class: "",
-    type: "",
-    place: "",
+    openCourse: [],
+    studentClass: [],
+    teachType: [],
+    place: [],
   });
+
+  const [resultSearch, setResultSearch] = useState([]);
 
   const handleChangeSubjectCheckbox = (e) => {
     //การเปลี่ยนแปรงค่าเมื่อ checkbox วิชาต่างๆ
-    setSubject({ ...subject, [e.target.name]: !subject[e.target.name] });
+    setSubject((subject) => ({
+      ...subject,
+      [e.target.name]: !subject[e.target.name],
+    }));
+  };
+
+  useEffect(() => {
     const newlistSubject = [];
     for (var e in subject) {
       if (subject[e]) {
@@ -70,8 +81,8 @@ function Search() {
         newlistSubject.push(e);
       }
     }
-    setSearch({ ...searchdata, subject: newlistSubject });
-  };
+    setSearch({ ...searchdata, openCourse: newlistSubject });
+  }, [subject]);
 
   const handleChangeClassCheckbox = (e) => {
     //การเปลี่ยนแปรงค่าเมื่อ checkbox ระดับชั้นต่างๆ
@@ -79,6 +90,8 @@ function Search() {
       ...classTeach,
       [e.target.name]: !classTeach[e.target.name],
     });
+  };
+  useEffect(() => {
     const newlistClassTeach = [];
     for (var e in classTeach) {
       if (classTeach[e]) {
@@ -86,12 +99,14 @@ function Search() {
         newlistClassTeach.push(e);
       }
     }
-    setSearch({ ...searchdata, class: newlistClassTeach });
-  };
+    setSearch({ ...searchdata, studentClass: newlistClassTeach });
+  }, [classTeach]);
 
   const handleChangeTypeCheckbox = (e) => {
     //การเปลี่ยนแปรงค่าเมื่อ checkbox ประเภทสอนต่างๆ
     setType({ ...type, [e.target.name]: !type[e.target.name] });
+  };
+  useEffect(() => {
     const newlistType = [];
     for (var e in type) {
       if (type[e]) {
@@ -99,12 +114,14 @@ function Search() {
         newlistType.push(e);
       }
     }
-    setSearch({ ...searchdata, type: newlistType });
-  };
+    setSearch({ ...searchdata, teachType: newlistType });
+  }, [type]);
 
   const handleChangePlaceCheckbox = (e) => {
     //การเปลี่ยนแปรงค่าเมื่อ checkbox ประเภทสอนต่างๆ
     setPlace({ ...place, [e.target.name]: !place[e.target.name] });
+  };
+  useEffect(() => {
     const newlistPlace = [];
     for (var e in place) {
       if (place[e]) {
@@ -113,28 +130,68 @@ function Search() {
       }
     }
     setSearch({ ...searchdata, place: newlistPlace });
-  };
+  }, [place]);
 
-  const handleSubmit = (e) => {
+  async function handleSubmit(e) {
     //ฟังชั่นจากการกด submit
     e.preventDefault();
-
-    let keyP = ["subject", "class", "type", "place"];
+    let keyP = ["openCourse", "studentClass", "teachType", "place"];
     for (var i = 0; i < keyP.length; i++) {
       if (searchdata[keyP[i]] === "" || searchdata[keyP[i]] === 0) {
         delete searchdata[keyP[i]];
       }
     }
+    // const xhr = new XMLHttpRequest();
     console.log("searchdata", searchdata);
+    await sendData(searchdata);
+  }
 
-    console.log(
-      "subject คือ วิชาที่เลือก class คือ ระดับชั้น type คือ เป้าหมายการเรียน  place คือ สถานที่ออนไลน์ออนไซต์"
-    );
-  };
+  async function sendData(searchdata) {
+    await listSearch(searchdata)
+      .then((res) => {
+        console.log("res data ;", res.data);
+        // setUsers(res.data)
+        setResultSearch(res.data);
+        const a = res.data;
+        console.log(a);
+
+        setResultSearch(res.data);
+        setUsers(res.data);
+        console.log("search res is ... ", resultSearch);
+      })
+      .catch((err) => {
+        //err
+        console.log("Error sentData", err.response.data);
+      });
+  }
 
   const handletest = (e) => {
     console.log(classTeach.kindergarten); //ฟังชั่นจากการกด test
   };
+
+  const [users, setUsers] = useState(
+    []
+    // JsonData.slice(0, 0)
+  );
+
+  var displayUsers = users.map((user, index) => {
+    console.log("user is !!!" + user);
+    return (
+      //link ไปยัง detail tutor ของเเต่ละ user
+      <Link to={`/DetailTutor/${users.id}`}>
+        <CardTutor
+          key={user.id}
+          image={user.image}
+          nameTutor={user.teacherName}
+          gradFrom={user.gradFrom}
+          subject={user.subject}
+          classTeach={user.classTeach}
+          category={user.category}
+          introduce={user.introduce}
+        />
+      </Link>
+    );
+  });
 
   return (
     <div className="font-body ">
@@ -146,7 +203,6 @@ function Search() {
           <div className="text-xl text-center mt-16 font-bold">
             วิชาที่ต้องการเรียน
           </div>
-
           <div
             className="flex flex-row ml-auto space-x-10 mt-5 mb-5 justify-center" //แถวแรก
           >
@@ -330,7 +386,7 @@ function Search() {
                 id="french"
                 name="french"
                 className="hidden peer"
-                checked={subject.astronomy}
+                checked={subject.french}
                 onChange={handleChangeSubjectCheckbox} // checkbox เคมี
               ></input>
               <label
@@ -552,7 +608,6 @@ function Search() {
                 className="hidden peer"
                 checked={classTeach.college}
                 onChange={handleChangeClassCheckbox} // checkbox มหาลัย
-                required
               ></input>
               <label
                 for="college"
@@ -749,9 +804,7 @@ function Search() {
         </div>
       </div>
 
-      <div
-        className="mx-24 text-black h-screen border-2 border-gray-200 bg-blue-100" //ผลลัพธ์จากการกด search
-      ></div>
+      {/* {displayUsers} */}
     </div>
   );
 }
