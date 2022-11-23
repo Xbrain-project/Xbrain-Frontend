@@ -22,9 +22,8 @@ import ProfileTutor from "./pages/ProfileTutor";
 import PostTeach from "./pages/PostTeach";
 import Search from "./pages/Search";
 import Contact from "./pages/Contact";
-import FindTutor from "./pages/FindTutor";
-import DetailTutor from "./pages/FindTutor/components/DetailTutor";
 
+import DetailTutor from "./pages/FindTutor/DetailTutor";
 import TutorRoutes from "../src/pages/Layout/TutorRoutes";
 import Layout from "./pages/Layout";
 import LayoutStudent from "./pages/Layout/LayoutStudent";
@@ -41,9 +40,6 @@ function App() {
     >
       <div>
         <Routes>
-          {/* <Route path="/" element={<NavbarStudent/>} />
-             <Route path="/1" element={<NavbarTutor/>} /> */}
-          <Route element={<Layout></Layout>}></Route>
           <Route path="/" element={<Login />} />
           <Route path="/forgotpass" element={<ForgotPassword />} />
           <Route path="/chooserole" element={<ChooseRole />} />
@@ -51,15 +47,19 @@ function App() {
           <Route path="/signuptutor" element={<SignUpTutor />} />
           <Route path="/payment" element={<Payment />} />
 
-          <Route element={<LayoutStudent> </LayoutStudent>}>
+          <Route element={<LayoutStudent></LayoutStudent>}>
             <Route path="/homestudent" element={<HomeStudent />} />
             <Route path="/profilestudent" element={<ProfileStudent />} />
-            <Route path="/historystudent" element={<HistoryStudent />} />
+            <Route
+              path="/historystudent/:post_id"
+              element={<HistoryStudent />}
+            />
             <Route path="/applytutor" element={<ApplyTutor />} />
-            <Route path="/findtutor" element={<FindTutor />} />
             <Route path="/search" element={<Search />} />
             <Route path="/community" element={<Community />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/feed/:id" element={<Feed />} />
+            <Route path="/detailtutor/:id" element={<DetailTutor />} />
           </Route>
 
           <Route element={<LayoutTutor></LayoutTutor>}>
@@ -68,15 +68,18 @@ function App() {
             <Route path="/profiletutor" element={<ProfileTutor />} />
             <Route path="/postteach" element={<PostTeach />} />
             <Route path="/applytutor" element={<ApplyTutor />} />
-
-            <Route path="/findtutor/detailTutor" element={<DetailTutor />} />
-
             <Route path="/search" element={<Search />} />
             <Route path="/community" element={<Community />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/feed/:id" element={<Feed />} />
+            <Route path="/detailtutor/:id" element={<DetailTutor />} />
           </Route>
 
-          <Route path="/feed/:id" element={<Feed />} />
+          {/* Layout Navbar ยังทำไม่ได้คร่า*/}
+          {/* <Route element={<LayoutStudent/>}>
+          <Route element={<RoutesStudent/>}>
+          </Route>
+        </Route>  */}
         </Routes>
       </div>
     </PayPalScriptProvider>

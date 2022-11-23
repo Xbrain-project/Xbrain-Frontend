@@ -112,7 +112,7 @@ export default function NavbarStudent() {
                     โปรไฟล์
                   </Link>
                   <Link
-                    to={"/historystudent"}
+                    to={"/historystudent/1"}
                     className="block px-4 py-2 font-body text-lg font-medium text-white-100 hover:bg-primary-100"
                     role="menuitem"
                     tabindex="-1"

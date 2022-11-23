@@ -269,7 +269,7 @@ function PostTeach() {
     }
 
     console.log("postdata", postdata);
-    // window.location.href = '/payment'
+    window.location.href = "/payment";
 
     let post_id = localStorage.getItem("id");
     sentData(post_id, postdata);

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import community from "../../../assets/icons/community.png";
-
+import { listApplyPostStudent } from "../../../api/studentHistory";
 const DetailCard = () => {
   //เก็บค่าตัวเเปร
   const [values, setValues] = useState({
@@ -13,22 +14,26 @@ const DetailCard = () => {
     result: "", //ผลการสมัคร
   });
 
+  const params = useParams();
   useEffect(() => {
-    //loadData();
+    var post_id = params.post_id;
+
+    loadData(post_id);
   }, []);
 
-  // const loadData = (authtoken) => {
-  //   historyJob(authtoken) // ดึงข้อมูลทั้งหมดมา
-  //     .then((res) => {
-  //       setValues({ ...values, ...res.data });
-
-  //       console.log(res.data);
-  //     })
-  //     .catch((err) => {
-  //       //err
-  //       console.log("Error loadData", err.response.data);
-  //     });
-  // };
+  const loadData = (post_id) => {
+    listApplyPostStudent("1")
+      .then((res) => {
+        console.log("res.data.apply", res.data["applyPostEntity"]);
+        console.log("res.data", res.data);
+        var b = res.data["applyPostEntity"];
+        setValues(res.data);
+      })
+      .catch((err) => {
+        //err
+        console.log("Error loadData", err.response.data);
+      });
+  };
 
   //สีปุ่ม status ผลการสมัคร
   const makeStyles = (status) => {

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import CardTutor from "../FindTutor/components/CardTutor";
+import { CardTutor2 } from "./CardTutor2";
 import { Link } from "react-router-dom";
+import picture from "./student1.png";
 
 import { listSearch, testSearch } from "../../api/search";
 function Search() {
@@ -178,16 +179,14 @@ function Search() {
     console.log("user is !!!" + user);
     return (
       //link ไปยัง detail tutor ของเเต่ละ user
-      <Link to={`/DetailTutor/${users.id}`}>
-        <CardTutor
-          key={user.id}
-          image={user.image}
-          nameTutor={user.teacherName}
-          gradFrom={user.gradFrom}
-          subject={user.subject}
-          classTeach={user.classTeach}
-          category={user.category}
-          introduce={user.introduce}
+      <Link to={`/detailTutor/${user.post_id}`}>
+        <CardTutor2
+          image={picture}
+          introduce={user.teacherName}
+          gradFrom={user.freeTime.join("    ")}
+          subject={user.openCourse.join("    ")}
+          classTeach={user.studentClass.join("    ")}
+          category={user.place.join("    ")}
         />
       </Link>
     );
@@ -804,7 +803,7 @@ function Search() {
         </div>
       </div>
 
-      {/* {displayUsers} */}
+      {displayUsers}
     </div>
   );
 }

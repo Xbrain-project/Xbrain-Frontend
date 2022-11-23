@@ -5,35 +5,48 @@ import TestData from "./TestData"; //fake data เอามา test จร้า
 
 import CardApply from "./CardApply";
 
+import { listApplyTeacher } from "../../../api/tutorApply";
+
 const DetailCard = () => {
   //รอเอาค่าจริงมาใส่ , [] ใส่มาเพื่อจะดู values. บลาๆ
   const [values, setValues] = useState([]);
 
   useEffect(() => {
-    setValues(TestData);
-    //console.log(TestData);
+    var teacher_id = localStorage.getItem("id");
+    loadData(teacher_id);
+    console.log(TestData);
   }, [TestData]);
+
+  const loadData = (teacher_id) => {
+    listApplyTeacher(teacher_id)
+      .then((res) => {
+        console.log("res ", res);
+        console.log("res.data", res.data);
+
+        setValues(res.data);
+      })
+      .catch((err) => {
+        //err
+        console.log("Error loadData", err.response.data);
+      });
+  };
 
   return (
     <div className="md:mt-32 md:mb-32">
       <div className="mt-20 text-center md:text-center xl:text-center">
-        <div className="container mx-auto px-10 py-4 gap-5 mt-6 flex flex-col rounded-xl drop-shadow-lg font-body md:w-2/4 bg-[#503795]">
-          <h1 className="font-bold text-2xl leading-8 md:text-3xl text-white-100">
-            ใบสมัคร
-          </h1>
-        </div>
+        <h1 className="font-bold text-2xl leading-8 md:text-3xl font-body">
+          ใบสมัคร
+        </h1>
       </div>
-
       {/* Map data */}
-      {values.map((value, index) => (
+      {Object.values(values).map((value) => (
         <CardApply
           key={values.id}
-          index={index}
-          student={value.student}
+          student={value.studentName}
           college={value.college}
-          subject={value.subject}
-          type={value.type}
-          wage={value.wage}
+          subject={value.course}
+          type={value.teachType}
+          wage={value.price}
           place={value.place}
         />
       ))}
