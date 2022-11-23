@@ -39,6 +39,13 @@ function App() {
     >
       <div>
         <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/forgotpass" element={<ForgotPassword />} />
+          <Route path="/chooserole" element={<ChooseRole />} />
+          <Route path="/signupstudent" element={<SignUpStudent />} />
+          <Route path="/signuptutor" element={<SignUpTutor />} />
+          <Route path="/payment" element={<Payment />} />
+
           <Route element={<LayoutStudent></LayoutStudent>}>
             <Route path="/homestudent" element={<HomeStudent />} />
             <Route path="/profilestudent" element={<ProfileStudent />} />
