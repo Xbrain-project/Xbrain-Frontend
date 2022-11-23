@@ -27,6 +27,7 @@ const Blog = () => {
       });
   };
 
+  
   return (
     <div className="container items-center justify-center mx-auto w-full md:w-3/5 bg-slate-200">
       <div className="flex flex-col md:flex-row gap-6">
