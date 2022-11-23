@@ -23,6 +23,8 @@ import ProfileTutor from "./pages/ProfileTutor";
 import PostTeach from "./pages/PostTeach";
 import Search from "./pages/Search";
 import Contact from "./pages/Contact";
+import FindTutor from "./pages/FindTutor";
+import DetailTutor from "./pages/FindTutor/DetailTutor";
 
 import TutorRoutes from "../src/pages/Layout/TutorRoutes";
 import Layout from "./pages/Layout";
@@ -57,6 +59,10 @@ function App() {
             <Route path="/profilestudent" element={<ProfileStudent />} />
             <Route path="/historystudent" element={<HistoryStudent />} />
             <Route path="/applytutor" element={<ApplyTutor />} />
+            <Route path="/findtutor" element={<FindTutor />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/community" element={<Community />} />
+            <Route path="/contact" element={<Contact />} />
           </Route>
 
           <Route element={<LayoutTutor></LayoutTutor>}>
@@ -65,6 +71,13 @@ function App() {
               <Route path="/profiletutor" element={<ProfileTutor />} />
               <Route path="/postteach" element={<PostTeach />} />
               <Route path="/applytutor" element={<ApplyTutor />} />
+
+      
+          <Route path="/findtutor/detailTutor" element={<DetailTutor />} />
+
+              <Route path="/search" element={<Search />} />
+              <Route path="/community" element={<Community />} />
+              <Route path="/contact" element={<Contact />} />
           </Route>
 
 

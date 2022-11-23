@@ -5,7 +5,7 @@ import About from "./components/About";
 
 const HomeStudent = () => {
   return (
-    <div className="w-full justify-center">
+    <div className="w-full justify-center mt-0 pt-0">
       <Hero />
       <Card />
       <About />

@@ -92,7 +92,7 @@ export default function Login() {
         alt=""
       ></img>
 
-      <div className="container px-6 py-12 h-screen bg-white-100 w-full">
+      <div className="container px-6 py-12 h-screen bg-white-100 w-full mt-0">
         <div className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
           <div className=" w-9/12 p-10">
             {/* <!-- Form --> */}

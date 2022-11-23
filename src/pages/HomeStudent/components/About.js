@@ -3,7 +3,7 @@ import aboutstudent from "../../../assets/pics/aboutstudent.png";
 
 const About = () => {
   return (
-    <div className="w-full mt-8 md:mt-32 md:items-center">
+    <div className="w-full mt-8 md:mt-32 md:items-center ">
       {/* Header  */}
 
       <div className="container mx-auto mt-20 px-16 flex flex-col md:flex-row md:gap-8 xl:gap-16 ">
