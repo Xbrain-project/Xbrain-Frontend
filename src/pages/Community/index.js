@@ -12,7 +12,7 @@ const Community = () => {
       {/* <CreatePost /> */}
       <Blog />
       {/* <Feed /> */}
-      <Comment />
+      {/* <Comment /> */}
     </div>
   );
 };

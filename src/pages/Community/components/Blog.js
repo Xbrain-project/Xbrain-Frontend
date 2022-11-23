@@ -28,7 +28,7 @@ const Blog = () => {
   };
 
   return (
-    <div className="container items-center justify-center mx-auto w-full md:w-3/5 bg-slate-200">
+    <div className="container items-center justify-center mx-auto w-full md:w-3/5">
       <div className="flex flex-col md:flex-row gap-6">
         <div className="h-full w-full md:w-8/12 lg:w-[516px] mx-1.5 md:mb-0">
           <CreatePost />
