@@ -8,7 +8,7 @@ const TutorRoute = ({ children }) => {
   const { user } = useSelector((state) => ({ ...state }));
 
   // มีค่า userและtoken ไหม
-  return user.role == "tutor" && user.token ? (
+  return role == "tutor" ? (
     children // ถ้ามีให้เข้าไปทำงานที่ children (HomeUser)
   ) : (
     <LoadingToRedirect />

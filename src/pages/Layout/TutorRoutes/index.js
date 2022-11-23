@@ -5,11 +5,11 @@ import NavbarTutor from "../../../components/navbar/NavbarTutor";
 
 import { useSelector } from "react-redux";
 const Layout = ({ role }) => {
-  var { user } = useSelector((state) => ({ ...state }));
+  let roleUser = localStorage.getItem("role");
   const checkRole = () => {
-    if (user.role === "student") {
+    if (roleUser === "student") {
       return <NavbarStudent />;
-    } else if (user.role === "tutor") {
+    } else if (roleUser === "tutor") {
       return <NavbarTutor />;
     }
   };
