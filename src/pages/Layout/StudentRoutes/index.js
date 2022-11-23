@@ -1,7 +1,7 @@
 import React from 'react'
 import { Outlet } from "react-router-dom";
-import StudentRoute from "../../../components/routes/RouteStudent"
-function RoutesStudent() {
+import StudentRoute from "../../../components/routes/StudentRoute"
+function StudentRoutes() {
   return (
     <div>
       <StudentRoute>
@@ -11,4 +11,4 @@ function RoutesStudent() {
   )
 }
 
-export default RoutesStudent
+export default StudentRoutes
